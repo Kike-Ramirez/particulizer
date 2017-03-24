@@ -1,5 +1,5 @@
 # particulizer
-Software for real-time graphics
+Software for real-time graphics developed in openFrameworks v0.9.8 under Ubuntu.
 
 # dependencies
 Contributed:
@@ -12,3 +12,4 @@ Core:
 * ofxGUI
 * ofxOSC
 * ofxXmlSettings
+* ofxOpenCv
