@@ -11,7 +11,8 @@ public:
 
 	ofParameterGroup parameters;
 	ofParameter<float> radius;
-	ofParameter<ofColor> color;
+    ofParameter<ofColor> colorFront, colorBack;
+    ofParameter<bool> fullScreen;
 	ofxPanel gui;
 };
 

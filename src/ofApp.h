@@ -23,4 +23,5 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
 		shared_ptr<GuiApp> gui;
+        int screenWidth, screenHeight;
 };

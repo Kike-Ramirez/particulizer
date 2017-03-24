@@ -1,22 +1,33 @@
 #include "ofApp.h"
+#include <string>
 
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofBackground(255);
 	ofSetCircleResolution(200);
+    screenWidth = ofGetWidth();
+    screenHeight = ofGetHeight();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
+    screenWidth = ofGetWidth();
+    screenHeight = ofGetHeight();
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofSetColor(gui->color);
-	ofDrawCircle(ofGetWidth()*0.5,ofGetWidth()*0.5,gui->radius);
-	ofSetColor(0);
-	ofDrawBitmapString(ofGetFrameRate(),20,20);
+
+    ofBackground(gui->colorBack);
+    ofSetColor(gui->colorFront);
+    ofDrawCircle(screenWidth*0.5,screenHeight*0.5,gui->radius);
+
+    ofDrawBitmapString("particulizer_dev",20,20);
+    ofDrawBitmapString("FrameRate: " + std::to_string(int(ofGetFrameRate()*100)/100),20,50);
+    ofDrawBitmapString("Resolution: " + std::to_string(screenWidth) + "-" + std::to_string(screenHeight), 20, 70);
+
 }
 
 //--------------------------------------------------------------
