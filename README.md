@@ -12,3 +12,4 @@ Core:
 * ofxGUI
 * ofxOSC
 * ofxXmlSettings
+* ofxOpenCv
