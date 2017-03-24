@@ -1,0 +1,8 @@
+ofxFft
+ofxGLWarper
+ofxGui
+ofxKorgNanoKontrol
+ofxMidi
+ofxOsc
+ofxXmlSettings
+ofxOpenCv
