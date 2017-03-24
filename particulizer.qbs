@@ -15,6 +15,8 @@ Project{
             'src/main.cpp',
             'src/ofApp.cpp',
             'src/ofApp.h',
+            'src/GuiApp.cpp',
+            'src/GuiApp.h',
         ]
 
         of.addons: [
