@@ -15,6 +15,8 @@ void ofApp::update(){
     screenWidth = ofGetWidth();
     screenHeight = ofGetHeight();
 
+    ofSetFullscreen(gui->fullScreen);
+
 }
 
 //--------------------------------------------------------------
@@ -33,6 +35,11 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
+    if ((key == 'F') || (key == 'f')) {
+
+        gui->fullScreen = !gui->fullScreen;
+
+    }
 }
 
 //--------------------------------------------------------------
