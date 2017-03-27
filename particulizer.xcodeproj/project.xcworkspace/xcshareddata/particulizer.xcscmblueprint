@@ -1,0 +1,51 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EA89F426CBD9E2BC6BF95229DB583CC719D2AFD9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DC744C201458BB726B805B47CA1BBE00990C1814" : 9223372036854775807,
+    "EA89F426CBD9E2BC6BF95229DB583CC719D2AFD9" : 9223372036854775807,
+    "84CE04532A76281E9D0C7B3A7EFCDC0E12CAC6FA" : 9223372036854775807,
+    "3344F76078453699DE74AC66ACF3C283160665F6" : 9223372036854775807,
+    "90E2F969A762FB62C413A0C44D1F334E6EC3F531" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8DE320F8-785D-4D75-9694-E2EB1BAFBAB4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DC744C201458BB726B805B47CA1BBE00990C1814" : "..\/..\/addons\/ofxGLWarper",
+    "EA89F426CBD9E2BC6BF95229DB583CC719D2AFD9" : "particulizer\/",
+    "84CE04532A76281E9D0C7B3A7EFCDC0E12CAC6FA" : "..\/..\/addons\/ofxFft",
+    "3344F76078453699DE74AC66ACF3C283160665F6" : "..\/..\/addons\/ofxKorgNanoKontrol",
+    "90E2F969A762FB62C413A0C44D1F334E6EC3F531" : "..\/..\/addons\/ofxMidi"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "particulizer",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "particulizer.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/alptugan\/ofxKorgNanoKontrol",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3344F76078453699DE74AC66ACF3C283160665F6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kylemcdonald\/ofxFft",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "84CE04532A76281E9D0C7B3A7EFCDC0E12CAC6FA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/danomatika\/ofxMidi",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "90E2F969A762FB62C413A0C44D1F334E6EC3F531"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/roymacdonald\/ofxGLWarper",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DC744C201458BB726B805B47CA1BBE00990C1814"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kike-Ramirez\/particulizer",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EA89F426CBD9E2BC6BF95229DB583CC719D2AFD9"
+    }
+  ]
+}

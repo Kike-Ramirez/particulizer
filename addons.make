@@ -3,6 +3,6 @@ ofxGLWarper
 ofxGui
 ofxKorgNanoKontrol
 ofxMidi
+ofxOpenCv
 ofxOsc
 ofxXmlSettings
-ofxOpenCv
