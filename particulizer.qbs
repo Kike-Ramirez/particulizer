@@ -12,11 +12,11 @@ Project{
         name: { return FileInfo.baseName(path) }
 
         files: [
+            'src/GuiApp.cpp',
+            'src/GuiApp.h',
             'src/main.cpp',
             'src/ofApp.cpp',
             'src/ofApp.h',
-            'src/GuiApp.cpp',
-            'src/GuiApp.h',
         ]
 
         of.addons: [
@@ -25,9 +25,10 @@ Project{
             'ofxGui',
             'ofxKorgNanoKontrol',
             'ofxMidi',
+            'ofxOpenCv',
             'ofxOsc',
             'ofxXmlSettings',
-            'ofxOpenCv',
+            'ofxDatGui',
         ]
 
         // additional flags for the project. the of module sets some

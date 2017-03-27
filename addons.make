@@ -6,3 +6,4 @@ ofxMidi
 ofxOpenCv
 ofxOsc
 ofxXmlSettings
+ofxDatGui

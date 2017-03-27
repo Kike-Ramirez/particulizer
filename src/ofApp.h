@@ -23,5 +23,6 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
 		shared_ptr<GuiApp> gui;
+        ofFbo effectCanvas;
         int screenWidth, screenHeight;
 };
