@@ -25,7 +25,7 @@ public:
     void onColorPickerEvent(ofxDatGuiColorPickerEvent e);
     void onMatrixEvent(ofxDatGuiMatrixEvent e);
 
-    uint tIndex;
+    int tIndex;
     vector<ofxDatGuiTheme*> themes;
 };
 

@@ -1,0 +1,5 @@
+﻿  ofxKorgNanoKontrol.cpp
+c:\of_v0.9.8_vs_release\addons\ofxkorgnanokontrol\src\ofxkorgnanokontrol.cpp(402): warning C4715: 'ofxKorgNanoKontrol::getVal': not all control paths return a value
+c:\of_v0.9.8_vs_release\addons\ofxkorgnanokontrol\src\ofxkorgnanokontrol.cpp(406): error C4716: 'ofxKorgNanoKontrol::getSliderVal': must return a value
+c:\of_v0.9.8_vs_release\addons\ofxkorgnanokontrol\src\ofxkorgnanokontrol.cpp(410): error C4716: 'ofxKorgNanoKontrol::getPotVal': must return a value
+c:\of_v0.9.8_vs_release\addons\ofxkorgnanokontrol\src\ofxkorgnanokontrol.cpp(414): error C4716: 'ofxKorgNanoKontrol::getButtonVal': must return a value
