@@ -170,6 +170,7 @@ void GuiApp::draw(){
     ofSetColor(100);
     ofRect(0.5 * ofGetWidth(), 0.8 * ofGetHeight(), 0.5 * ofGetWidth(), 0.2 * ofGetHeight());
     ofSetColor(255);
+
 }
 
 void GuiApp::onButtonEvent(ofxDatGuiButtonEvent e)
@@ -209,14 +210,17 @@ void GuiApp::keyPressed(int key)
 
 void GuiApp::toggleFullscreen()
 {
-    mFullscreen = !mFullscreen;
-    gui->getToggle("toggle fullscreen")->setChecked(mFullscreen);
+    cout << mFullscreen << endl;
+    gui->getToggle("toggle fullscreen")->toggle();
+
     refreshWindow();
 }
 
 void GuiApp::refreshWindow()
 {
     ofSetFullscreen(mFullscreen);
+    mFullscreen = !mFullscreen;
+
     if (!mFullscreen) {
         ofSetWindowShape(1920, 1400);
         ofSetWindowPosition((ofGetScreenWidth()/2)-(1920/2), 0);

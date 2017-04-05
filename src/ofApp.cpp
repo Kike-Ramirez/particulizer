@@ -19,19 +19,24 @@ void ofApp::update(){
     screenHeight = ofGetHeight();
 
 //    ofSetFullscreen(gui->fullScreen);
-    effectCanvas.begin();
-    ofBackground(0);
-    gui->output.draw(0,0, effectCanvas.getWidth(), effectCanvas.getHeight());
-    effectCanvas.end();
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 
+    effectCanvas.begin();
+    ofBackground(0);
+    gui->outputCanvas.draw(0,0, effectCanvas.getWidth(), effectCanvas.getHeight());
+    effectCanvas.end();
+
     ofBackground(0);
     ofSetColor(255);
     effectCanvas.draw(0,0);
+
+    ofBackground(0);
+    //gui->outputCanvas.draw(0,0, ofGetWidth(), ofGetHeight());
 
 }
 
@@ -40,7 +45,7 @@ void ofApp::keyPressed(int key){
 
     if ((key == 'F') || (key == 'f')) {
 
-        //gui->fullScreen = !gui->fullScreen;
+        // gui->fullScreen = !gui->fullScreen;
 
     }
 }
