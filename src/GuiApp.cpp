@@ -70,8 +70,8 @@ void GuiApp::setup(){
         refreshWindow();
 
     // Initialize fbo layers
-        layerA.allocate(0.2 * ofGetWidth(), 9.0 / 16.0 * 0.2 * ofGetWidth());
-        layerB.allocate(0.2 * ofGetWidth(), 9.0 / 16.0 * 0.2 * ofGetWidth());
+        layerA.allocate(0.23 * ofGetWidth(), 9.0 / 16.0 * 0.23 * ofGetWidth());
+        layerB.allocate(0.23 * ofGetWidth(), 9.0 / 16.0 * 0.23 * ofGetWidth());
 
         effectCanvas.allocate(0.35 * ofGetWidth(), 9.0 / 16.0 * 0.35 * ofGetWidth());
         outputCanvas.allocate(0.45 * ofGetWidth(), 9.0 / 16.0 * 0.45 * ofGetWidth());
@@ -118,23 +118,24 @@ void GuiApp::draw(){
     ofSetColor(255);
 
     // Layer A
-    layerA.draw( 0.025 * ofGetWidth(), 0.05 * ofGetHeight() );
+    layerA.draw( 0.01 * ofGetWidth(), 0.05 * ofGetHeight() );
 
     // Layer B
-    layerB.draw( 0.025 * ofGetWidth(), 0.55 * ofGetHeight() );
+    layerB.draw( 0.01 * ofGetWidth(), 0.55 * ofGetHeight() );
 
     // Effects
 
     // Main Controls
     ofSetColor(125);
-    ofRect(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 0.1 * ofGetWidth(), 0.3 * ofGetHeight());
+    ofFill();
+    ofRect(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 0.2 * ofGetWidth(), 0.3 * ofGetHeight());
     ofSetColor(255);
 
     // Effect Canvas
 
     ofSetColor(160, 0);
     ofFill();
-    ofRect(0.6 * ofGetWidth(), 0.5 * ofGetHeight(), 0.4 * ofGetWidth(), 0.3 * ofGetHeight());
+    ofRect(0.7 * ofGetWidth(), 0.5 * ofGetHeight(), 0.3 * ofGetWidth(), 0.3 * ofGetHeight());
     ofSetColor(255);
     effectCanvas.begin();
 
@@ -150,7 +151,8 @@ void GuiApp::draw(){
 
     effectCanvas.end();
 
-    effectCanvas.draw(0.633 * ofGetWidth(), 0.5 * ofGetHeight(), 0.3 * ofGetHeight() * 16.0 / 9.0, 0.3 * ofGetHeight());
+    float effectCanvasWidth = 0.25 * ofGetHeight() * 16.0 / 9.0;
+    effectCanvas.draw(0.98 * ofGetWidth() - effectCanvasWidth , 0.525 * ofGetHeight(), effectCanvasWidth, 0.25 * ofGetHeight());
 
     // Output Canvas
     ofSetColor(100);
@@ -169,7 +171,7 @@ void GuiApp::draw(){
 
     outputCanvas.end();
 
-    outputCanvas.draw(0.525 * ofGetWidth(), 0.025 * ofGetHeight());
+    outputCanvas.draw(0.525 * ofGetWidth(), 0.025 * ofGetHeight(), 0.45 * ofGetWidth(), 0.45 * ofGetWidth() * 9.0 / 16.0);
 
     gui->draw();
 
