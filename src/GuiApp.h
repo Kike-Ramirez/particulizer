@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxDatGui.h"
+#include "ofxKorgNanoKontrol.h"
+
 
 class GuiApp: public ofBaseApp {
 public:
@@ -24,8 +26,12 @@ public:
     void onDropdownEvent(ofxDatGuiDropdownEvent e);
     void onColorPickerEvent(ofxDatGuiColorPickerEvent e);
     void onMatrixEvent(ofxDatGuiMatrixEvent e);
+    void sceneButtonPressed(int &e);
+    void exit();
 
     int tIndex;
     vector<ofxDatGuiTheme*> themes;
+    ofxKorgNanoKontrol nano;
+
 };
 

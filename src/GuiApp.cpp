@@ -97,6 +97,10 @@ void GuiApp::setup(){
 
         ofSetCircleResolution(200);
 
+        nano.setup(true);
+        ofAddListener(nano.sceneButtonPressed, this, &GuiApp::sceneButtonPressed);
+
+
 }
 
 void GuiApp::update(){
@@ -171,6 +175,10 @@ void GuiApp::draw(){
     ofRect(0.5 * ofGetWidth(), 0.8 * ofGetHeight(), 0.5 * ofGetWidth(), 0.2 * ofGetHeight());
     ofSetColor(255);
 
+    ofPoint location = ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight());
+    nano.showGui(true, false, location);
+
+
 }
 
 void GuiApp::onButtonEvent(ofxDatGuiButtonEvent e)
@@ -227,3 +235,11 @@ void GuiApp::refreshWindow()
     }
 }
 
+//--------------------------------------------------------------
+void GuiApp::sceneButtonPressed(int &e) {
+    cout <<  "Scene button pressed" << endl;
+}
+
+void GuiApp::exit() {
+    ofRemoveListener(nano.sceneButtonPressed, this, &GuiApp::sceneButtonPressed);
+}
