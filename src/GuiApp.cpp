@@ -132,10 +132,10 @@ void GuiApp::draw(){
 
     // Effect Canvas
 
-    ofSetColor(160);
+    ofSetColor(160, 0);
+    ofFill();
     ofRect(0.6 * ofGetWidth(), 0.5 * ofGetHeight(), 0.4 * ofGetWidth(), 0.3 * ofGetHeight());
     ofSetColor(255);
-    effectCanvas.draw(0.625 * ofGetWidth(), 0.5 * ofGetHeight());
     effectCanvas.begin();
 
     ofBackground(gui->getColorPicker("** Back Color")->getColor());
@@ -149,6 +149,8 @@ void GuiApp::draw(){
     //ofDrawBitmapString("Resolution: " + std::to_string(screenWidth) + "-" + std::to_string(screenHeight), 20, 70);
 
     effectCanvas.end();
+
+    effectCanvas.draw(0.633 * ofGetWidth(), 0.5 * ofGetHeight(), 0.3 * ofGetHeight() * 16.0 / 9.0, 0.3 * ofGetHeight());
 
     // Output Canvas
     ofSetColor(100);
@@ -169,6 +171,8 @@ void GuiApp::draw(){
 
     outputCanvas.draw(0.525 * ofGetWidth(), 0.025 * ofGetHeight());
 
+    gui->draw();
+
 
     // NanoKorg Controls
     ofSetColor(100);
@@ -177,7 +181,6 @@ void GuiApp::draw(){
 
     ofPoint location = ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight());
     nano.showGui(true, false, location);
-
 
 }
 
