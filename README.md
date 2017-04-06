@@ -6,7 +6,7 @@ Features:
 - GPU oriented.
 - Live use oriented.
 - Easy interface.
-- To be controlled using a KORG Nanocontrol (http://www.korg.com/es/products/computergear/nanokontrol2/)
+- To be controlled using a KORG Nanokontrol (http://www.korg.com/es/products/computergear/nanokontrol2/)
 - 2 layers with different mixing effect.
 - Unlimited number of different effects configured via XML file.
 - Template of "Effect" class to be customized in different new effects.
