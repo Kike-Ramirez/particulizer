@@ -5,11 +5,10 @@ Effect_Template::Effect_Template()
 
 }
 
-void Effect_Template::setup(ofPoint _position, ofPoint _size, ofxKorgNanoKontrol _nano, vector<string> _nanoKorgTexts){
+void Effect_Template::setup(ofPoint _position, ofPoint _size, vector<string> _nanoKorgTexts){
 
     position.set(_position.x, _position.y);
     size.set(_size.x, _size.y);
-    nano = _nano;
 
     for (int i = 0; i < _nanoKorgTexts.size(); i++) {
 
@@ -36,6 +35,8 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, ofxKorgNanoKontrol
 
     colorFront = ofColor(255);
     colorBack = ofColor(0);
+
+    drawOutput();
 
 }
 
@@ -81,14 +82,12 @@ void Effect_Template::drawDisplay() {
         ofSetLineWidth(4);
         ofRect(0, 0, size.x, size. y);
         ofSetLineWidth(1);
+
+        drawOutput();
     }
 
-    smallCanvas.begin();
-    ofBackground(0);
     ofSetColor(255);
-    ofDrawBitmapString("hi!!", smallCanvas.getWidth() * 0.5, smallCanvas.getHeight() * 0.5);
-    smallCanvas.end();
-
+    ofNoFill();
     smallCanvas.draw(0.05 * size.x, 0.15 * size.y);
 
     ofSetColor(0);
@@ -100,4 +99,21 @@ void Effect_Template::drawDisplay() {
 
 void Effect_Template::drawOutput(){
 
+    float radio = ofMap(sin( ofGetFrameNum() / 30.0), -1, 1, 0, effectCanvas.getHeight()/2);
+
+    ofSetColor(255);
+
+    effectCanvas.begin();
+    ofBackground(0);
+    ofSetColor(255);
+    ofFill();
+    ofCircle(effectCanvas.getWidth() /2, effectCanvas.getHeight() / 2, radio/2, radio/2);
+    ofSetColor(255, 0, 0);
+    ofCircle(effectCanvas.getWidth() /2, effectCanvas.getHeight() / 2, radio/4, radio/4);
+    effectCanvas.end();
+
+    smallCanvas.begin();
+    ofBackground(0);
+    effectCanvas.draw(0,0,smallCanvas.getWidth(), smallCanvas.getHeight());
+    smallCanvas.end();
 }

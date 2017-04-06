@@ -9,7 +9,7 @@ class Effect_Template {
     public: // place public functions or variables declarations here
 
     // methods, equivalent to specific functions of your class objects
-    void setup(ofPoint _position, ofPoint _size, ofxKorgNanoKontrol _nano, vector<string> _nanoKorgTexts);	// setup method, use this to setup your object's initial state
+    void setup(ofPoint _position, ofPoint _size, vector<string> _nanoKorgTexts);	// setup method, use this to setup your object's initial state
     void update();                      // update method, used to refresh your objects properties
     void drawDisplay();                 // draw method, this where you'll do the object's drawing
     void drawOutput();                  // draw method, this where you'll do the object's drawing
@@ -21,7 +21,6 @@ class Effect_Template {
     // variables to setup & display
     ofPoint position;                   // Position of the display of the Effect
     ofPoint size;                       // Size of the display of the Effect
-    ofxKorgNanoKontrol nano;            // Reference to MIDI tablet
     vector<string> nanoKorgTexts;       // Texts for MIDI tablet
     bool selected;                      // Flag to indicate the effect is selected by the user
     float offSet;                       // Offset to display the window width

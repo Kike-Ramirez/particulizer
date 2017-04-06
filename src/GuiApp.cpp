@@ -105,7 +105,7 @@ void GuiApp::setup(){
         textos.push_back("2a");
         textos.push_back("3b");
 
-        effect.setup(ofPoint(0.25 * ofGetWidth(), 0), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), nano, textos );
+        effect.setup(ofPoint(0.25 * ofGetWidth(), 0), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), textos );
 
         offSetDelta = 0;
 }
@@ -142,26 +142,14 @@ void GuiApp::draw(){
 
     // Effect Canvas
 
-    ofSetColor(160, 0);
-    ofFill();
-    ofRect(0.7 * ofGetWidth(), 0.5 * ofGetHeight(), 0.3 * ofGetWidth(), 0.3 * ofGetHeight());
-    ofSetColor(255);
+    float effectCanvasWidth = 0.25 * ofGetHeight() * 16.0 / 9.0;
     effectCanvas.begin();
-
-    ofBackground(gui->getColorPicker("** Back Color")->getColor());
-    ofSetColor(gui->getColorPicker("** Front Color")->getColor());
-    ofDrawCircle(gui->getSlider("position X")->getValue() * effectCanvas.getWidth(),
-                 gui->getSlider("position Y")->getValue() * effectCanvas.getHeight(),
-                 gui->getSlider("** Radio")->getValue() * effectCanvas.getWidth());
-
-    ofDrawBitmapString("particulizer_dev",20,20);
-    ofDrawBitmapString("FrameRate: " + std::to_string(int(ofGetFrameRate()*100)/100),20,50);
-    //ofDrawBitmapString("Resolution: " + std::to_string(screenWidth) + "-" + std::to_string(screenHeight), 20, 70);
-
+    ofBackground(0);
+    if (effect.selected) effect.effectCanvas.draw(0, 0, effectCanvas.getWidth(), effectCanvas.getHeight());
     effectCanvas.end();
 
-    float effectCanvasWidth = 0.25 * ofGetHeight() * 16.0 / 9.0;
     effectCanvas.draw(0.98 * ofGetWidth() - effectCanvasWidth , 0.525 * ofGetHeight(), effectCanvasWidth, 0.25 * ofGetHeight());
+
 
     // Output Canvas
     ofSetColor(100);
