@@ -2,11 +2,10 @@
 #define EFFECT_TEMPLATE_H
 
 #include "ofMain.h"
-#include "ofxKorgNanoKontrol.h"
 
 class Effect_Template {
 
-    public: // place public functions or variables declarations here
+    public:                             // place public functions or variables declarations here
 
     // methods, equivalent to specific functions of your class objects
     void setup(ofPoint _position, ofPoint _size, vector<string> _nanoKorgTexts);	// setup method, use this to setup your object's initial state
@@ -42,6 +41,7 @@ class Effect_Template {
 
     Effect_Template();  // constructor - used to initialize an object, if no properties are passed the program sets them to the default value
     private: // place private functions or variables declarations here
+
 }; // don't forget the semicolon!
 
 #endif // EFFECT_TEMPLATE_H

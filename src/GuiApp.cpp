@@ -70,29 +70,15 @@ void GuiApp::setup(){
         refreshWindow();
 
     // Initialize fbo layers
-        layerA.allocate(0.23 * ofGetWidth(), 9.0 / 16.0 * 0.23 * ofGetWidth());
-        layerB.allocate(0.23 * ofGetWidth(), 9.0 / 16.0 * 0.23 * ofGetWidth());
+
+        layerA.setup(ofPoint(0, 0), ofPoint(0.25 * ofGetWidth(), 0.4 * ofGetHeight()));
+        layerB.setup(ofPoint(0, 0.5 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.4 * ofGetHeight()));
+        layerB.setAlpha(1);
 
         effectCanvas.allocate(0.35 * ofGetWidth(), 9.0 / 16.0 * 0.35 * ofGetWidth());
         outputCanvas.allocate(0.45 * ofGetWidth(), 9.0 / 16.0 * 0.45 * ofGetWidth());
 
         output.allocate(0.5 * ofGetWidth(), 0.5 * ofGetHeight());
-
-        ofSetColor(255);
-        layerA.begin();
-
-            ofBackground(0);
-            ofDrawBitmapString("A", layerA.getWidth() * 0.5, layerA.getHeight() * 0.5);
-
-        layerA.end();
-
-
-        layerB.begin();
-
-            ofBackground(0);
-            ofDrawBitmapString("B", layerB.getWidth() * 0.5, layerB.getHeight() * 0.5);
-
-        layerB.end();
 
 
         ofSetCircleResolution(200);
@@ -112,6 +98,9 @@ void GuiApp::setup(){
 
 void GuiApp::update(){
 
+
+    layerA.setAlpha(nano.getVal(0) / 127.0);
+    layerB.setAlpha(1 - nano.getVal(0) / 127.0);
 }
 
 void GuiApp::draw(){
@@ -119,20 +108,18 @@ void GuiApp::draw(){
     // FAKE customization
     ofBackground(150);
 
-    // Layers Area
-    ofSetColor(125);
-    ofRect(0, 0, 0.25 * ofGetWidth(), ofGetHeight());
-    ofSetColor(255);
-
-    // Layer A
-    layerA.draw( 0.01 * ofGetWidth(), 0.05 * ofGetHeight() );
-
-    // Layer B
-    layerB.draw( 0.01 * ofGetWidth(), 0.55 * ofGetHeight() );
-
     // Effects
 
     effect.drawDisplay();
+
+    // Layers Area
+
+    // Layer A
+
+    if (layerA.selected) layerA.update(effect.effectCanvas);
+    else if (layerB.selected) layerB.update(effect.effectCanvas);
+    layerA.display();
+    layerB.display();
 
     // Main Controls
     ofSetColor(125);
@@ -145,7 +132,9 @@ void GuiApp::draw(){
     float effectCanvasWidth = 0.25 * ofGetHeight() * 16.0 / 9.0;
     effectCanvas.begin();
     ofBackground(0);
+
     if (effect.selected) effect.effectCanvas.draw(0, 0, effectCanvas.getWidth(), effectCanvas.getHeight());
+
     effectCanvas.end();
 
     effectCanvas.draw(0.98 * ofGetWidth() - effectCanvasWidth , 0.525 * ofGetHeight(), effectCanvasWidth, 0.25 * ofGetHeight());
@@ -267,6 +256,7 @@ void GuiApp::mouseDragged(int x, int y, int button) {
 
 }
 
+
 void GuiApp::mousePressed(int x, int y, int button) {
 
     if (x >= effect.position.x && x<=effect.position.x + effect.size.x &&
@@ -276,8 +266,25 @@ void GuiApp::mousePressed(int x, int y, int button) {
         effect.select();
     }
 
+    else if (x >= layerA.position.x && x<=layerA.position.x + layerA.size.x &&
+            y >= layerA.position.y && y <= layerA.position.y + layerA.size.y) {
+
+        layerA.select();
+        layerB.unselect();
+    }
+
+    else if (x >= layerB.position.x && x<=layerB.position.x + layerB.size.x &&
+            y >= layerB.position.y && y <= layerB.position.y + layerB.size.y) {
+
+        layerB.select();
+        layerA.unselect();
+    }
+
     else effect.unselect();
+
 }
+
+
 
 void GuiApp::mouseReleased(int x, int y, int button) {
 
