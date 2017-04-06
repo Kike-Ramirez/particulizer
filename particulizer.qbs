@@ -12,6 +12,8 @@ Project{
         name: { return FileInfo.baseName(path) }
 
         files: [
+            "src/audioinput.cpp",
+            "src/audioinput.h",
             "src/effect_template.cpp",
             "src/effect_template.h",
             "src/layer.cpp",
