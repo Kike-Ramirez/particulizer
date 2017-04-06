@@ -133,8 +133,8 @@ void GuiApp::draw(){
 
     for (int i = 0; i < effects.size(); i++) {
 
-        if (effects[i].isAssigned() == 1) layerA.update(effects[i].effectCanvas);
-        else if (effects[i].isAssigned() == 2) layerB.update(effects[i].effectCanvas);
+        if (effects[i].assigned == 1) layerA.update(effects[i].effectCanvas);
+        else if (effects[i].assigned == 2) layerB.update(effects[i].effectCanvas);
 
     }
 
