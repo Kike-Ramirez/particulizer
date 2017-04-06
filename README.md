@@ -1,6 +1,8 @@
 # particulizer
 Software for real-time graphics developed in openFrameworks v0.9.8 under Ubuntu.
 
+Status: alpha
+
 Features:
 - Real time video.
 - GPU oriented.
