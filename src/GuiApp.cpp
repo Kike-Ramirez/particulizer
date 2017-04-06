@@ -100,7 +100,14 @@ void GuiApp::setup(){
         nano.setup(true);
         ofAddListener(nano.sceneButtonPressed, this, &GuiApp::sceneButtonPressed);
 
+        vector<string> textos;
+        textos.push_back("1");
+        textos.push_back("2a");
+        textos.push_back("3b");
 
+        effect.setup(ofPoint(0.25 * ofGetWidth(), 0), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), nano, textos );
+
+        offSetDelta = 0;
 }
 
 void GuiApp::update(){
@@ -124,6 +131,8 @@ void GuiApp::draw(){
     layerB.draw( 0.01 * ofGetWidth(), 0.55 * ofGetHeight() );
 
     // Effects
+
+    effect.drawDisplay();
 
     // Main Controls
     ofSetColor(125);
@@ -184,6 +193,7 @@ void GuiApp::draw(){
     ofPoint location = ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight());
     nano.showGui(true, false, location);
 
+
 }
 
 void GuiApp::onButtonEvent(ofxDatGuiButtonEvent e)
@@ -215,10 +225,25 @@ void GuiApp::keyPressed(int key)
 {
     if (key == 'f') {
         toggleFullscreen();
-    }   else if (key == 32){
+    }
+
+    else if (key == 32){
         tIndex = tIndex < themes.size()-1 ? tIndex+1 : 0;
         gui->setTheme(themes[tIndex]);
     }
+
+    else if (key == OF_KEY_UP) {
+
+        float offSet = effect.getOffset() - 10;
+        if (offSet >= 0) effect.setOffset(offSet);
+    }
+
+    else if (key == OF_KEY_DOWN) {
+
+        float offSet = effect.getOffset() + 10;
+        if (offSet <= ofGetHeight()) effect.setOffset(offSet);
+    }
+
 }
 
 void GuiApp::toggleFullscreen()
@@ -247,4 +272,26 @@ void GuiApp::sceneButtonPressed(int &e) {
 
 void GuiApp::exit() {
     ofRemoveListener(nano.sceneButtonPressed, this, &GuiApp::sceneButtonPressed);
+}
+
+void GuiApp::mouseDragged(int x, int y, int button) {
+
+
+}
+
+void GuiApp::mousePressed(int x, int y, int button) {
+
+    if (x >= effect.position.x && x<=effect.position.x + effect.size.x &&
+            y >= effect.position.y + effect.getOffset() &&
+            y<= effect.position.y + effect.getOffset() + effect.size.y) {
+
+        effect.select();
+    }
+
+    else effect.unselect();
+}
+
+void GuiApp::mouseReleased(int x, int y, int button) {
+
+
 }
