@@ -9,8 +9,7 @@ public:
 
     ofPoint position;
     ofPoint size;
-    bool selected;
-    ofFbo canvasLayer;
+    ofFbo canvas;
     float alpha;
 
     Layer();
@@ -20,7 +19,11 @@ public:
     void display();
     void select();
     void unselect();
+    bool isSelected();
     void setAlpha(float alpha_);
+
+private:
+    bool selected;
 
 };
 

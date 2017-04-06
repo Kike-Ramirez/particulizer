@@ -5,7 +5,7 @@ Effect_Template::Effect_Template()
 
 }
 
-void Effect_Template::setup(ofPoint _position, ofPoint _size, vector<string> _nanoKorgTexts){
+void Effect_Template::setup(ofPoint _position, ofPoint _size, vector<string> _nanoKorgTexts, string name_){
 
     position.set(_position.x, _position.y);
     size.set(_size.x, _size.y);
@@ -16,9 +16,10 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, vector<string> _na
 
     }
 
+    name = name_;
     selected = false;
+    assigned = 0;
     offSet = 0;
-    name = "FakeEffect_01";
 
     // Canvas
     effectCanvas.allocate(1024, 768);                 // Canvas to render the effect
@@ -67,7 +68,20 @@ void Effect_Template::unselect(){
     selected = false;
 }
 
-void Effect_Template::drawDisplay() {
+bool Effect_Template::isAssigned(){
+
+    if (assigned > 0) return true;
+    else return false;
+
+}
+
+void Effect_Template::assign(int id){
+
+    assigned = id;
+
+}
+
+void Effect_Template::drawDisplay(const ofTrueTypeFont & coolvetica_) {
 
     ofPushMatrix();
     ofTranslate(position.x, position.y + offSet);
@@ -83,7 +97,6 @@ void Effect_Template::drawDisplay() {
         ofRect(0, 0, size.x, size. y);
         ofSetLineWidth(1);
 
-        drawOutput();
     }
 
     ofSetColor(255);
@@ -91,15 +104,29 @@ void Effect_Template::drawDisplay() {
     smallCanvas.draw(0.05 * size.x, 0.15 * size.y);
 
     ofSetColor(0);
-    ofDrawBitmapString(name, 0.08 * size.x + smallCanvas.getWidth(), 0.15 * size.y + 11);
+    coolvetica_.drawString(name, 0.08 * size.x + smallCanvas.getWidth(), 0.15 * size.y + 11);
 
     ofPopMatrix();
 
+    if (selected || isAssigned()) drawOutput();
+
+    if (selected) {
+
+        effectCanvas.draw(0.7 * ofGetWidth(), 0.5 * ofGetHeight(), 0.3 * ofGetWidth(), 0.3 * ofGetWidth() * 9.0 / 16.0);
+
+    }
+
+    else {
+
+        ofSetColor(0);
+        ofFill();
+        //ofRect(0.7 * ofGetWidth(), 0.5 * ofGetHeight(), 0.3 * ofGetWidth(), 0.3 * ofGetWidth() * 9.0 / 16.0);
+    }
 }
 
 void Effect_Template::drawOutput(){
 
-    float radio = ofMap(sin( ofGetFrameNum() / 30.0), -1, 1, 0, effectCanvas.getHeight()/2);
+    float radio = ofMap(sin( ofGetFrameNum() / 60.0), -1, 1, 0, effectCanvas.getHeight()/2);
 
     ofSetColor(255);
 
@@ -110,10 +137,13 @@ void Effect_Template::drawOutput(){
     ofCircle(effectCanvas.getWidth() /2, effectCanvas.getHeight() / 2, radio/2, radio/2);
     ofSetColor(255, 0, 0);
     ofCircle(effectCanvas.getWidth() /2, effectCanvas.getHeight() / 2, radio/4, radio/4);
+    ofSetColor(255);
+
     effectCanvas.end();
 
     smallCanvas.begin();
     ofBackground(0);
     effectCanvas.draw(0,0,smallCanvas.getWidth(), smallCanvas.getHeight());
     smallCanvas.end();
+
 }

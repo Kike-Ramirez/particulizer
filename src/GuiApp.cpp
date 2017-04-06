@@ -75,11 +75,7 @@ void GuiApp::setup(){
         layerB.setup(ofPoint(0, 0.5 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.4 * ofGetHeight()));
         layerB.setAlpha(1);
 
-        effectCanvas.allocate(0.35 * ofGetWidth(), 9.0 / 16.0 * 0.35 * ofGetWidth());
-        outputCanvas.allocate(0.45 * ofGetWidth(), 9.0 / 16.0 * 0.45 * ofGetWidth());
-
-        output.allocate(0.5 * ofGetWidth(), 0.5 * ofGetHeight());
-
+        output.setup(ofPoint(0.5 * ofGetWidth(), 0), ofPoint(0.5 * ofGetWidth(), 0.5 * ofGetHeight()));
 
         ofSetCircleResolution(200);
 
@@ -91,9 +87,26 @@ void GuiApp::setup(){
         textos.push_back("2a");
         textos.push_back("3b");
 
-        effect.setup(ofPoint(0.25 * ofGetWidth(), 0), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), textos );
+        numEffects = 12;
+
+        for (int i = 0; i < numEffects; i++) {
+
+            Effect_Template effect;
+            string name = "Efecto #" + ofToString(i);
+            effect.setup(ofPoint(0.25 * ofGetWidth(), i * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), textos, name );
+
+            effects.push_back(effect);
+        }
 
         offSetDelta = 0;
+        offSet = 0;
+
+        ofTrueTypeFont::setGlobalDpi(72);
+
+        coolvetica.load("coolvetica.ttf", 14, true, true);
+        coolvetica.setLineHeight(18.0f);
+        coolvetica.setLetterSpacing(1.037);
+
 }
 
 void GuiApp::update(){
@@ -110,14 +123,23 @@ void GuiApp::draw(){
 
     // Effects
 
-    effect.drawDisplay();
+    for (int i = 0; i < effects.size(); i++) {
+        effects[i].drawDisplay(coolvetica);
+    }
 
     // Layers Area
 
     // Layer A
 
-    if (layerA.selected) layerA.update(effect.effectCanvas);
-    else if (layerB.selected) layerB.update(effect.effectCanvas);
+    for (int i = 0; i < effects.size(); i++) {
+
+        if (effects[i].isAssigned() == 1) layerA.update(effects[i].effectCanvas);
+        else if (effects[i].isAssigned() == 2) layerB.update(effects[i].effectCanvas);
+
+    }
+
+
+
     layerA.display();
     layerB.display();
 
@@ -127,40 +149,14 @@ void GuiApp::draw(){
     ofRect(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 0.2 * ofGetWidth(), 0.3 * ofGetHeight());
     ofSetColor(255);
 
-    // Effect Canvas
-
-    float effectCanvasWidth = 0.25 * ofGetHeight() * 16.0 / 9.0;
-    effectCanvas.begin();
-    ofBackground(0);
-
-    if (effect.selected) effect.effectCanvas.draw(0, 0, effectCanvas.getWidth(), effectCanvas.getHeight());
-
-    effectCanvas.end();
-
-    effectCanvas.draw(0.98 * ofGetWidth() - effectCanvasWidth , 0.525 * ofGetHeight(), effectCanvasWidth, 0.25 * ofGetHeight());
-
 
     // Output Canvas
     ofSetColor(100);
     ofRect(0.5 * ofGetWidth(), 0.0, 0.5 * ofGetWidth(), 0.5 * ofGetHeight());
     ofSetColor(255);
 
-    output.begin();
-
-        effectCanvas.draw(0, 0, output.getWidth(), output.getHeight());
-
-    output.end();
-
-    outputCanvas.begin();
-
-    effectCanvas.draw(0, 0, outputCanvas.getWidth(), outputCanvas.getHeight());
-
-    outputCanvas.end();
-
-    outputCanvas.draw(0.525 * ofGetWidth(), 0.025 * ofGetHeight(), 0.45 * ofGetWidth(), 0.45 * ofGetWidth() * 9.0 / 16.0);
-
-    gui->draw();
-
+    output.update(nano.getVal(0) / 127.0, layerA.canvas, layerB.canvas);
+    output.display();
 
     // NanoKorg Controls
     ofSetColor(100);
@@ -168,7 +164,7 @@ void GuiApp::draw(){
     ofSetColor(255);
 
     ofPoint location = ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight());
-    nano.showGui(true, false, location);
+    nano.showGui(true, false, location, coolvetica);
 
 
 }
@@ -211,14 +207,28 @@ void GuiApp::keyPressed(int key)
 
     else if (key == OF_KEY_UP) {
 
-        float offSet = effect.getOffset() - 10;
-        if (offSet >= 0) effect.setOffset(offSet);
+        if (offSet >= -numEffects * effects[0].size.y + ofGetHeight()) {
+            offSet -= 10;
+            for (int i = 0; i < effects.size(); i++) {
+
+                effects[i].setOffset(offSet);
+
+            }
+        }
     }
 
     else if (key == OF_KEY_DOWN) {
 
-        float offSet = effect.getOffset() + 10;
-        if (offSet <= ofGetHeight()) effect.setOffset(offSet);
+        if (offSet <= 0) {
+            offSet += 10;
+
+            for (int i = 0; i < effects.size(); i++) {
+
+                effects[i].setOffset(offSet);
+
+            }
+
+        }
     }
 
 }
@@ -259,18 +269,44 @@ void GuiApp::mouseDragged(int x, int y, int button) {
 
 void GuiApp::mousePressed(int x, int y, int button) {
 
-    if (x >= effect.position.x && x<=effect.position.x + effect.size.x &&
-            y >= effect.position.y + effect.getOffset() &&
-            y<= effect.position.y + effect.getOffset() + effect.size.y) {
+    for (int i = 0; i < effects.size(); i++) {
 
-        effect.select();
+        if (x >= effects[i].position.x && x<=effects[i].position.x + effects[i].size.x &&
+                y >= effects[i].position.y + effects[i].getOffset() &&
+                y<= effects[i].position.y + effects[i].getOffset() + effects[i].size.y) {
+
+            effects[i].select();
+
+            if (layerA.isSelected()) {
+
+                for (int j = 0; j < effects.size(); j++) {
+
+                    if (j!=i && effects[j].isAssigned() == 1) effects[j].assign(0);
+                }
+                effects[i].assign(1);
+                layerA.unselect();
+            }
+
+            if (layerB.isSelected()) {
+                for (int j = 0; j < effects.size(); j++) {
+
+                    if (j!=i && effects[j].isAssigned() == 2) effects[j].assign(0);
+                }
+                effects[i].assign(2);
+                layerB.unselect();
+            }
+        }
+
+        else effects[i].unselect();
+
     }
 
-    else if (x >= layerA.position.x && x<=layerA.position.x + layerA.size.x &&
+    if (x >= layerA.position.x && x<=layerA.position.x + layerA.size.x &&
             y >= layerA.position.y && y <= layerA.position.y + layerA.size.y) {
 
         layerA.select();
         layerB.unselect();
+
     }
 
     else if (x >= layerB.position.x && x<=layerB.position.x + layerB.size.x &&
@@ -278,9 +314,14 @@ void GuiApp::mousePressed(int x, int y, int button) {
 
         layerB.select();
         layerA.unselect();
+
     }
 
-    else effect.unselect();
+    else {
+
+        if (layerA.isSelected()) layerA.unselect();
+        else if (layerB.isSelected()) layerB.unselect();
+    }
 
 }
 

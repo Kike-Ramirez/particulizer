@@ -16,6 +16,8 @@ Project{
             "src/effect_template.h",
             "src/layer.cpp",
             "src/layer.h",
+            "src/output.cpp",
+            "src/output.h",
             'src/GuiApp.cpp',
             'src/GuiApp.h',
             'src/main.cpp',

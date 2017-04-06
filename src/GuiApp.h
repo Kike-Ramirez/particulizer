@@ -5,6 +5,7 @@
 #include "ofxKorgNanoKontrol.h"
 #include "effect_template.h"
 #include "layer.h"
+#include "output.h"
 
 
 class GuiApp: public ofBaseApp {
@@ -14,7 +15,6 @@ public:
 	void draw();
 
     ofxDatGui* gui;
-    ofFbo outputCanvas, effectCanvas, output;
     bool mFullscreen;
     void refreshWindow();
     void toggleFullscreen();
@@ -38,9 +38,12 @@ public:
     int tIndex;
     vector<ofxDatGuiTheme*> themes;
     ofxKorgNanoKontrol nano;
-    Effect_Template effect;
+    vector<Effect_Template> effects;
     Layer layerA, layerB;
-    float offSetDelta;
+    Output output;
+    float offSetDelta, offSet;
+    int numEffects;
+    ofTrueTypeFont  coolvetica;
 
 };
 

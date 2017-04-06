@@ -28,7 +28,7 @@ void ofApp::draw(){
 
     effectCanvas.begin();
     ofBackground(0);
-    gui->outputCanvas.draw(0,0, effectCanvas.getWidth(), effectCanvas.getHeight());
+    gui->output.canvas.draw(0,0, effectCanvas.getWidth(), effectCanvas.getHeight());
     effectCanvas.end();
 
     ofBackground(0);
