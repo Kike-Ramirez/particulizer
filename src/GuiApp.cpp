@@ -107,6 +107,9 @@ void GuiApp::setup(){
         coolvetica.setLineHeight(18.0f);
         coolvetica.setLetterSpacing(1.037);
 
+        audioInput.setup(this, ofPoint(50,50), ofPoint(300, 200));
+
+
 }
 
 void GuiApp::update(){
@@ -114,6 +117,7 @@ void GuiApp::update(){
 
     layerA.setAlpha(nano.getVal(0) / 127.0);
     layerB.setAlpha(1 - nano.getVal(0) / 127.0);
+
 }
 
 void GuiApp::draw(){
@@ -137,6 +141,7 @@ void GuiApp::draw(){
         else if (effects[i].assigned == 2) layerB.update(effects[i].effectCanvas);
 
     }
+    void audioReceived(float* input, int bufferSize, int nChannels);
 
 
 
@@ -158,6 +163,8 @@ void GuiApp::draw(){
     output.update(nano.getVal(0) / 127.0, layerA.canvas, layerB.canvas);
     output.display();
 
+    audioInput.display();
+
     // NanoKorg Controls
     ofSetColor(100);
     ofRect(0.5 * ofGetWidth(), 0.8 * ofGetHeight(), 0.5 * ofGetWidth(), 0.2 * ofGetHeight());
@@ -165,6 +172,7 @@ void GuiApp::draw(){
 
     ofPoint location = ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight());
     nano.showGui(true, false, location, coolvetica);
+
 
 
 }
@@ -331,3 +339,9 @@ void GuiApp::mouseReleased(int x, int y, int button) {
 
 
 }
+
+void GuiApp::audioReceived(float* input, int bufferSize, int nChannels) {
+
+    audioInput.audioReceived(input, bufferSize, nChannels);
+
+};

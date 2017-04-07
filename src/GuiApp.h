@@ -6,6 +6,7 @@
 #include "effect_template.h"
 #include "layer.h"
 #include "output.h"
+#include "audioinput.h"
 
 
 class GuiApp: public ofBaseApp {
@@ -32,6 +33,8 @@ public:
     void mouseDragged(int x, int y, int button);
     void mousePressed(int x, int y, int button);
     void mouseReleased(int x, int y, int button);
+    void audioReceived(float* input, int bufferSize, int nChannels);
+
 
     void exit();
 
@@ -41,6 +44,7 @@ public:
     vector<Effect_Template> effects;
     Layer layerA, layerB;
     Output output;
+    AudioInput audioInput;
     float offSetDelta, offSet;
     int numEffects;
     ofTrueTypeFont  coolvetica;
