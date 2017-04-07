@@ -30,7 +30,7 @@ void AudioInput::setup(ofBaseApp *appPtr, ofPoint position_, ofPoint size_) {
 
 }
 
-void AudioInput::display() {
+void AudioInput::display(ofTrueTypeFont coolvetica) {
 
 
     ofPushMatrix();
@@ -44,48 +44,45 @@ void AudioInput::display() {
     ofFill();
     ofRect(0, 0, size.x, size.y);
     ofSetColor(255);
-    ofDrawBitmapString("Frequency Domain", 0.01 * size.x, 0.01 * size.y);
+    coolvetica.drawString("Frequency Domain", 0.02 * size.x, 0.08 * size.y);
 
     ofPopMatrix();
 
-    plot(drawBins, ofPoint(position.x + size.x/2, position.y), ofPoint(size.x/2, size.y/2));
+    // plot(drawBins, ofPoint(position.x, position.y + size.y/2), ofPoint(size.x/2, size.y/2));
 
 
 }
 
-void AudioInput::plot(vector<float>& buffer, ofPoint position, ofPoint height) {
+void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
 
 
     int n = buffer.size();
 
-    glPushMatrix();
-        glTranslatef(position.x, position.y, 0);
+    ofPushMatrix();
+        ofTranslate(position_.x, position_.y);
 
         ofSetColor(0);
         ofFill();
-        ofRect(0, 0, size.x, size.y);
+        ofRect(0, 0, size_.x, size_.y);
 
         ofNoFill();
         ofSetColor(255);
-        ofRect(0, 0, size.x, size.y);
+        ofRect(0, 0, size_.x, size_.y);
 
         ofFill();
-        ofDrawBitmapString("AudioInput", 0.01 * size.x, 0.01 * size.y);
+        ofDrawBitmapString("AudioInput", 0.01 * size_.x, 0.01 * size_.y);
 
-        glPushMatrix();
-
-            glTranslatef(0, size.y * 0.5, 0.0);
+            ofTranslate(0, size_.y * 0.5, 0.0);
 
             ofBeginShape();
             for (int i = 0; i < n; i++) {
-                float xx = ofMap(i, 0, n, 0, size.x );
-                ofVertex(xx, sqrt(buffer[i]) * size.y);
+                float xx = ofMap(i, 0, n, 0, size_.x );
+                ofVertex(xx, sqrt(buffer[i]) * size_.y);
             }
             ofEndShape();
 
-        glPopMatrix();
 
-    glPopMatrix();
+    ofPopMatrix();
 
 }
 
@@ -114,7 +111,6 @@ void AudioInput::audioReceived(float* input, int bufferSize, int nChannels) {
     }
     for(int i = 0; i < fft->getBinSize(); i++) {
         audioBins[i] /= maxValue;
-        cout << "audioBins: " << audioBins[i] << endl;
     }
 
     soundMutex.lock();

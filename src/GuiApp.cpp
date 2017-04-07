@@ -103,9 +103,8 @@ void GuiApp::setup(){
 
         ofTrueTypeFont::setGlobalDpi(72);
 
-        coolvetica.load("coolvetica.ttf", 14, true, true);
+        coolvetica.load("coolvetica.ttf", 10, true, true);
         coolvetica.setLineHeight(18.0f);
-        coolvetica.setLetterSpacing(1.037);
 
         audioInput.setup(this, ofPoint(50,50), ofPoint(300, 200));
 
@@ -163,7 +162,7 @@ void GuiApp::draw(){
     output.update(nano.getVal(0) / 127.0, layerA.canvas, layerB.canvas);
     output.display();
 
-    audioInput.display();
+    audioInput.display(coolvetica);
 
     // NanoKorg Controls
     ofSetColor(100);

@@ -9,9 +9,9 @@ class AudioInput
 public:
 
     void setup(ofBaseApp * appPtr, ofPoint position_, ofPoint size_);
-    void plot(vector<float>& buffer, ofPoint position, ofPoint height);
+    void plot(vector<float>& buffer, ofPoint position_, ofPoint size_);
     void audioReceived(float* input, int bufferSize, int nChannels);
-    void display();
+    void display(ofTrueTypeFont coolvetica);
 
     AudioInput();
 
