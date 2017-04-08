@@ -23,6 +23,9 @@ public:
     int bufferSize;
 
     vector<float> drawBins, middleBins, audioBins;
+    vector<float> filters;
+    vector<ofColor> colors;
+    
     ofMutex soundMutex;
 
 

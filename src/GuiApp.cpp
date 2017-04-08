@@ -106,7 +106,7 @@ void GuiApp::setup(){
         coolvetica.load("coolvetica.ttf", 10, true, true);
         coolvetica.setLineHeight(18.0f);
 
-        audioInput.setup(this, ofPoint(50,50), ofPoint(300, 200));
+        audioInput.setup(this, ofPoint(0.5 * ofGetWidth(), 0.5 * ofGetHeight()), ofPoint(0.2 * ofGetWidth(), 0.3 * ofGetHeight()));
 
 
 }

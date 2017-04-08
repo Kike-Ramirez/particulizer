@@ -26,6 +26,16 @@ void AudioInput::setup(ofBaseApp *appPtr, ofPoint position_, ofPoint size_) {
     // 4 num buffers (latency)
 
     ofSoundStreamSetup(0, 1, appPtr, 44100, bufferSize, 4);
+    
+    filters.push_back(0.25 * fft->getBinSize());
+    filters.push_back(0.5 * fft->getBinSize());
+    filters.push_back(0.75 * fft->getBinSize());
+    
+    colors.push_back(ofColor(255, 255, 0));
+    colors.push_back(ofColor(255, 0, 255));
+    colors.push_back(ofColor(0, 255, 255));
+    
+    
 
 
 }
@@ -48,7 +58,7 @@ void AudioInput::display(ofTrueTypeFont coolvetica) {
 
     ofPopMatrix();
 
-    plot(drawBins, ofPoint(position.x, position.y + size.y/2), ofPoint(size.x/2, size.y/2));
+    plot(drawBins, ofPoint(position.x, position.y), ofPoint(size.x, size.y/2));
 
 
 }
@@ -69,6 +79,17 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
         ofSetColor(255);
         ofRect(0, 0, size_.x, size_.y);
 
+        ofSetColor(colors[0]);
+        ofRect(0.25 * size_.x, 0, 0.05 * size_.x, size_.y);
+
+        ofSetColor(colors[1]);
+        ofRect(0.5 * size_.x, 0, 0.05 * size_.x, size_.y);
+    
+        ofSetColor(colors[2]);
+        ofRect(0.75 * size_.x, 0, 0.05 * size_.x, size_.y);
+    
+        ofSetColor(255);
+    
         //ofFill();
         ofDrawBitmapString("AudioInput", 0.02 * size_.x, 0.08 * size_.y);
 
@@ -80,6 +101,9 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
                 ofVertex(xx, -1 * sqrt(buffer[int(xx)]) * size_.y);
             }
             ofEndShape();
+    
+    ofNoFill();
+    
 
 
     ofPopMatrix();
