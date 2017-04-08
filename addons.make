@@ -1,3 +1,4 @@
+ofxDatGui
 ofxFft
 ofxGLWarper
 ofxGui
@@ -6,4 +7,3 @@ ofxMidi
 ofxOpenCv
 ofxOsc
 ofxXmlSettings
-ofxDatGui

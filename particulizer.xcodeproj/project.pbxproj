@@ -6062,6 +6062,43 @@
 				<key>sourceTree</key>
 				<string>SOURCE_ROOT</string>
 			</dict>
+			<key>A760AA986792144CAC454A03</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.c.h</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>audioinput.h</string>
+				<key>path</key>
+				<string>src/audioinput.h</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
+			<key>137342F34999CC13913EE1C3</key>
+			<dict>
+				<key>fileRef</key>
+				<string>F2331472175198306BA767A8</string>
+				<key>isa</key>
+				<string>PBXBuildFile</string>
+			</dict>
+			<key>F2331472175198306BA767A8</key>
+			<dict>
+				<key>explicitFileType</key>
+				<string>sourcecode.cpp.cpp</string>
+				<key>fileEncoding</key>
+				<string>30</string>
+				<key>isa</key>
+				<string>PBXFileReference</string>
+				<key>name</key>
+				<string>audioinput.cpp</string>
+				<key>path</key>
+				<string>src/audioinput.cpp</string>
+				<key>sourceTree</key>
+				<string>SOURCE_ROOT</string>
+			</dict>
 			<key>6948EE371B920CB800B5AC1A</key>
 			<dict>
 				<key>children</key>
@@ -6488,6 +6525,7 @@
 				<array>
 					<string>E4B69E200A3A1BDC003C02F2</string>
 					<string>E4B69E210A3A1BDC003C02F2</string>
+					<string>137342F34999CC13913EE1C3</string>
 					<string>93F4A7A4997F2C9F57A57C94</string>
 					<string>554279AC74A1EE2E15BED19B</string>
 					<string>71D248C6E9A04B69508F464B</string>
@@ -6857,6 +6895,8 @@
 					<string>E4B69E1D0A3A1BDC003C02F2</string>
 					<string>E4B69E1E0A3A1BDC003C02F2</string>
 					<string>E4B69E1F0A3A1BDC003C02F2</string>
+					<string>F2331472175198306BA767A8</string>
+					<string>A760AA986792144CAC454A03</string>
 					<string>19753EC3123CA3A7856219E9</string>
 					<string>48CC9CD18487F2D3AC334E04</string>
 					<string>32858E9AA3F299C01D10DE0D</string>

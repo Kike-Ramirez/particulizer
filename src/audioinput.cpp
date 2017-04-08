@@ -48,7 +48,7 @@ void AudioInput::display(ofTrueTypeFont coolvetica) {
 
     ofPopMatrix();
 
-    // plot(drawBins, ofPoint(position.x, position.y + size.y/2), ofPoint(size.x/2, size.y/2));
+    plot(drawBins, ofPoint(position.x, position.y + size.y/2), ofPoint(size.x/2, size.y/2));
 
 
 }
@@ -69,15 +69,15 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
         ofSetColor(255);
         ofRect(0, 0, size_.x, size_.y);
 
-        ofFill();
-        ofDrawBitmapString("AudioInput", 0.01 * size_.x, 0.01 * size_.y);
+        //ofFill();
+        ofDrawBitmapString("AudioInput", 0.02 * size_.x, 0.08 * size_.y);
 
-            ofTranslate(0, size_.y * 0.5, 0.0);
+            ofTranslate(position_.x, position_.y + size_.y, 0.0);
 
             ofBeginShape();
             for (int i = 0; i < n; i++) {
                 float xx = ofMap(i, 0, n, 0, size_.x );
-                ofVertex(xx, sqrt(buffer[i]) * size_.y);
+                ofVertex(xx, -1 * sqrt(buffer[int(xx)]) * size_.y);
             }
             ofEndShape();
 
