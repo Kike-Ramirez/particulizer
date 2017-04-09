@@ -153,6 +153,7 @@ void GuiApp::draw(){
     ofRect(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 0.2 * ofGetWidth(), 0.3 * ofGetHeight());
     ofSetColor(255);
 
+    audioInput.display(coolvetica);
 
     // Output Canvas
     ofSetColor(100);
@@ -162,7 +163,6 @@ void GuiApp::draw(){
     output.update(nano.getVal(0) / 127.0, layerA.canvas, layerB.canvas);
     output.display();
 
-    audioInput.display(coolvetica);
 
     // NanoKorg Controls
     ofSetColor(100);
