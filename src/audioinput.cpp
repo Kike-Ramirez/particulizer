@@ -31,6 +31,42 @@ void AudioInput::setup(ofBaseApp *appPtr, ofPoint position_, ofPoint size_) {
     filterFrequencies.push_back(0.5 * fft->getBinSize());
     filterFrequencies.push_back(0.75 * fft->getBinSize());
 
+    // Insert buttons into Audio Display
+
+    Button button = Button();
+
+    // Insert Rotarys
+    button.setup(ofPoint(position.x + size.x * 0.125, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    filterFrecuencyButtons.push_back(button);
+    button.setup(ofPoint(position.x + size.x * 0.375, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    filterFrecuencyButtons.push_back(button);
+    button.setup(ofPoint(position.x + size.x * 0.625, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    filterFrecuencyButtons.push_back(button);
+
+    // Insert Sliders
+    button.setup(ofPoint(position.x + size.x * 0.090, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
+    filterFrecuencyButtons.push_back(button);
+    button.setup(ofPoint(position.x + size.x * 0.340, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
+    filterFrecuencyButtons.push_back(button);
+    button.setup(ofPoint(position.x + size.x * 0.590, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
+    filterFrecuencyButtons.push_back(button);
+
+    // Insert Upper pads
+    button.setup(ofPoint(position.x + size.x * 0.010, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    filterFrecuencyButtons.push_back(button);
+    button.setup(ofPoint(position.x + size.x * 0.260, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    filterFrecuencyButtons.push_back(button);
+    button.setup(ofPoint(position.x + size.x * 0.510, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    filterFrecuencyButtons.push_back(button);
+
+    // Insert Lower pads
+    button.setup(ofPoint(position.x + size.x * 0.010, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    filterFrecuencyButtons.push_back(button);
+    button.setup(ofPoint(position.x + size.x * 0.260, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    filterFrecuencyButtons.push_back(button);
+    button.setup(ofPoint(position.x + size.x * 0.510, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    filterFrecuencyButtons.push_back(button);
+
     filterValues.push_back(0.6);
     filterValues.push_back(0.7);
     filterValues.push_back(0.8);
@@ -61,43 +97,16 @@ void AudioInput::display(ofTrueTypeFont coolvetica) {
     coolvetica.drawString("Frequency Domain", 0.02 * size.x, 0.08 * size.y);
     ofPopMatrix();
     
-    // Draw Filter 1 Button
-    ofPushMatrix();
-    ofSetColor(0);
-    ofTranslate(position.x, position.y);
-    ofTranslate(0.1 * size.x, 0.6 * size.y);
-    ofDrawCircle(0, 0, 0.05 * size.y);
-    ofRotate(filterValues[0] * 270);
-    ofTranslate(0.03 * size.x, 0);
-    ofSetColor(255);
-    ofDrawCircle(0, 0, 0.01 * size.y);
-    ofPopMatrix();
+    for (int i = 0; i < 3; i++) {
 
-    
-    // Draw Filter 2 Button
-    ofPushMatrix();
-    ofSetColor(0);
-    ofTranslate(position.x, position.y);
-    ofTranslate(0.2 * size.x, 0.6 * size.y);
-    ofDrawCircle(0, 0, 0.05 * size.y);
-    ofRotate(filterValues[1] * 270);
-    ofTranslate(0.03 * size.x, 0);
-    ofSetColor(255);
-    ofDrawCircle(0, 0, 0.01 * size.y);
-    ofPopMatrix();
+        filterFrecuencyButtons[i].update(filterValues[i]);
+    }
 
-    // Draw Filter 2 Button
-    ofPushMatrix();
-    ofSetColor(0);
-    ofTranslate(position.x, position.y);
-    ofTranslate(0.3 * size.x, 0.6 * size.y);
-    ofDrawCircle(0, 0, 0.05 * size.y);
-    ofRotate(filterValues[2] * 270);
-    ofTranslate(0.03 * size.x, 0);
-    ofSetColor(255);
-    ofDrawCircle(0, 0, 0.01 * size.y);
-    ofPopMatrix();
+    for (int i = 0; i < filterFrecuencyButtons.size(); i++) {
 
+        filterFrecuencyButtons[i].display();
+
+    }
 
     plot(drawBins, ofPoint(position.x, position.y), ofPoint(size.x, size.y/2));
 
@@ -121,14 +130,12 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
         ofSetColor(255);
         ofRect(0, 0, size_.x, size_.y);
 
-        ofSetColor(filterColors[0]);
-        ofRect(0.25 * size_.x, (1 - filterValues[0]) * size_.y, 0.05 * size_.x, filterValues[0] * size_.y);
+        for (int i = 0; i < 3; i++) {
 
-        ofSetColor(filterColors[1]);
-        ofRect(0.5 * size_.x, (1 - filterValues[1]) * size_.y, 0.05 * size_.x, filterValues[1] * size_.y);
-    
-        ofSetColor(filterColors[2]);
-        ofRect(0.75 * size_.x, (1 - filterValues[2]) * size_.y, 0.05 * size_.x, filterValues[2] * size_.y);
+            ofSetColor(filterColors[i]);
+            ofRect(filterFrecuencyButtons[i].getVal() * size_.x, (1 - filterFrecuencyButtons[i+3].getVal()) * size_.y, 0.05 * size_.x, filterFrecuencyButtons[i+3].getVal() * size_.y);
+
+        }
     
         ofSetColor(255);
     
@@ -136,13 +143,14 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
         ofDrawBitmapString("AudioInput", 0.02 * size_.x, 0.08 * size_.y);
 
             ofTranslate(position_.x, position_.y + size_.y, 0.0);
-
+            ofSetLineWidth(0.1);
             ofBeginShape();
             for (int i = 0; i < n; i++) {
                 float xx = ofMap(i, 0, n, 0, size_.x );
                 ofVertex(xx, -1 * sqrt(buffer[int(xx)]) * size_.y);
             }
             ofEndShape();
+            ofSetLineWidth(1);
     
     ofNoFill();
     
@@ -150,6 +158,21 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
 
     ofPopMatrix();
 
+}
+
+void AudioInput::update(ofxKorgNanoKontrol &nano) {
+
+    cout << nano.getVal(1, K_TYPE_POT) << endl;
+
+    for (int i = 0; i < 3; i++) {
+
+        filterFrecuencyButtons[i].update(nano.getVal(i+1, K_TYPE_POT) / 127.0);
+        filterFrecuencyButtons[i+3].update(nano.getVal(i+1, K_TYPE_SLIDER) / 127.0);
+        filterFrecuencyButtons[i+6].update(nano.getButtonVal(2*i+3, K_TYPE_BUTTON) / 127.0);
+        filterFrecuencyButtons[i+9].update(nano.getButtonVal(2*i+4, K_TYPE_BUTTON) / 127.0);
+
+
+    }
 }
 
 void AudioInput::audioReceived(float* input, int bufferSize, int nChannels) {

@@ -108,7 +108,6 @@ void GuiApp::setup(){
 
         audioInput.setup(this, ofPoint(0.5 * ofGetWidth(), 0.5 * ofGetHeight()), ofPoint(0.2 * ofGetWidth(), 0.3 * ofGetHeight()));
 
-
 }
 
 void GuiApp::update(){
@@ -116,6 +115,8 @@ void GuiApp::update(){
 
     layerA.setAlpha(nano.getVal(0) / 127.0);
     layerB.setAlpha(1 - nano.getVal(0) / 127.0);
+
+    audioInput.update(nano);
 
 }
 
@@ -162,7 +163,6 @@ void GuiApp::draw(){
 
     output.update(nano.getVal(0) / 127.0, layerA.canvas, layerB.canvas);
     output.display();
-
 
     // NanoKorg Controls
     ofSetColor(100);

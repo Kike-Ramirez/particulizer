@@ -7,6 +7,7 @@
 #include "layer.h"
 #include "output.h"
 #include "audioinput.h"
+#include "button.h"
 
 
 class GuiApp: public ofBaseApp {
