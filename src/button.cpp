@@ -48,6 +48,7 @@ void Button::display() {
 
     else if (type == 1) {
 
+
         ofPushMatrix();
         ofTranslate(position.x, position.y);
         ofFill();

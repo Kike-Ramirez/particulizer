@@ -162,7 +162,6 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
 
 void AudioInput::update(ofxKorgNanoKontrol &nano) {
 
-    cout << nano.getVal(1, K_TYPE_POT) << endl;
 
     for (int i = 0; i < 3; i++) {
 
