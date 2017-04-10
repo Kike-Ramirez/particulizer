@@ -39,7 +39,7 @@ void Button::display() {
         ofSetColor(colorBack);
         ofDrawRectangle(0, 0, size.x, size.y);
         ofSetColor(colorFront);
-        ofDrawRectangle(0.05 * size.x, (0.05 + 0.9 * (1 - val)) * size.y, 0.9 * size.x, 0.9 * val * size.y );
+        ofDrawRectangle(0, (1 - val) * size.y, size.x, val * size.y );
         ofNoFill();
         ofDrawRectangle(0, 0, size.x, size.y);
         ofPopMatrix();
@@ -60,9 +60,9 @@ void Button::display() {
 
         float angulo = ofMap(val, 0, 1, 0, 270) - 225;
         ofRotate(angulo);
-        ofTranslate(size.x / 2 * 0.6, 0);
+        ofTranslate(size.x / 2 * 0.4, 0);
         ofFill();
-        ofDrawLine(0, 0, size.x / 2 * 0.3, 0);
+        ofDrawLine(0, 0, size.x / 2 * 0.5, 0);
         ofPopMatrix();
 
     }
@@ -79,6 +79,24 @@ void Button::display() {
         ofDrawRectangle(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.9 * size.y );
         ofNoFill();
         ofSetColor(colorFront);
+        ofDrawRectangle(0, 0, size.x, size.y);
+        ofPopMatrix();
+
+    }
+
+    if (type == 3) {
+
+        ofPushMatrix();
+        ofTranslate(position.x, position.y);
+        ofFill();
+        ofSetColor(colorBack);
+        ofDrawRectangle(0, 0, size.x, size.y);
+        float mappedVal = ofMap(val, 0, 1, 0, 0.9);
+        ofSetColor(colorFront, 100);
+        ofDrawRectangle(0, 0, mappedVal * size.x, size.y );
+        ofSetColor(colorFront);
+        ofDrawRectangle(mappedVal * size.x, 0, 0.1 * size.x, size.y);
+        ofNoFill();
         ofDrawRectangle(0, 0, size.x, size.y);
         ofPopMatrix();
 

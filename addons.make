@@ -1,9 +1,9 @@
 ofxFft
 ofxGLWarper
 ofxGui
-ofxKorgNanoKontrol
 ofxMidi
 ofxOpenCv
 ofxOsc
 ofxXmlSettings
 ofxDatGui
+ofxBeat

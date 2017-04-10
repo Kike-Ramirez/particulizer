@@ -9,6 +9,8 @@
 
 void GuiApp::setup(){
 
+    ofSetVerticalSync(true);
+
     // instantiate and position the gui //
         gui = new ofxDatGui( ofxDatGuiAnchor::TOP_RIGHT );
 
@@ -79,8 +81,7 @@ void GuiApp::setup(){
 
         ofSetCircleResolution(200);
 
-        nano.setup(true);
-        ofAddListener(nano.sceneButtonPressed, this, &GuiApp::sceneButtonPressed);
+        nano.setup();
 
         vector<string> textos;
         textos.push_back("1");
@@ -108,6 +109,8 @@ void GuiApp::setup(){
 
         audioInput.setup(this, ofPoint(0.5 * ofGetWidth(), 0.5 * ofGetHeight()), ofPoint(0.2 * ofGetWidth(), 0.3 * ofGetHeight()));
 
+        mainSlider.setup(ofPoint(0, 0.4 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.1 * ofGetHeight()), 3);
+
 }
 
 void GuiApp::update(){
@@ -117,6 +120,8 @@ void GuiApp::update(){
     layerB.setAlpha(1 - nano.getVal(0) / 127.0);
 
     audioInput.update(nano);
+    mainSlider.update(nano.getSlider(0));
+
 
 }
 
@@ -141,12 +146,14 @@ void GuiApp::draw(){
         else if (effects[i].assigned == 2) layerB.update(effects[i].effectCanvas);
 
     }
-    void audioReceived(float* input, int bufferSize, int nChannels);
+    //void audioReceived(float* input, int bufferSize, int nChannels);
 
 
 
     layerA.display();
     layerB.display();
+
+    mainSlider.display();
 
     // Main Controls
     ofSetColor(125);
@@ -168,9 +175,6 @@ void GuiApp::draw(){
     ofSetColor(100);
     ofRect(0.5 * ofGetWidth(), 0.8 * ofGetHeight(), 0.5 * ofGetWidth(), 0.2 * ofGetHeight());
     ofSetColor(255);
-
-    ofPoint location = ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight());
-    nano.showGui(true, false, location, coolvetica);
 
 
 
@@ -259,13 +263,7 @@ void GuiApp::refreshWindow()
     }
 }
 
-//--------------------------------------------------------------
-void GuiApp::sceneButtonPressed(int &e) {
-    cout <<  "Scene button pressed" << endl;
-}
-
 void GuiApp::exit() {
-    ofRemoveListener(nano.sceneButtonPressed, this, &GuiApp::sceneButtonPressed);
 }
 
 void GuiApp::mouseDragged(int x, int y, int button) {

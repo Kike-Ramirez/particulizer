@@ -12,33 +12,35 @@ Project{
         name: { return FileInfo.baseName(path) }
 
         files: [
-            "src/GuiApp.cpp",
-            "src/GuiApp.h",
-            "src/audioinput.cpp",
-            "src/audioinput.h",
-            "src/button.cpp",
-            "src/button.h",
-            "src/effect_template.cpp",
-            "src/effect_template.h",
-            "src/layer.cpp",
-            "src/layer.h",
-            "src/main.cpp",
-            "src/ofApp.cpp",
-            "src/ofApp.h",
-            "src/output.cpp",
-            "src/output.h",
+            'src/GuiApp.cpp',
+            'src/GuiApp.h',
+            'src/audioinput.cpp',
+            'src/audioinput.h',
+            'src/button.cpp',
+            'src/button.h',
+            'src/effect_template.cpp',
+            'src/effect_template.h',
+            'src/layer.cpp',
+            'src/layer.h',
+            'src/main.cpp',
+            'src/nanokontrol2.cpp',
+            'src/nanokontrol2.h',
+            'src/ofApp.cpp',
+            'src/ofApp.h',
+            'src/output.cpp',
+            'src/output.h',
         ]
 
         of.addons: [
             'ofxFft',
             'ofxGLWarper',
             'ofxGui',
-            'ofxKorgNanoKontrol',
             'ofxMidi',
             'ofxOpenCv',
             'ofxOsc',
             'ofxXmlSettings',
             'ofxDatGui',
+            'ofxBeat',
         ]
 
         // additional flags for the project. the of module sets some

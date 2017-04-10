@@ -2,12 +2,13 @@
 
 #include "ofMain.h"
 #include "ofxDatGui.h"
-#include "ofxKorgNanoKontrol.h"
 #include "effect_template.h"
 #include "layer.h"
 #include "output.h"
 #include "audioinput.h"
 #include "button.h"
+#include "nanokontrol2.h"
+
 
 
 class GuiApp: public ofBaseApp {
@@ -30,7 +31,6 @@ public:
     void onDropdownEvent(ofxDatGuiDropdownEvent e);
     void onColorPickerEvent(ofxDatGuiColorPickerEvent e);
     void onMatrixEvent(ofxDatGuiMatrixEvent e);
-    void sceneButtonPressed(int &e);
     void mouseDragged(int x, int y, int button);
     void mousePressed(int x, int y, int button);
     void mouseReleased(int x, int y, int button);
@@ -41,7 +41,7 @@ public:
 
     int tIndex;
     vector<ofxDatGuiTheme*> themes;
-    ofxKorgNanoKontrol nano;
+    NanoKontrol2 nano;
     vector<Effect_Template> effects;
     Layer layerA, layerB;
     Output output;
@@ -49,6 +49,7 @@ public:
     float offSetDelta, offSet;
     int numEffects;
     ofTrueTypeFont  coolvetica;
+    Button mainSlider;
 
 };
 

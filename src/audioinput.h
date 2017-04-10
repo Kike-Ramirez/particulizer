@@ -4,14 +4,16 @@
 #include "ofMain.h"
 #include "ofxFft.h"
 #include "button.h"
-#include "ofxKorgNanoKontrol.h"
+#include "nanokontrol2.h"
+#include "ofxBeat.h"
+
 
 class AudioInput
 {
 public:
 
     void setup(ofBaseApp * appPtr, ofPoint position_, ofPoint size_);
-    void update(ofxKorgNanoKontrol & nano);
+    void update(NanoKontrol2 & nano);
     void plot(vector<float>& buffer, ofPoint position_, ofPoint size_);
     void audioReceived(float* input, int bufferSize, int nChannels);
     void display(ofTrueTypeFont coolvetica);
@@ -19,6 +21,7 @@ public:
     AudioInput();
 
     ofxFft* fft;
+    ofxBeat beat;
     ofPoint position;
     ofPoint size;
     ofFbo canvas;
@@ -26,12 +29,10 @@ public:
     int bufferSize;
 
     vector<float> drawBins, middleBins, audioBins;
-    vector<float> filterFrequencies;
     vector<Button> filterFrecuencyButtons;
-    vector<float> filterValues;
-    vector<Button> filterValueButtons;
-    vector<Button> filterWidthButtons;
+    vector<float> filterWidth;
     vector<ofColor> filterColors;
+    vector<float> beats;
     
     ofMutex soundMutex;
 
