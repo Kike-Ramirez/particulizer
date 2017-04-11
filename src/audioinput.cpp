@@ -223,7 +223,7 @@ void AudioInput::audioReceived(float* input, int bufferSize, int nChannels) {
 
     beat.audioReceived(input, bufferSize, nChannels);
 
-    float maxValue = 0;
+    float maxValue = 1;
     for(int i = 0; i < bufferSize; i++) {
         if(abs(input[i]) > maxValue) {
             maxValue = abs(input[i]);
@@ -235,10 +235,12 @@ void AudioInput::audioReceived(float* input, int bufferSize, int nChannels) {
 
     fft->setSignal(input);
 
+    cout << maxValue;
+
     float* curFft = fft->getAmplitude();
     memcpy(&audioBins[0], curFft, sizeof(float) * fft->getBinSize());
 
-    maxValue = 0;
+    maxValue = 1;
     for(int i = 0; i < fft->getBinSize(); i++) {
         if(abs(audioBins[i]) > maxValue) {
             maxValue = abs(audioBins[i]);
@@ -247,6 +249,7 @@ void AudioInput::audioReceived(float* input, int bufferSize, int nChannels) {
     for(int i = 0; i < fft->getBinSize(); i++) {
         audioBins[i] /= maxValue;
     }
+    cout << " - " << maxValue << endl;
 
     soundMutex.lock();
     middleBins = audioBins;

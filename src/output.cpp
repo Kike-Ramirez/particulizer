@@ -13,9 +13,18 @@ void Output::setup(ofPoint position_, ofPoint size_) {
 
     canvas.allocate(1024, 768);
 
+    blackout = false;
+
+    font.load("coolvetica.ttf", 20, true, true);
+
+    blackoutLabel = "BLACKOUT";
 }
 
-void Output::update(float alpha, const ofFbo & layerA, const ofFbo & layerB) {
+void Output::update(const ofFbo & layerA, const ofFbo & layerB, MainPanel &mainPanel) {
+
+    float alpha = mainPanel.alphaMain.getVal();
+    if (mainPanel.pushes[0].getVal() == 1) blackout = true;
+    else blackout = false;
 
     canvas.begin();
     ofBackground(0);
@@ -31,10 +40,27 @@ void Output::update(float alpha, const ofFbo & layerA, const ofFbo & layerB) {
 
 void Output::display() {
 
-    ofPushMatrix();
-    ofTranslate(position);
-    ofSetColor(255);
-    canvas.draw(0.05 * size.x, 0.05 * size.y, size.x * 0.9, size.y * 0.9);
-    ofPopMatrix();
+
+    if (! blackout) {
+        ofPushMatrix();
+        ofTranslate(position);
+        ofSetColor(255);
+        canvas.draw(0.05 * size.x, 0.05 * size.y, size.x * 0.9, size.y * 0.9);
+        ofPopMatrix();
+    }
+
+    else {
+        ofPushMatrix();
+        ofTranslate(position);
+        ofSetColor(0);
+        ofFill();
+        ofDrawRectangle(0.05 * size.x, 0.05 * size.y, size.x * 0.9, size.y * 0.9);
+        ofSetColor(255, 0, 0);
+        ofTranslate(0.5 * (size.x - font.stringWidth(blackoutLabel)), 0.5 * (size.y));
+        font.drawString("Blackout", 0, 0);
+        ofNoFill();
+        ofPopMatrix();
+    }
 
 }
+

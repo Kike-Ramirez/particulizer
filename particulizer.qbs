@@ -12,6 +12,12 @@ Project{
         name: { return FileInfo.baseName(path) }
 
         files: [
+            "src/mainpanel.cpp",
+            "src/mainpanel.h",
+            "src/nanopanel.cpp",
+            "src/nanopanel.h",
+            "src/pushbutton.cpp",
+            "src/pushbutton.h",
             'src/GuiApp.cpp',
             'src/GuiApp.h',
             'src/audioinput.cpp',

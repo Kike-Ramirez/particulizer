@@ -8,6 +8,9 @@
 #include "audioinput.h"
 #include "button.h"
 #include "nanokontrol2.h"
+#include "pushbutton.h"
+#include "mainpanel.h"
+#include "nanopanel.h"
 
 
 
@@ -42,14 +45,17 @@ public:
     int tIndex;
     vector<ofxDatGuiTheme*> themes;
     NanoKontrol2 nano;
-    vector<Effect_Template> effects;
     Layer layerA, layerB;
     Output output;
+    MainPanel mainPanel;
+    NanoPanel nanoPanel;
     AudioInput audioInput;
+    vector<Effect_Template> effects;
     float offSetDelta, offSet;
     int numEffects;
     ofTrueTypeFont  coolvetica;
-    Button mainSlider;
+
+
 
 };
 

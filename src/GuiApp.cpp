@@ -109,18 +109,28 @@ void GuiApp::setup(){
 
         audioInput.setup(this, ofPoint(0.5 * ofGetWidth(), 0.5 * ofGetHeight()), ofPoint(0.2 * ofGetWidth(), 0.3 * ofGetHeight()));
 
-        mainSlider.setup(ofPoint(0, 0.4 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.1 * ofGetHeight()), 3);
+
+        mainPanel.setup(ofPoint(0, 0.9 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.1 * ofGetHeight()));
+
+        nanoPanel.setup(ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight()), ofPoint(0.5 * ofGetWidth(), 0.2 * ofGetHeight()));
+
 
 }
 
 void GuiApp::update(){
 
 
-    layerA.setAlpha(nano.getVal(0) / 127.0);
-    layerB.setAlpha(1 - nano.getVal(0) / 127.0);
+
 
     audioInput.update(nano);
-    mainSlider.update(nano.getSlider(0));
+
+    mainPanel.update(nano);
+    nanoPanel.update(nano);
+
+    layerA.setAlpha(mainPanel.mainSlider.getVal());
+    layerB.setAlpha(1 - mainPanel.mainSlider.getVal());
+
+
 
 
 }
@@ -153,7 +163,9 @@ void GuiApp::draw(){
     layerA.display();
     layerB.display();
 
-    mainSlider.display();
+    mainPanel.display();
+
+    nanoPanel.display();
 
     // Main Controls
     ofSetColor(125);
@@ -168,7 +180,7 @@ void GuiApp::draw(){
     ofRect(0.5 * ofGetWidth(), 0.0, 0.5 * ofGetWidth(), 0.5 * ofGetHeight());
     ofSetColor(255);
 
-    output.update(nano.getVal(0) / 127.0, layerA.canvas, layerB.canvas);
+    output.update(layerA.canvas, layerB.canvas, mainPanel);
     output.display();
 
     // NanoKorg Controls

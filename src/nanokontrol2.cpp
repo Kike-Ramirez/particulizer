@@ -89,32 +89,32 @@ float NanoKontrol2::getVal(int number_) {
 
 float NanoKontrol2::getSlider(int number_) {
 
-    if (number_>= 0 && number_ < 7) return nanoValues[number_];
+    if (number_>= 0 && number_ < 8) return nanoValues[number_];
     else return -1;
 }
 
 float NanoKontrol2::getRotary(int number_) {
 
-    if (number_>= 0 && number_ < 7) return nanoValues[number_ + 16];
+    if (number_>= 0 && number_ < 8) return nanoValues[number_ + 16];
     else return -1;
 }
 
 float NanoKontrol2::getUpperBtn(int number_) {
 
-    if (number_>= 0 && number_ < 7) return nanoValues[number_ + 32];
+    if (number_>= 0 && number_ < 8) return nanoValues[number_ + 32];
     else return -1;
 }
 
 
 float NanoKontrol2::getMidBtn(int number_) {
 
-    if (number_>= 0 && number_ < 7) return nanoValues[number_ + 48];
+    if (number_>= 0 && number_ < 8) return nanoValues[number_ + 48];
     else return -1;
 }
 
 
 float NanoKontrol2::getLowerBtn(int number_) {
 
-    if (number_>= 0 && number_ < 7) return nanoValues[number_ + 64];
+    if (number_>= 0 && number_ < 8) return nanoValues[number_ + 64];
     else return -1;
 }
