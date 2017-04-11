@@ -15,7 +15,7 @@ public:
     ofFbo canvas;
 
     void setup(ofPoint position_, ofPoint size_);
-    void update(const ofFbo & layerA, const ofFbo & layerB, MainPanel & mainPanel);
+    void update(ofFbo & layerA, ofFbo & layerB, MainPanel & mainPanel);
     void display();
 
 protected:

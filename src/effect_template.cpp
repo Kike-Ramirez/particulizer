@@ -68,6 +68,12 @@ void Effect_Template::unselect(){
     selected = false;
 }
 
+bool Effect_Template::isActive(){
+
+    return selected;
+
+}
+
 bool Effect_Template::isAssigned(){
 
     if (assigned > 0) return true;
@@ -110,18 +116,6 @@ void Effect_Template::drawDisplay(const ofTrueTypeFont & coolvetica_) {
 
     if (selected || isAssigned()) drawOutput();
 
-    if (selected) {
-
-        effectCanvas.draw(0.7 * ofGetWidth(), 0.5 * ofGetHeight(), 0.3 * ofGetWidth(), 0.3 * ofGetWidth() * 9.0 / 16.0);
-
-    }
-
-    else {
-
-        ofSetColor(0);
-        ofFill();
-        //ofRect(0.7 * ofGetWidth(), 0.5 * ofGetHeight(), 0.3 * ofGetWidth(), 0.3 * ofGetWidth() * 9.0 / 16.0);
-    }
 }
 
 void Effect_Template::drawOutput(){

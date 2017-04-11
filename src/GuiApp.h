@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxDatGui.h"
 #include "effect_template.h"
+#include "effectpanel.h"
 #include "layer.h"
 #include "output.h"
 #include "audioinput.h"
@@ -49,6 +50,7 @@ public:
     Output output;
     MainPanel mainPanel;
     NanoPanel nanoPanel;
+    EffectPanel effectPanel;
     AudioInput audioInput;
     vector<Effect_Template> effects;
     float offSetDelta, offSet;

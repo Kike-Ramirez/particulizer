@@ -12,6 +12,8 @@ Project{
         name: { return FileInfo.baseName(path) }
 
         files: [
+            "src/effectpanel.cpp",
+            "src/effectpanel.h",
             "src/mainpanel.cpp",
             "src/mainpanel.h",
             "src/nanopanel.cpp",

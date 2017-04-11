@@ -16,7 +16,8 @@ class Effect_Template {
     float getOffset();                  // Get Offset for display
     void select();                      // Select display
     void unselect();                    // Unselect display
-    bool isAssigned();                   // Returns true if the effect is being displayed in any layer
+    bool isActive();                    // Return whether the effect is selected or not
+    bool isAssigned();                  // Returns true if the effect is being displayed in any layer
     void assign(int id);                // Assigns the effect to a layer
 
     // variables to setup & display

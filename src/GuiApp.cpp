@@ -114,13 +114,12 @@ void GuiApp::setup(){
 
         nanoPanel.setup(ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight()), ofPoint(0.5 * ofGetWidth(), 0.2 * ofGetHeight()));
 
+        effectPanel.setup(ofPoint(0.7 * ofGetWidth(), 0.5 * ofGetHeight()), ofPoint(0.3* ofGetWidth(), 0.3 * ofGetHeight()));
+
 
 }
 
 void GuiApp::update(){
-
-
-
 
     audioInput.update(nano);
 
@@ -129,7 +128,6 @@ void GuiApp::update(){
 
     layerA.setAlpha(mainPanel.mainSlider.getVal());
     layerB.setAlpha(1 - mainPanel.mainSlider.getVal());
-
 
 
 
@@ -142,8 +140,11 @@ void GuiApp::draw(){
 
     // Effects
 
+    effectPanel.display();
+
     for (int i = 0; i < effects.size(); i++) {
         effects[i].drawDisplay(coolvetica);
+        if (effects[i].isActive()) effectPanel.display(effects[i].effectCanvas);
     }
 
     // Layers Area
@@ -181,6 +182,7 @@ void GuiApp::draw(){
     ofSetColor(255);
 
     output.update(layerA.canvas, layerB.canvas, mainPanel);
+
     output.display();
 
     // NanoKorg Controls

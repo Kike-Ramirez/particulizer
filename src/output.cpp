@@ -20,9 +20,10 @@ void Output::setup(ofPoint position_, ofPoint size_) {
     blackoutLabel = "BLACKOUT";
 }
 
-void Output::update(const ofFbo & layerA, const ofFbo & layerB, MainPanel &mainPanel) {
+void Output::update(ofFbo &layerA, ofFbo &layerB, MainPanel &mainPanel) {
 
     float alpha = mainPanel.alphaMain.getVal();
+
     if (mainPanel.pushes[0].getVal() == 1) blackout = true;
     else blackout = false;
 
