@@ -36,6 +36,10 @@ void MainPanel::setup(ofPoint position_, ofPoint size_) {
 
     mainSlider.setup(ofPoint(0, 0.4 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.1 * ofGetHeight()), 3);
 
+    frontColor = ofColor(155);
+    selectedColor = ofColor(255);
+    backColor = ofColor(0);
+
 }
 
 
@@ -69,4 +73,13 @@ void MainPanel::setBackColor(ofColor color_) {
 void MainPanel::setFrontColor(ofColor color_) {
 
     frontColor.set(color_);
+}
+
+
+void MainPanel::setColors(ofColor frontColor_, ofColor backColor_, ofColor selectedColor_) {
+
+    frontColor = frontColor_;
+    backColor = backColor_;
+    selectedColor = selectedColor_;
+
 }

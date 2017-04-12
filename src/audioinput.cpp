@@ -328,3 +328,10 @@ void AudioInput::audioReceived(float* input, int bufferSize, int nChannels) {
 
 }
 
+void AudioInput::setColors(ofColor frontColor_, ofColor backColor_, ofColor selectedColor_) {
+
+    frontColor = frontColor_;
+    backColor = backColor_;
+    selectedColor = selectedColor_;
+
+}

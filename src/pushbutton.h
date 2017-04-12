@@ -25,6 +25,8 @@ public:
     void setFont(const ofTrueTypeFont & font_, int size_);
     void setLabel(const string & label_);
     float getVal();
+    void setColors(ofColor frontColor_, ofColor backColor, ofColor selectedColor_);
+
 
 };
 

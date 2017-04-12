@@ -43,3 +43,11 @@ void EffectPanel::display(const ofFbo &canvas_) {
     ofPopMatrix();
 
 }
+
+void EffectPanel::setColors(ofColor frontColor_, ofColor backColor_, ofColor selectedColor_) {
+
+    frontColor = frontColor_;
+    backColor = backColor_;
+    selectedColor = selectedColor_;
+
+}

@@ -30,6 +30,7 @@ public:
     void mousePressed(int x, int y, int button);
     void mouseReleased(int x, int y, int button);
     void audioReceived(float* input, int bufferSize, int nChannels);
+    void setColors(ofColor frontColor_, ofColor backColor, ofColor selectedColor_);
 
 
     void exit();

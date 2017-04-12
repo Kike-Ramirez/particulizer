@@ -12,9 +12,9 @@ void GuiApp::setup(){
     ofSetVerticalSync(true);
 
     // Set colorset
-    frontColor = ofColor(155);
-    backColor = ofColor(0);
-    selectedColor = ofColor(255);
+    frontColor = ofColor(0, 20, 229);
+    backColor = ofColor(30);
+    selectedColor = ofColor(153, 161, 255);
 
     // launch the app //
         mFullscreen = false;
@@ -22,10 +22,13 @@ void GuiApp::setup(){
     // Initialize fbo layers
 
         layerA.setup(ofPoint(0, 0), ofPoint(0.25 * ofGetWidth(), 0.4 * ofGetHeight()));
+        layerA.setColors(frontColor, backColor, selectedColor);
         layerB.setup(ofPoint(0, 0.5 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.4 * ofGetHeight()));
+        layerB.setColors(frontColor, backColor, selectedColor);
         layerB.setAlpha(1);
 
         output.setup(ofPoint(0.5 * ofGetWidth(), 0), ofPoint(0.5 * ofGetWidth(), 0.5 * ofGetHeight()));
+        output.setColors(frontColor, backColor, selectedColor);
 
         ofSetCircleResolution(200);
 
@@ -43,6 +46,7 @@ void GuiApp::setup(){
             Effect_Template effect;
             string name = "Efecto #" + ofToString(i);
             effect.setup(ofPoint(0.25 * ofGetWidth(), i * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), textos, name );
+            effect.setColors(frontColor, backColor, selectedColor);
 
             effects.push_back(effect);
         }
@@ -56,14 +60,16 @@ void GuiApp::setup(){
         coolvetica.setLineHeight(18.0f);
 
         audioInput.setup(this, ofPoint(0.5 * ofGetWidth(), 0.5 * ofGetHeight()), ofPoint(0.2 * ofGetWidth(), 0.3 * ofGetHeight()));
-
+        audioInput.setColors(frontColor, backColor, selectedColor);
 
         mainPanel.setup(ofPoint(0, 0.9 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.1 * ofGetHeight()));
+        mainPanel.setColors(frontColor, backColor, selectedColor);
 
         nanoPanel.setup(ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight()), ofPoint(0.5 * ofGetWidth(), 0.2 * ofGetHeight()));
+        nanoPanel.setColors(frontColor, backColor, selectedColor);
 
         effectPanel.setup(ofPoint(0.7 * ofGetWidth(), 0.5 * ofGetHeight()), ofPoint(0.3* ofGetWidth(), 0.3 * ofGetHeight()));
-
+        effectPanel.setColors(frontColor, backColor, selectedColor);
 
 }
 
@@ -256,4 +262,12 @@ void GuiApp::audioReceived(float* input, int bufferSize, int nChannels) {
 
     audioInput.audioReceived(input, bufferSize, nChannels);
 
-};
+}
+
+void GuiApp::setColors(ofColor frontColor_, ofColor backColor_, ofColor selectedColor_) {
+
+    frontColor = frontColor_;
+    backColor = backColor_;
+    selectedColor = selectedColor_;
+
+}

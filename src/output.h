@@ -17,6 +17,8 @@ public:
     void setup(ofPoint position_, ofPoint size_);
     void update(ofFbo & layerA, ofFbo & layerB, MainPanel & mainPanel);
     void display();
+    void setColors(ofColor frontColor_, ofColor backColor, ofColor selectedColor_);
+
 
 protected:
     bool blackout;

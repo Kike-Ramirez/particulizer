@@ -14,6 +14,7 @@ public:
     ofPoint size;
     ofColor frontColor;
     ofColor backColor;
+    ofColor selectedColor;
 
     NanoPanel();
 
@@ -21,6 +22,8 @@ public:
     void setPanel(int firstDeck_, int lastDeck_);
     void update(NanoKontrol2 & nano);
     void display();
+    void setColors(ofColor frontColor_, ofColor backColor, ofColor selectedColor_);
+
 
 private:
 

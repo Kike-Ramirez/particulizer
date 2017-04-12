@@ -18,6 +18,8 @@ public:
     void plot(vector<float>& buffer, ofPoint position_, ofPoint size_);
     void audioReceived(float* input, int bufferSize, int nChannels);
     void display(ofTrueTypeFont coolvetica);
+    void setColors(ofColor frontColor_, ofColor backColor, ofColor selectedColor_);
+
 
     AudioInput();
 

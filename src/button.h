@@ -19,6 +19,8 @@ public:
     void update(float val_);
     float getVal();
     void display();
+    void setColors(ofColor frontColor_, ofColor backColor, ofColor selectedColor_);
+
 
 };
 

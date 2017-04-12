@@ -19,6 +19,7 @@ class Effect_Template {
     bool isActive();                    // Return whether the effect is selected or not
     bool isAssigned();                  // Returns true if the effect is being displayed in any layer
     void assign(int id);                // Assigns the effect to a layer
+    void setColors(ofColor frontColor_, ofColor backColor, ofColor selectedColor_);
 
     // variables to setup & display
     ofPoint position;                   // Position of the display of the Effect

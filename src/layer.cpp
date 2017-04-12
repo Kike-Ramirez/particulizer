@@ -107,22 +107,17 @@ void Layer::display() {
     ofPushMatrix();
     ofTranslate(position.x, position.y);
 
-    float greyLevel = 255 / 2;
-    float alphaLevel = 255 - greyLevel;
-
-    ofColor grey = backColor;
-    grey.lerp(selectedColor, alpha);
-
-    ofSetColor(grey, 150);
-    ofFill();
-
-    ofRect(0, 0, size.x, size.y);
-
     ofSetColor(255);
     canvas.draw(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.9 * size.x * 9 / 16.0);
+
     ofSetColor(frontColor);
     ofNoFill();
     ofDrawRectangle(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.9 * size.x * 9 / 16.0);
+
+    ofSetColor(selectedColor, alpha * 255);
+    ofSetLineWidth(4);
+    ofDrawRectangle(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.9 * size.x * 9 / 16.0);
+    ofSetLineWidth(1);
 
     //ofSetColor(greyLevel - 30);
     //ofRect(0.05 * size.x, 0.65 * size.y, 0.9 * size.x, 0.3 * size.y);
@@ -173,8 +168,8 @@ void Layer::unselect() {
 
 void Layer::setColors(ofColor frontColor_, ofColor backColor_, ofColor selectedColor_) {
 
-    frontColor = frontColor_;
-    backColor = backColor_;
-    selectedColor = selectedColor_;
+    frontColor.set(frontColor_);
+    backColor.set(backColor_);
+    selectedColor.set(selectedColor_);
 
 }

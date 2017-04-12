@@ -149,3 +149,11 @@ void Effect_Template::drawOutput(){
     smallCanvas.end();
 
 }
+
+void Effect_Template::setColors(ofColor frontColor_, ofColor backColor_, ofColor selectedColor_) {
+
+    frontColor = frontColor_;
+    backColor = backColor_;
+    selectedColor = selectedColor_;
+
+}

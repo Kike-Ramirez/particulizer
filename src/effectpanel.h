@@ -12,11 +12,14 @@ public:
     ofPoint size;
     ofColor backColor;
     ofColor frontColor;
+    ofColor selectedColor;
+
     EffectPanel();
 
     void setup(ofPoint position_, ofPoint size_);
     void display();
     void display(const ofFbo &canvas_);
+    void setColors(ofColor frontColor_, ofColor backColor, ofColor selectedColor_);
 
 };
 

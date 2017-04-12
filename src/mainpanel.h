@@ -18,6 +18,7 @@ public:
     Button mainSlider;
     ofColor frontColor;
     ofColor backColor;
+    ofColor selectedColor;
 
     MainPanel();
 
@@ -26,6 +27,7 @@ public:
     void display();
     void setFrontColor(ofColor color_);
     void setBackColor(ofColor color_);
+    void setColors(ofColor frontColor_, ofColor backColor, ofColor selectedColor_);
 
 
 };
