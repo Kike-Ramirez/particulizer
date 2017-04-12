@@ -4,6 +4,7 @@
 #include "ofMain.h"
 #include "ofxFft.h"
 #include "button.h"
+#include "pushbutton.h"
 #include "nanokontrol2.h"
 #include "ofxBeat.h"
 
@@ -30,9 +31,10 @@ public:
 
     vector<float> drawBins, middleBins, audioBins;
     vector<Button> filterFrecuencyButtons;
+    vector<PushButton> filterMiddleButtons;
     vector<float> filterWidth;
     vector<ofColor> filterColors;
-    vector<float> beats;
+    vector<float> beats, amps;
     
     ofMutex soundMutex;
 

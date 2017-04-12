@@ -144,7 +144,9 @@ void GuiApp::draw(){
 
     for (int i = 0; i < effects.size(); i++) {
         effects[i].drawDisplay(coolvetica);
-        if (effects[i].isActive()) effectPanel.display(effects[i].effectCanvas);
+        if (effects[i].isActive()) {
+            effectPanel.display(effects[i].effectCanvas);
+        }
     }
 
     // Layers Area

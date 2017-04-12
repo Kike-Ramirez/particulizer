@@ -33,6 +33,7 @@ void EffectPanel::display(const ofFbo &canvas_) {
 
     ofSetColor(backColor);
     ofDrawRectangle(0, 0, 0.9 * size.x, 0.9 * size.y);
+    ofSetColor(255);
     canvas_.draw(0, 0, 0.9 * size.x, 0.9 * size.y);
     ofPopMatrix();
 
