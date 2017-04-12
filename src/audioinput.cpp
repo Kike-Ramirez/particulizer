@@ -32,46 +32,46 @@ void AudioInput::setup(ofBaseApp *appPtr, ofPoint position_, ofPoint size_) {
     Button button = Button();
 
     // Insert Rotarys
-    button.setup(ofPoint(position.x + size.x * 0.125, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button.setup(ofPoint(position.x + size.x * 0.165, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.375, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button.setup(ofPoint(position.x + size.x * 0.415, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.625, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button.setup(ofPoint(position.x + size.x * 0.665, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
     filterFrecuencyButtons.push_back(button);
 
     // Insert Sliders
-    button.setup(ofPoint(position.x + size.x * 0.090, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
+    button.setup(ofPoint(position.x + size.x * 0.130, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.340, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
+    button.setup(ofPoint(position.x + size.x * 0.380, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.590, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
+    button.setup(ofPoint(position.x + size.x * 0.630, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
     filterFrecuencyButtons.push_back(button);
 
     // Insert Upper pads
-    button.setup(ofPoint(position.x + size.x * 0.010, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.050, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.260, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.300, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.510, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.550, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
     filterFrecuencyButtons.push_back(button);
 
     // Insert Lower pads
-    button.setup(ofPoint(position.x + size.x * 0.010, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.050, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.260, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.300, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.510, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.550, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
     filterFrecuencyButtons.push_back(button);
     
     // Insert Mid pads
     PushButton button2;
-    button2.setup(ofPoint(position.x + size.x * 0.010, position.y + size.y * 0.64 + size.x * 0.1), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button2.setup(ofPoint(position.x + size.x * 0.050, position.y + size.y * 0.64 + size.x * 0.1), ofPoint(size.x * 0.07, size.x * 0.07), 1);
     button2.setLabel("");
     filterMiddleButtons.push_back(button2);
-    button2.setup(ofPoint(position.x + size.x * 0.260, position.y + size.y * 0.64 + size.x * 0.1), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button2.setup(ofPoint(position.x + size.x * 0.300, position.y + size.y * 0.64 + size.x * 0.1), ofPoint(size.x * 0.07, size.x * 0.07), 1);
     button2.setLabel("");
     filterMiddleButtons.push_back(button2);
-    button2.setup(ofPoint(position.x + size.x * 0.510, position.y + size.y * 0.64 + size.x * 0.1), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button2.setup(ofPoint(position.x + size.x * 0.550, position.y + size.y * 0.64 + size.x * 0.1), ofPoint(size.x * 0.07, size.x * 0.07), 1);
     button2.setLabel("");
     filterMiddleButtons.push_back(button2);
 
@@ -111,7 +111,6 @@ void AudioInput::display(ofTrueTypeFont coolvetica) {
     ofFill();
     ofRect(0, 0, size.x, size.y);
     ofSetColor(255);
-    coolvetica.drawString("Frequency Domain", 0.02 * size.x, 0.08 * size.y);
 
 
 
@@ -127,22 +126,20 @@ void AudioInput::display(ofTrueTypeFont coolvetica) {
 
         }
 
-        cout << "Valor[" << i << "]: " << alpha<< endl;
-
         ofSetColor(0);
         ofFill();
 
-        ofDrawRectangle(size.x * 0.7, (0.64 + i * 0.09) * size.y, 0.25 * size.x, 0.05 * size.y );
+        ofDrawRectangle(size.x * 0.75, (0.64 + i * 0.09) * size.y, 0.2 * size.x, 0.05 * size.y );
 
         if (i > 0) ofSetColor(filterColors[i - 1], alpha);
         else ofSetColor(255, alpha);
         ofFill();
-        ofDrawRectangle(size.x * 0.7, (0.64 + i * 0.09) * size.y, 0.25 * size.x, 0.05 * size.y );
+        ofDrawRectangle(size.x * 0.75, (0.64 + i * 0.09) * size.y, 0.2 * size.x, 0.05 * size.y );
 
         if (i > 0) ofSetColor(filterColors[i - 1]);
         else ofSetColor(255);
         ofNoFill();
-        ofDrawRectangle(size.x * 0.7, (0.64 + i * 0.09) * size.y, 0.25 * size.x, 0.05 * size.y );
+        ofDrawRectangle(size.x * 0.75, (0.64 + i * 0.09) * size.y, 0.2 * size.x, 0.05 * size.y );
     }
 
     ofPopMatrix();
@@ -163,7 +160,7 @@ void AudioInput::display(ofTrueTypeFont coolvetica) {
 
     }
 
-    plot(drawBins, ofPoint(position.x, position.y), ofPoint(size.x, size.y/2));
+    plot(drawBins, ofPoint(position.x + 0.05* size.x, position.y + 0.05 * size.y), ofPoint(0.9 * size.x, 0.9 * size.y/2));
 
 
 }
@@ -204,7 +201,6 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
     ofSetColor(255);
 
     //ofFill();
-    ofDrawBitmapString("AudioInput", 0.02 * size_.x, 0.1 * size_.y);
 
     ofTranslate(0, size_.y, 0.0);
     ofSetLineWidth(0.1);

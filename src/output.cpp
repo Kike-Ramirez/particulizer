@@ -22,17 +22,19 @@ void Output::setup(ofPoint position_, ofPoint size_) {
 
 void Output::update(ofFbo &layerA, ofFbo &layerB, MainPanel &mainPanel) {
 
-    float alpha = 1 - mainPanel.alphaMain.getVal();
+    float alphaOut = mainPanel.alphaMain.getVal();
+    float alphaSlider = mainPanel.mainSlider.getVal();
 
     if (mainPanel.pushes[0].getVal() == 1) blackout = true;
     else blackout = false;
 
     canvas.begin();
     ofBackground(0);
+    ofFill();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    ofSetColor(255, 255.0 * alpha);
+    ofSetColor(255, 255.0 * alphaSlider * alphaOut);
     layerA.draw(0, 0, canvas.getWidth(), canvas.getHeight());
-    ofSetColor(255, 255.0 * (1.0 - alpha));
+    ofSetColor(255, 255.0 * (1.0 - alphaSlider) * alphaOut);
     layerB.draw(0,0, canvas.getWidth(), canvas.getHeight());
     ofDisableBlendMode();
     canvas.end();
