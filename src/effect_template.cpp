@@ -34,8 +34,9 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, vector<string> _na
         audioFiltersLevel.push_back(0);
     }
 
-    colorFront = ofColor(255);
-    colorBack = ofColor(0);
+    frontColor = ofColor(155);
+    backColor = ofColor(0);
+    selectedColor = ofColor(255);
 
     drawOutput();
 
@@ -91,16 +92,20 @@ void Effect_Template::drawDisplay(const ofTrueTypeFont & coolvetica_) {
 
     ofPushMatrix();
     ofTranslate(position.x, position.y + offSet);
-    ofSetColor(120);
+    ofSetColor(backColor);
     ofFill();
     ofRect(0, 0, size.x, size. y);
+    ofSetColor(frontColor);
+    ofNoFill();
+    ofRect(0, 0, size.x, size.y);
+
 
     if (selected) {
 
-        ofSetColor(255, 0, 0);
+        ofSetColor(selectedColor);
         ofNoFill();
-        ofSetLineWidth(4);
-        ofRect(0, 0, size.x, size. y);
+        ofSetLineWidth(1);
+        ofRect(0.03 * size.x, 0.03 * size.y, 0.94 * size.x, 0.94 * size. y);
         ofSetLineWidth(1);
 
     }
@@ -109,7 +114,10 @@ void Effect_Template::drawDisplay(const ofTrueTypeFont & coolvetica_) {
     ofNoFill();
     smallCanvas.draw(0.05 * size.x, 0.15 * size.y);
 
-    ofSetColor(0);
+    ofSetColor(frontColor);
+    ofDrawRectangle(0.05 * size.x, 0.15 * size.y, smallCanvas.getWidth(), smallCanvas.getHeight());
+
+    ofSetColor(frontColor);
     coolvetica_.drawString(name, 0.08 * size.x + smallCanvas.getWidth(), 0.15 * size.y + 11);
 
     ofPopMatrix();

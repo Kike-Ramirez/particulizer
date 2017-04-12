@@ -22,6 +22,7 @@ protected:
     bool blackout;
     ofTrueTypeFont font;
     string blackoutLabel;
+    ofColor frontColor, backColor, selectedColor;
 
 };
 

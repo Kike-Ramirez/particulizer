@@ -18,6 +18,11 @@ void Output::setup(ofPoint position_, ofPoint size_) {
     font.load("coolvetica.ttf", 20, true, true);
 
     blackoutLabel = "BLACKOUT";
+
+    frontColor = ofColor(155);
+    backColor = ofColor(255);
+    selectedColor = ofColor(255);
+
 }
 
 void Output::update(ofFbo &layerA, ofFbo &layerB, MainPanel &mainPanel) {
@@ -49,6 +54,9 @@ void Output::display() {
         ofTranslate(position);
         ofSetColor(255);
         canvas.draw(0.05 * size.x, 0.05 * size.y, size.x * 0.9, size.y * 0.9);
+        ofSetColor(frontColor);
+        ofNoFill();
+        ofDrawRectangle(0.05 * size.x, 0.05 * size.y, size.x * 0.9, size.y * 0.9);
         ofPopMatrix();
     }
 
@@ -58,10 +66,12 @@ void Output::display() {
         ofSetColor(0);
         ofFill();
         ofDrawRectangle(0.05 * size.x, 0.05 * size.y, size.x * 0.9, size.y * 0.9);
-        ofSetColor(255, 0, 0);
+        ofNoFill();
+        ofSetColor(frontColor);
+        ofDrawRectangle(0.05 * size.x, 0.05 * size.y, size.x * 0.9, size.y * 0.9);
+        ofSetColor(selectedColor);
         ofTranslate(0.5 * (size.x - font.stringWidth(blackoutLabel)), 0.5 * (size.y));
         font.drawString("Blackout", 0, 0);
-        ofNoFill();
         ofPopMatrix();
     }
 

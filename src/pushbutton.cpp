@@ -15,8 +15,9 @@ void PushButton::setup(ofPoint position_, ofPoint size_, int type_) {
 
     label = "label - label";
 
-    frontColor = ofColor(255);
+    frontColor = ofColor(155);
     backColor = ofColor(0);
+    selectedColor = ofColor(255);
 
     val = 0;
     lastVal_ = 0;
@@ -58,11 +59,14 @@ void PushButton::display() {
     float alpha = ofMap(val, 0, 1, 0, 255);
     ofSetColor(frontColor, alpha);
     ofDrawRectangle(0, 0, size.x, size.y);
+
+    ofNoFill();
+    ofSetColor(frontColor);
+    ofDrawRectangle(0, 0, size.x, size.y);
+
     ofColor colorLabel;
     colorLabel.setBrightness(255*(1-val));
     ofSetColor(colorLabel);
-    ofNoFill();
-    ofDrawRectangle(0, 0, size.x, size.y);
     font.drawString(label, 0.5 * (size.x - font.stringWidth(label)), 0.5 * (size.y));
     ofPopMatrix();
 

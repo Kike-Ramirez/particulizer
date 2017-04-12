@@ -11,65 +11,13 @@ void GuiApp::setup(){
 
     ofSetVerticalSync(true);
 
-    // instantiate and position the gui //
-        gui = new ofxDatGui( ofxDatGuiAnchor::TOP_RIGHT );
-
-    // add some components //
-        gui->addTextInput("message", "# particuliZer v0.1 #");
-
-        gui->addFRM();
-        gui->addBreak();
-
-    // add a folder to group a few components together //
-        ofxDatGuiFolder* folder = gui->addFolder("Effect Parameter", ofColor::white);
-        //folder->addTextInput("** input", "nested input field");
-        folder->addSlider("** Radio", 0.0f, 1.0f, 0.5f);
-        folder->addColorPicker("** Front Color", ofColor::fromHex(0xFFFFFF));
-        folder->addColorPicker("** Back Color", ofColor::fromHex(0x000000));
-    // let's have it open by default. note: call this only after you're done adding items //
-        folder->expand();
-
-        gui->addBreak();
-
-    // add a couple range sliders //
-        gui->addSlider("position X", 0.0f, 1.0f, 0.5f);
-        gui->addSlider("position Y", 0.0f, 1.0f, 0.5f);
-
-    // and a slider to adjust the gui opacity //
-        gui->addSlider("datgui opacity", 0, 100, 100);
-
-    // and a couple of simple buttons //
-        gui->addToggle("toggle fullscreen", true);
-
-    // adding the optional header allows you to drag the gui around //
-        gui->addHeader(":: drag me to reposition ::");
-
-    // adding the optional footer allows you to collapse/expand the gui //
-        gui->addFooter();
-
-    // once the gui has been assembled, register callbacks to listen for component specific events //
-        gui->onButtonEvent(this, &GuiApp::onButtonEvent);
-        gui->onToggleEvent(this, &GuiApp::onToggleEvent);
-        gui->onSliderEvent(this, &GuiApp::onSliderEvent);
-        gui->onColorPickerEvent(this, &GuiApp::onColorPickerEvent);
-
-        gui->setOpacity(gui->getSlider("datgui opacity")->getScale());
-        gui->setLabelAlignment(ofxDatGuiAlignment::CENTER);
-
-    // finally let's load up the stock themes, press spacebar to cycle through them //
-        themes = {  new ofxDatGuiTheme(true),
-                    new ofxDatGuiThemeSmoke(),
-                    new ofxDatGuiThemeWireframe(),
-                    new ofxDatGuiThemeMidnight(),
-                    new ofxDatGuiThemeAqua(),
-                    new ofxDatGuiThemeCharcoal(),
-                    new ofxDatGuiThemeAutumn(),
-                    new ofxDatGuiThemeCandy()};
-        tIndex = 0;
+    // Set colorset
+    frontColor = ofColor(155);
+    backColor = ofColor(0);
+    selectedColor = ofColor(255);
 
     // launch the app //
         mFullscreen = false;
-        refreshWindow();
 
     // Initialize fbo layers
 
@@ -136,7 +84,7 @@ void GuiApp::update(){
 void GuiApp::draw(){
 
     // FAKE customization
-    ofBackground(150);
+    ofBackground(backColor);
 
     // Effects
 
@@ -155,8 +103,8 @@ void GuiApp::draw(){
 
     for (int i = 0; i < effects.size(); i++) {
 
-        if (effects[i].assigned == 1) layerA.update(effects[i].effectCanvas);
-        else if (effects[i].assigned == 2) layerB.update(effects[i].effectCanvas);
+        if (effects[i].assigned == 1) layerA.update(effects[i].effectCanvas, nano);
+        else if (effects[i].assigned == 2) layerB.update(effects[i].effectCanvas, nano);
 
     }
     //void audioReceived(float* input, int bufferSize, int nChannels);
@@ -173,14 +121,14 @@ void GuiApp::draw(){
     // Main Controls
     ofSetColor(125);
     ofFill();
-    ofRect(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 0.2 * ofGetWidth(), 0.3 * ofGetHeight());
+    // ofRect(0.5 * ofGetWidth(), 0.5 * ofGetHeight(), 0.2 * ofGetWidth(), 0.3 * ofGetHeight());
     ofSetColor(255);
 
     audioInput.display(coolvetica);
 
     // Output Canvas
     ofSetColor(100);
-    ofRect(0.5 * ofGetWidth(), 0.0, 0.5 * ofGetWidth(), 0.5 * ofGetHeight());
+    //ofRect(0.5 * ofGetWidth(), 0.0, 0.5 * ofGetWidth(), 0.5 * ofGetHeight());
     ofSetColor(255);
 
     output.update(layerA.canvas, layerB.canvas, mainPanel);
@@ -189,50 +137,17 @@ void GuiApp::draw(){
 
     // NanoKorg Controls
     ofSetColor(100);
-    ofRect(0.5 * ofGetWidth(), 0.8 * ofGetHeight(), 0.5 * ofGetWidth(), 0.2 * ofGetHeight());
+    // ofRect(0.5 * ofGetWidth(), 0.8 * ofGetHeight(), 0.5 * ofGetWidth(), 0.2 * ofGetHeight());
     ofSetColor(255);
 
 
 
 }
 
-void GuiApp::onButtonEvent(ofxDatGuiButtonEvent e)
-{
-    cout << "onButtonEvent: " << e.target->getLabel() << endl;
-}
-
-void GuiApp::onToggleEvent(ofxDatGuiToggleEvent e)
-{
-    if (e.target->is("toggle fullscreen")) toggleFullscreen();
-    cout << "onToggleEvent: " << e.target->getLabel() << " " << e.checked << endl;
-}
-
-void GuiApp::onSliderEvent(ofxDatGuiSliderEvent e)
-{
-    cout << "onSliderEvent: " << e.target->getLabel() << " "; e.target->printValue();
-    if (e.target->is("datgui opacity")) gui->setOpacity(e.scale);
-}
-
-
-
-void GuiApp::onColorPickerEvent(ofxDatGuiColorPickerEvent e)
-{
-    cout << "onColorPickerEvent: " << e.target->getLabel() << " " << e.target->getColor() << endl;
-    ofSetBackgroundColor(e.color);
-}
 
 void GuiApp::keyPressed(int key)
 {
-    if (key == 'f') {
-        toggleFullscreen();
-    }
-
-    else if (key == 32){
-        tIndex = tIndex < themes.size()-1 ? tIndex+1 : 0;
-        gui->setTheme(themes[tIndex]);
-    }
-
-    else if (key == OF_KEY_UP) {
+    if (key == OF_KEY_UP) {
 
         if (offSet >= -numEffects * effects[0].size.y + ofGetHeight()) {
             offSet -= 10;
@@ -260,27 +175,11 @@ void GuiApp::keyPressed(int key)
 
 }
 
-void GuiApp::toggleFullscreen()
-{
-    cout << mFullscreen << endl;
-    gui->getToggle("toggle fullscreen")->toggle();
-
-    refreshWindow();
-}
-
-void GuiApp::refreshWindow()
-{
-    ofSetFullscreen(mFullscreen);
-    mFullscreen = !mFullscreen;
-
-    if (!mFullscreen) {
-        ofSetWindowShape(1920, 1400);
-        ofSetWindowPosition((ofGetScreenWidth()/2)-(1920/2), 0);
-    }
-}
 
 void GuiApp::exit() {
+
 }
+
 
 void GuiApp::mouseDragged(int x, int y, int button) {
 

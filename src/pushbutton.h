@@ -13,6 +13,7 @@ public:
     ofPoint size;
     ofColor frontColor;
     ofColor backColor;
+    ofColor selectedColor;
     float val, lastVal_;
     string label;
     ofTrueTypeFont font;

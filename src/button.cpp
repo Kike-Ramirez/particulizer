@@ -11,8 +11,9 @@ void Button::setup(ofPoint position_, ofPoint size_, int type_) {
     size = ofPoint(size_.x, size_.y);
     type = type_;
     val = 0;
-    colorFront = ofColor(255);
-    colorBack = ofColor(0);
+    frontColor = ofColor(155);
+    backColor = ofColor(0);
+    selectedColor = ofColor(255);
 
 }
 
@@ -36,9 +37,9 @@ void Button::display() {
         ofPushMatrix();
         ofTranslate(position.x, position.y);
         ofFill();
-        ofSetColor(colorBack);
+        ofSetColor(backColor);
         ofDrawRectangle(0, 0, size.x, size.y);
-        ofSetColor(colorFront);
+        ofSetColor(frontColor);
         ofDrawRectangle(0, (1 - val) * size.y, size.x, val * size.y );
         ofNoFill();
         ofDrawRectangle(0, 0, size.x, size.y);
@@ -52,9 +53,9 @@ void Button::display() {
         ofPushMatrix();
         ofTranslate(position.x, position.y);
         ofFill();
-        ofSetColor(colorBack);
+        ofSetColor(backColor);
         ofDrawCircle(0, 0, size.x/2);
-        ofSetColor(colorFront);
+        ofSetColor(frontColor);
         ofNoFill();
         ofDrawCircle(0, 0, size.x/2);
 
@@ -72,13 +73,13 @@ void Button::display() {
         ofPushMatrix();
         ofTranslate(position.x, position.y);
         ofFill();
-        ofSetColor(colorBack);
+        ofSetColor(backColor);
         ofDrawRectangle(0, 0, size.x, size.y);
         float alpha = ofMap(val, 0, 1, 0, 255);
-        ofSetColor(colorFront, alpha);
+        ofSetColor(frontColor, alpha);
         ofDrawRectangle(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.9 * size.y );
         ofNoFill();
-        ofSetColor(colorFront);
+        ofSetColor(frontColor);
         ofDrawRectangle(0, 0, size.x, size.y);
         ofPopMatrix();
 
@@ -89,12 +90,12 @@ void Button::display() {
         ofPushMatrix();
         ofTranslate(position.x, position.y);
         ofFill();
-        ofSetColor(colorBack);
+        ofSetColor(backColor);
         ofDrawRectangle(0, 0, size.x, size.y);
         float mappedVal = ofMap(val, 0, 1, 0, 0.9);
-        ofSetColor(colorFront, 100);
+        ofSetColor(frontColor, 100);
         ofDrawRectangle(0, 0, mappedVal * size.x, size.y );
-        ofSetColor(colorFront);
+        ofSetColor(frontColor);
         ofDrawRectangle(mappedVal * size.x, 0, 0.1 * size.x, size.y);
         ofNoFill();
         ofDrawRectangle(0, 0, size.x, size.y);

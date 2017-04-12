@@ -81,6 +81,10 @@ void AudioInput::setup(ofBaseApp *appPtr, ofPoint position_, ofPoint size_) {
     filterColors.push_back(ofColor(255, 0, 255));
     filterColors.push_back(ofColor(0, 255, 255));
 
+    frontColor = ofColor(155);
+    backColor = ofColor(0);
+    selectedColor = ofColor(255);
+
     filterWidth.push_back(0.1);
     filterWidth.push_back(0.1);
     filterWidth.push_back(0.1);
@@ -107,9 +111,9 @@ void AudioInput::display(ofTrueTypeFont coolvetica) {
     // Draw BackPanel
     ofPushMatrix();
     ofTranslate(position.x, position.y);
-    ofSetColor(150);
+    ofSetColor(backColor);
     ofFill();
-    ofRect(0, 0, size.x, size.y);
+    //ofRect(0, 0, size.x, size.y);
     ofSetColor(255);
 
 
@@ -144,10 +148,6 @@ void AudioInput::display(ofTrueTypeFont coolvetica) {
 
     ofPopMatrix();
     
-    for (int i = 0; i < 3; i++) {
-
-    }
-
     for (int i = 0; i < filterFrecuencyButtons.size(); i++) {
 
         filterFrecuencyButtons[i].display();

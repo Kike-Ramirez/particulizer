@@ -35,6 +35,7 @@ public:
     vector<float> filterWidth;
     vector<ofColor> filterColors;
     vector<float> beats, amps;
+    ofColor frontColor, backColor, selectedColor;
     
     ofMutex soundMutex;
 

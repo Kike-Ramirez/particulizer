@@ -37,8 +37,9 @@ class Effect_Template {
     float speed;                        // Speed variable (0 - 1)
     float audioLevel;                   // Main audio Level
     vector<float> audioFiltersLevel;    // Independent levels for each audioFilter;
-    ofColor colorFront;                 // Front Color
-    ofColor colorBack;                  // Backtround Color
+    ofColor frontColor;                 // Front Color
+    ofColor backColor;                  // Backtround Color
+    ofColor selectedColor;              // Selected Color
 
     int dim;        // size
     ofColor color;  // color using ofColor type

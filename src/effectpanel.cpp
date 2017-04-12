@@ -22,6 +22,9 @@ void EffectPanel::display() {
     ofSetColor(backColor);
     ofFill();
     ofDrawRectangle(0, 0, 0.9 * size.x, 0.9 * size.y);
+    ofNoFill();
+    ofSetColor(frontColor);
+    ofDrawRectangle(0, 0, 0.9 * size.x, 0.9 * size.y);
     ofPopMatrix();
 
 }
@@ -35,6 +38,8 @@ void EffectPanel::display(const ofFbo &canvas_) {
     ofDrawRectangle(0, 0, 0.9 * size.x, 0.9 * size.y);
     ofSetColor(255);
     canvas_.draw(0, 0, 0.9 * size.x, 0.9 * size.y);
+    ofSetColor(frontColor);
+    ofDrawRectangle(0, 0, 0.9 * size.x, 0.9 * size.y);
     ofPopMatrix();
 
 }

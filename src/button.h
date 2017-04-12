@@ -11,7 +11,7 @@ public:
     ofPoint size;
     int type;
     float val;
-    ofColor colorBack, colorFront;
+    ofColor backColor, frontColor, selectedColor;
 
     Button();
 
