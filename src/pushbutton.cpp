@@ -6,8 +6,7 @@ PushButton::PushButton()
 }
 
 void PushButton::setup(ofPoint position_, ofPoint size_, int type_) {
-
-    font.load("coolvetica.ttf", 8, true, true);
+    font.load("Aquila Sans.ttf", 10, true, true);
 
     position = ofPoint(position_.x, position_.y);
     size = ofPoint(size_.x, size_.y);

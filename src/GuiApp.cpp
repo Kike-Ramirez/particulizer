@@ -56,7 +56,7 @@ void GuiApp::setup(){
 
         ofTrueTypeFont::setGlobalDpi(72);
 
-        coolvetica.load("coolvetica.ttf", 10, true, true);
+        coolvetica.load("Aquila Sans.ttf", 10, true, true);
         coolvetica.setLineHeight(18.0f);
 
         audioInput.setup(this, ofPoint(0.5 * ofGetWidth(), 0.5 * ofGetHeight()), ofPoint(0.2 * ofGetWidth(), 0.3 * ofGetHeight()));
@@ -81,7 +81,11 @@ void GuiApp::update(){
     nanoPanel.update(nano);
 
     layerA.setAlpha(mainPanel.mainSlider.getVal());
+    layerA.update(nano);
+
     layerB.setAlpha(1 - mainPanel.mainSlider.getVal());
+    layerB.update(nano);
+
 
 
 
@@ -109,8 +113,8 @@ void GuiApp::draw(){
 
     for (int i = 0; i < effects.size(); i++) {
 
-        if (effects[i].assigned == 1) layerA.update(effects[i].effectCanvas, nano);
-        else if (effects[i].assigned == 2) layerB.update(effects[i].effectCanvas, nano);
+        if (effects[i].assigned == 1) layerA.displayCanvas(effects[i].effectCanvas);
+        else if (effects[i].assigned == 2) layerB.displayCanvas(effects[i].effectCanvas);
 
     }
     //void audioReceived(float* input, int bufferSize, int nChannels);
@@ -210,7 +214,6 @@ void GuiApp::mousePressed(int x, int y, int button) {
                     if (j!=i && effects[j].isAssigned() == 1) effects[j].assign(0);
                 }
                 effects[i].assign(1);
-                layerA.unselect();
             }
 
             if (layerB.isSelected()) {
@@ -219,7 +222,6 @@ void GuiApp::mousePressed(int x, int y, int button) {
                     if (j!=i && effects[j].isAssigned() == 2) effects[j].assign(0);
                 }
                 effects[i].assign(2);
-                layerB.unselect();
             }
         }
 
@@ -249,7 +251,15 @@ void GuiApp::mousePressed(int x, int y, int button) {
         else if (layerB.isSelected()) layerB.unselect();
     }
 
-    audioInput.mousePressed(x, y, button);
+    if (x >= audioInput.position.x && x<=audioInput.position.x + audioInput.size.x &&
+            y >= audioInput.position.y && y <= audioInput.position.y + audioInput.size.y) {
+
+        audioInput.mousePressed(x, y, button);
+
+    }
+
+    else audioInput.selected = false;
+
 
 }
 

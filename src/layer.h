@@ -21,7 +21,8 @@ public:
     Layer();
 
     void setup(ofPoint position_, ofPoint size_);
-    void update(const ofFbo & effectCanvas_, NanoKontrol2 & nano);
+    void update(NanoKontrol2 & nano);
+    void displayCanvas(const ofFbo & effectCanvas_);
 
     void display();
     void select();

@@ -76,9 +76,7 @@ void Layer::setup(ofPoint position_, ofPoint size_) {
 
 }
 
-void Layer::update(const ofFbo & effectCanvas_, NanoKontrol2 & nano) {
-
-    canvas = effectCanvas_;
+void Layer::update(NanoKontrol2 & nano) {
 
     if (selected) {
         // Actualizamos valores del controlador MIDI
@@ -95,6 +93,13 @@ void Layer::update(const ofFbo & effectCanvas_, NanoKontrol2 & nano) {
     }
 
 }
+
+void Layer::displayCanvas(const ofFbo &effectCanvas_) {
+
+    canvas = effectCanvas_;
+
+}
+
 
 bool Layer::isSelected() {
 
