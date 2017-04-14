@@ -172,4 +172,14 @@ void Layer::setColors(ofColor frontColor_, ofColor backColor_, ofColor selectedC
     backColor.set(backColor_);
     selectedColor.set(selectedColor_);
 
+    for (int i = 0; i < buttons.size(); i++) {
+
+        buttons[i].setColors(frontColor, backColor, selectedColor);
+    }
+
+    for (int i = 0; i < midButtons.size(); i++) {
+
+        midButtons[i].setColors(frontColor, backColor, selectedColor);
+    }
+
 }

@@ -78,8 +78,17 @@ void MainPanel::setFrontColor(ofColor color_) {
 
 void MainPanel::setColors(ofColor frontColor_, ofColor backColor_, ofColor selectedColor_) {
 
-    frontColor = frontColor_;
-    backColor = backColor_;
-    selectedColor = selectedColor_;
+        frontColor = frontColor_;
+        backColor = backColor_;
+        selectedColor = selectedColor_;
 
-}
+        for (int i = 0; i < pushes.size(); i++) {
+
+            pushes[i].setColors(frontColor, backColor, selectedColor);
+
+        }
+
+        alphaMain.setColors(frontColor, backColor, selectedColor);
+        mainSlider.setColors(frontColor, backColor, selectedColor);
+
+    }

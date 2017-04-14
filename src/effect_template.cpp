@@ -117,7 +117,7 @@ void Effect_Template::drawDisplay(const ofTrueTypeFont & coolvetica_) {
     ofSetColor(frontColor);
     ofDrawRectangle(0.05 * size.x, 0.15 * size.y, smallCanvas.getWidth(), smallCanvas.getHeight());
 
-    ofSetColor(frontColor);
+    ofSetColor(selectedColor);
     coolvetica_.drawString(name, 0.08 * size.x + smallCanvas.getWidth(), 0.15 * size.y + 11);
 
     ofPopMatrix();

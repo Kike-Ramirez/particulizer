@@ -57,7 +57,7 @@ void PushButton::display() {
     ofDrawRectangle(0, 0, size.x, size.y);
 
     float alpha = ofMap(val, 0, 1, 0, 255);
-    ofSetColor(frontColor, alpha);
+    ofSetColor(selectedColor, alpha);
     ofDrawRectangle(0, 0, size.x, size.y);
 
     ofNoFill();
@@ -65,6 +65,7 @@ void PushButton::display() {
     ofDrawRectangle(0, 0, size.x, size.y);
 
     ofColor colorLabel;
+    colorLabel.set(selectedColor);
     colorLabel.setBrightness(255*(1-val));
     ofSetColor(colorLabel);
     font.drawString(label, 0.5 * (size.x - font.stringWidth(label)), 0.5 * (size.y));

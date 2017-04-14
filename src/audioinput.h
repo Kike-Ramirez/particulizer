@@ -19,6 +19,7 @@ public:
     void audioReceived(float* input, int bufferSize, int nChannels);
     void display(ofTrueTypeFont coolvetica);
     void setColors(ofColor frontColor_, ofColor backColor, ofColor selectedColor_);
+    void mousePressed(int x, int y, int button);
 
 
     AudioInput();
@@ -40,6 +41,7 @@ public:
     ofColor frontColor, backColor, selectedColor;
     
     ofMutex soundMutex;
+    bool selected;
 
 
 };

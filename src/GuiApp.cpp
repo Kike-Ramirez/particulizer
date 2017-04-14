@@ -13,7 +13,7 @@ void GuiApp::setup(){
 
     // Set colorset
     frontColor = ofColor(0, 20, 229);
-    backColor = ofColor(30);
+    backColor = ofColor(10);
     selectedColor = ofColor(153, 161, 255);
 
     // launch the app //
@@ -248,6 +248,8 @@ void GuiApp::mousePressed(int x, int y, int button) {
         if (layerA.isSelected()) layerA.unselect();
         else if (layerB.isSelected()) layerB.unselect();
     }
+
+    audioInput.mousePressed(x, y, button);
 
 }
 

@@ -96,4 +96,9 @@ void NanoPanel::setColors(ofColor frontColor_, ofColor backColor_, ofColor selec
     backColor = backColor_;
     selectedColor = selectedColor_;
 
+    for (int i = 0; i < buttons.size(); i++) {
+
+        buttons[i].setColors(frontColor, backColor, selectedColor);
+    }
+
 }

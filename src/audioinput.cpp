@@ -32,47 +32,62 @@ void AudioInput::setup(ofBaseApp *appPtr, ofPoint position_, ofPoint size_) {
     Button button = Button();
 
     // Insert Rotarys
-    button.setup(ofPoint(position.x + size.x * 0.165, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button.setup(ofPoint(position.x + size.x * 0.175, position.y + size.y * 0.57), ofPoint(size.x * 0.05, size.x * 0.05), 1);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.415, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button.setup(ofPoint(position.x + size.x * 0.415, position.y + size.y * 0.57), ofPoint(size.x * 0.05, size.x * 0.05), 1);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.665, position.y + size.y * 0.57), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button.setup(ofPoint(position.x + size.x * 0.655, position.y + size.y * 0.57), ofPoint(size.x * 0.05, size.x * 0.05), 1);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
 
     // Insert Sliders
-    button.setup(ofPoint(position.x + size.x * 0.130, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
+    button.setup(ofPoint(position.x + size.x * 0.155, position.y + size.y * 0.64), ofPoint(size.x * 0.04, size.x * 0.22), 0);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.380, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
+    button.setup(ofPoint(position.x + size.x * 0.395, position.y + size.y * 0.64), ofPoint(size.x * 0.04, size.x * 0.22), 0);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.630, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.27), 0);
+    button.setup(ofPoint(position.x + size.x * 0.635, position.y + size.y * 0.64), ofPoint(size.x * 0.04, size.x * 0.22), 0);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
 
     // Insert Upper pads
-    button.setup(ofPoint(position.x + size.x * 0.050, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.090, position.y + size.y * 0.64), ofPoint(size.x * 0.04, size.x * 0.04), 2);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.300, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.335, position.y + size.y * 0.64), ofPoint(size.x * 0.04, size.x * 0.04), 2);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.550, position.y + size.y * 0.64), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.575, position.y + size.y * 0.64), ofPoint(size.x * 0.04, size.x * 0.04), 2);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
 
     // Insert Lower pads
-    button.setup(ofPoint(position.x + size.x * 0.050, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.090, position.y + size.y * 0.64 + size.x * 0.18), ofPoint(size.x * 0.04, size.x * 0.04), 2);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.300, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.335, position.y + size.y * 0.64 + size.x * 0.18), ofPoint(size.x * 0.04, size.x * 0.04), 2);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
-    button.setup(ofPoint(position.x + size.x * 0.550, position.y + size.y * 0.64 + size.x * 0.2), ofPoint(size.x * 0.07, size.x * 0.07), 2);
+    button.setup(ofPoint(position.x + size.x * 0.575, position.y + size.y * 0.64 + size.x * 0.18), ofPoint(size.x * 0.04, size.x * 0.04), 2);
+    button.setColors(frontColor, backColor, selectedColor);
     filterFrecuencyButtons.push_back(button);
     
     // Insert Mid pads
     PushButton button2;
-    button2.setup(ofPoint(position.x + size.x * 0.050, position.y + size.y * 0.64 + size.x * 0.1), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button2.setup(ofPoint(position.x + size.x * 0.090, position.y + size.y * 0.64 + size.x * 0.09), ofPoint(size.x * 0.04, size.x * 0.04), 1);
     button2.setLabel("");
+    button2.setColors(frontColor, backColor, selectedColor);
     filterMiddleButtons.push_back(button2);
-    button2.setup(ofPoint(position.x + size.x * 0.300, position.y + size.y * 0.64 + size.x * 0.1), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button2.setup(ofPoint(position.x + size.x * 0.335, position.y + size.y * 0.64 + size.x * 0.09), ofPoint(size.x * 0.04, size.x * 0.04), 1);
     button2.setLabel("");
+    button2.setColors(frontColor, backColor, selectedColor);
     filterMiddleButtons.push_back(button2);
-    button2.setup(ofPoint(position.x + size.x * 0.550, position.y + size.y * 0.64 + size.x * 0.1), ofPoint(size.x * 0.07, size.x * 0.07), 1);
+    button2.setup(ofPoint(position.x + size.x * 0.575, position.y + size.y * 0.64 + size.x * 0.09), ofPoint(size.x * 0.04, size.x * 0.04), 1);
     button2.setLabel("");
+    button2.setColors(frontColor, backColor, selectedColor);
     filterMiddleButtons.push_back(button2);
 
 
@@ -97,6 +112,7 @@ void AudioInput::setup(ofBaseApp *appPtr, ofPoint position_, ofPoint size_) {
 
     }
     
+    selected = false;
 
 
 }
@@ -111,10 +127,10 @@ void AudioInput::display(ofTrueTypeFont coolvetica) {
     // Draw BackPanel
     ofPushMatrix();
     ofTranslate(position.x, position.y);
-    ofSetColor(backColor);
-    ofFill();
-    //ofRect(0, 0, size.x, size.y);
-    ofSetColor(255);
+    ofSetColor(selectedColor);
+    ofNoFill();
+    ofSetLineWidth(1);
+    if (selected) ofDrawRectangle(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.9 * size.y);
 
 
 
@@ -133,17 +149,17 @@ void AudioInput::display(ofTrueTypeFont coolvetica) {
         ofSetColor(0);
         ofFill();
 
-        ofDrawRectangle(size.x * 0.75, (0.64 + i * 0.09) * size.y, 0.2 * size.x, 0.05 * size.y );
+        ofDrawRectangle(size.x * 0.75, (0.64 + i * 0.07) * size.y, 0.15 * size.x, 0.04 * size.y );
 
         if (i > 0) ofSetColor(filterColors[i - 1], alpha);
         else ofSetColor(255, alpha);
         ofFill();
-        ofDrawRectangle(size.x * 0.75, (0.64 + i * 0.09) * size.y, 0.2 * size.x, 0.05 * size.y );
+        ofDrawRectangle(size.x * 0.75, (0.64 + i * 0.07) * size.y, 0.15 * size.x, 0.04 * size.y );
 
         if (i > 0) ofSetColor(filterColors[i - 1]);
         else ofSetColor(255);
         ofNoFill();
-        ofDrawRectangle(size.x * 0.75, (0.64 + i * 0.09) * size.y, 0.2 * size.x, 0.05 * size.y );
+        ofDrawRectangle(size.x * 0.75, (0.64 + i * 0.07) * size.y, 0.15 * size.x, 0.04 * size.y );
     }
 
     ofPopMatrix();
@@ -160,7 +176,7 @@ void AudioInput::display(ofTrueTypeFont coolvetica) {
 
     }
 
-    plot(drawBins, ofPoint(position.x + 0.05* size.x, position.y + 0.05 * size.y), ofPoint(0.9 * size.x, 0.9 * size.y/2));
+    plot(drawBins, ofPoint(position.x + 0.1* size.x, position.y + 0.1 * size.y), ofPoint(0.8 * size.x, 0.8 * size.y/2));
 
 
 }
@@ -179,7 +195,7 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
 
     // Draw Filter Images
     ofNoFill();
-    ofSetColor(255);
+    ofSetColor(frontColor);
     ofRect(0, 0, size_.x, size_.y);
 
     for (int i = 0; i < 3; i++) {
@@ -198,12 +214,12 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
 
     }
     
-    ofSetColor(255);
+    ofSetColor(selectedColor);
 
     //ofFill();
 
     ofTranslate(0, size_.y, 0.0);
-    ofSetLineWidth(0.1);
+    ofSetLineWidth(0.5);
     ofBeginShape();
     for (int i = 0; i < n; i++) {
         float xx = ofMap(i, 0, n, 0, size_.x );
@@ -219,21 +235,24 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
 
 void AudioInput::update(NanoKontrol2 &nano) {
 
-    // Actualizamos valores del controlador MIDI
-    for (int i = 0; i < 3; i++) {
+    if (selected) {
 
-        filterFrecuencyButtons[i].update(nano.getRotary(i + 1));
-        filterFrecuencyButtons[i+3].update(nano.getSlider(i + 1));
-        filterFrecuencyButtons[i+6].update(nano.getUpperBtn(i + 1));
-        filterFrecuencyButtons[i+9].update(nano.getLowerBtn(i + 1));
+        // Actualizamos valores del controlador MIDI
+        for (int i = 0; i < 3; i++) {
 
-        filterMiddleButtons[i].update(nano.getMidBtn(i+1));
+            filterFrecuencyButtons[i].update(nano.getRotary(i + 1));
+            filterFrecuencyButtons[i+3].update(nano.getSlider(i + 1));
+            filterFrecuencyButtons[i+6].update(nano.getUpperBtn(i + 1));
+            filterFrecuencyButtons[i+9].update(nano.getLowerBtn(i + 1));
 
-        float step = 0.001;
+            filterMiddleButtons[i].update(nano.getMidBtn(i+1));
 
-        if (nano.getUpperBtn(i+1) >= 1 && filterWidth[i] <= 1) filterWidth[i] += step;
-        if (nano.getLowerBtn(i+1) >= 1 && filterWidth[i] >= 0) filterWidth[i] -= step;
+            float step = 0.001;
 
+            if (nano.getUpperBtn(i+1) >= 1 && filterWidth[i] <= 1) filterWidth[i] += step;
+            if (nano.getLowerBtn(i+1) >= 1 && filterWidth[i] >= 0) filterWidth[i] -= step;
+
+        }
     }
 
     // Calculamos nuevos beats
@@ -334,4 +353,26 @@ void AudioInput::setColors(ofColor frontColor_, ofColor backColor_, ofColor sele
     backColor = backColor_;
     selectedColor = selectedColor_;
 
+    for (int i = 0; i < filterFrecuencyButtons.size(); i++) {
+
+        filterFrecuencyButtons[i].setColors(frontColor, backColor, selectedColor);
+
+    }
+
+    for (int i = 0; i < filterMiddleButtons.size(); i++) {
+
+        filterMiddleButtons[i].setColors(frontColor, backColor, selectedColor);
+
+    }
+
+}
+
+void AudioInput::mousePressed(int x, int y, int button) {
+
+    if (x > position.x && x <= position.x + size.x &&
+            y > position.y && y < position.y + size.y) {
+
+        selected = !selected;
+
+    }
 }

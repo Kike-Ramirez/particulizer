@@ -12,14 +12,6 @@ Project{
         name: { return FileInfo.baseName(path) }
 
         files: [
-            "src/effectpanel.cpp",
-            "src/effectpanel.h",
-            "src/mainpanel.cpp",
-            "src/mainpanel.h",
-            "src/nanopanel.cpp",
-            "src/nanopanel.h",
-            "src/pushbutton.cpp",
-            "src/pushbutton.h",
             'src/GuiApp.cpp',
             'src/GuiApp.h',
             'src/audioinput.cpp',
@@ -28,15 +20,23 @@ Project{
             'src/button.h',
             'src/effect_template.cpp',
             'src/effect_template.h',
+            'src/effectpanel.cpp',
+            'src/effectpanel.h',
             'src/layer.cpp',
             'src/layer.h',
             'src/main.cpp',
+            'src/mainpanel.cpp',
+            'src/mainpanel.h',
             'src/nanokontrol2.cpp',
             'src/nanokontrol2.h',
+            'src/nanopanel.cpp',
+            'src/nanopanel.h',
             'src/ofApp.cpp',
             'src/ofApp.h',
             'src/output.cpp',
             'src/output.h',
+            'src/pushbutton.cpp',
+            'src/pushbutton.h',
         ]
 
         of.addons: [
