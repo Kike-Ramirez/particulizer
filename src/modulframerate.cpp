@@ -25,9 +25,10 @@ void ModulFrameRate::display() {
     ofDrawRectangle(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.9 * size.y);
     ofFill();
     ofSetColor(selectedColor);
-    float level = ofMap(ofGetFrameRate(), 0, 100, 0, 0.9 * size.y);
+    float level = ofMap(ofGetFrameRate(), 0, 60, 0.9 * size.y, 0);
     ofDrawRectangle(0.05 * size.x, 0.05 * size.y + level, 0.9 * size.x, 0.9 * size.y - level);
     ofSetColor(frontColor);
+    ofDrawBitmapString(int(ofGetFrameRate()), 0.05 * size.x + 3, 0.05 * size.y + level + 12);
     ofNoFill();
     ofDrawRectangle(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.9 * size.y);
     ofPopMatrix();

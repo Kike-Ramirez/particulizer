@@ -78,10 +78,10 @@ void GuiApp::setup(){
         mainPanel.setup(ofPoint(0, 0.9 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.1 * ofGetHeight()));
         mainPanel.setColors(frontColor, backColor, selectedColor);
 
-        modulFrameRate.setup(ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight()), ofPoint(0.02 * ofGetWidth(), 0.2 * ofGetHeight()));
+        modulFrameRate.setup(ofPoint(0.97 * ofGetWidth(), 0.8 * ofGetHeight()), ofPoint(0.02 * ofGetWidth(), 0.19 * ofGetHeight()));
         modulFrameRate.setColors(frontColor, backColor, selectedColor);
 
-        nanoPanel.setup(ofPoint(0.52 * ofGetWidth(), 0.8 * ofGetHeight()), ofPoint(0.48 * ofGetWidth(), 0.2 * ofGetHeight()));
+        nanoPanel.setup(ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight()), ofPoint(0.47 * ofGetWidth(), 0.2 * ofGetHeight()));
         nanoPanel.setColors(frontColor, backColor, selectedColor);
 
         effectPanel.setup(ofPoint(0.7 * ofGetWidth(), 0.5 * ofGetHeight()), ofPoint(0.3* ofGetWidth(), 0.3 * ofGetHeight()));
