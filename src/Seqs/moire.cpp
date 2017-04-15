@@ -5,7 +5,7 @@ Moire::Moire()
 
 }
 
-void Moire::update() {
+void Moire::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
 
 }

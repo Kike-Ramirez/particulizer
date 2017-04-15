@@ -2,6 +2,8 @@
 #define EFFECT_TEMPLATE_H
 
 #include "ofMain.h"
+#include "nanopanel.h"
+#include "audioinput.h"
 
 class Effect_Template {
 
@@ -9,7 +11,7 @@ class Effect_Template {
 
     // methods, equivalent to specific functions of your class objects
     void setup(ofPoint _position, ofPoint _size, string name_);	// setup method, use this to setup your object's initial state
-    virtual void update() = 0;                      // update method, used to refresh your objects properties
+    virtual void update(NanoPanel &nanoPanel, AudioInput &audioInput) = 0;                      // update method, used to refresh your objects properties
     virtual void drawOutput() = 0;                  // draw method, this where you'll do the object's drawing
     void drawDisplay(const ofTrueTypeFont & coolvetica_);                 // draw method, this where you'll do the object's drawing
     void setOffset(int _offSet);        // set new Offset for display
@@ -31,7 +33,9 @@ class Effect_Template {
 
     // Variables for live output
     ofMesh points;
-    float speed;
+    float noiseTime;
+    float zoom;
+    float longMesh;
 
     // Canvas
     ofFbo effectCanvas;                 // Canvas to render the effect

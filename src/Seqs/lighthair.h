@@ -9,8 +9,9 @@ class LightHair: public Effect_Template
 public:
 
     LightHair();
+    ofCamera camera;
 
-    void update();
+    void update(NanoPanel &nanoPanel, AudioInput &audioInput);
     void drawOutput();
 
 };

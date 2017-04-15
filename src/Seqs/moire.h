@@ -9,7 +9,7 @@ class Moire: public Effect_Template
 public:
     Moire();
 
-    void update();
+    void update(NanoPanel &nanoPanel, AudioInput &audioInput);
     void drawOutput();
 
 };

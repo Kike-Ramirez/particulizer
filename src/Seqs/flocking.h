@@ -9,7 +9,7 @@ class Flocking: public Effect_Template
 public:
     Flocking();
 
-    void update();
+    void update(NanoPanel &nanoPanel, AudioInput &AudioInput);
     void drawOutput();
 
 };

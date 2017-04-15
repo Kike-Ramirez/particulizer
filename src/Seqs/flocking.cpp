@@ -5,7 +5,7 @@ Flocking::Flocking()
 
 }
 
-void Flocking::update() {
+void Flocking::update(NanoPanel &nanoPanel, AudioInput &AudioInput) {
 
 
 }

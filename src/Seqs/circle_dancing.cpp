@@ -5,7 +5,7 @@ Circle_Dancing::Circle_Dancing()
 
 }
 
-void Circle_Dancing::update() {
+void Circle_Dancing::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
 
 
