@@ -34,22 +34,35 @@ void GuiApp::setup(){
 
         nano.setup();
 
-        vector<string> textos;
-        textos.push_back("1");
-        textos.push_back("2a");
-        textos.push_back("3b");
-
         numEffects = 12;
 
-        for (int i = 0; i < numEffects; i++) {
+        int pos = 0;
+        LightHair sequence0;
+        string name = "Light - Hair Sequence\nAprox. Dur: 250''\nKike Ramirez - 2017";
+        sequence0.setup(ofPoint(0.25 * ofGetWidth(), pos * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), name );
+        sequence0.setColors(frontColor, backColor, selectedColor);
+        effects.push_back(std::make_unique<LightHair>(sequence0));
 
-            Effect_Template effect;
-            string name = "Efecto #" + ofToString(i);
-            effect.setup(ofPoint(0.25 * ofGetWidth(), i * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), textos, name );
-            effect.setColors(frontColor, backColor, selectedColor);
+        pos = 1;
+        Circle_Dancing sequence1;
+        name = "Circle Dancing Sequence\nAprox. Dur: 300''\nKike Ramirez - 2017";
+        sequence1.setup(ofPoint(0.25 * ofGetWidth(), pos * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), name );
+        sequence1.setColors(frontColor, backColor, selectedColor);
+        effects.push_back(std::make_unique<Circle_Dancing>(sequence1));
 
-            effects.push_back(effect);
-        }
+        pos = 2;
+        Moire sequence2;
+        name = "Moire Sequence\nAprox. Dur: 300''\nKike Ramirez - 2017";
+        sequence2.setup(ofPoint(0.25 * ofGetWidth(), pos * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), name );
+        sequence2.setColors(frontColor, backColor, selectedColor);
+        effects.push_back(std::make_unique<Moire>(sequence2));
+
+        pos = 3;
+        Flocking sequence3;
+        name = "Moire Sequence\nAprox. Dur: 300''\nKike Ramirez - 2017";
+        sequence3.setup(ofPoint(0.25 * ofGetWidth(), pos * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), name );
+        sequence3.setColors(frontColor, backColor, selectedColor);
+        effects.push_back(std::make_unique<Flocking>(sequence3));
 
         offSetDelta = 0;
         offSet = 0;
@@ -65,11 +78,15 @@ void GuiApp::setup(){
         mainPanel.setup(ofPoint(0, 0.9 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.1 * ofGetHeight()));
         mainPanel.setColors(frontColor, backColor, selectedColor);
 
-        nanoPanel.setup(ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight()), ofPoint(0.5 * ofGetWidth(), 0.2 * ofGetHeight()));
+        modulFrameRate.setup(ofPoint(0.5 * ofGetWidth(), 0.8 * ofGetHeight()), ofPoint(0.02 * ofGetWidth(), 0.2 * ofGetHeight()));
+        modulFrameRate.setColors(frontColor, backColor, selectedColor);
+
+        nanoPanel.setup(ofPoint(0.52 * ofGetWidth(), 0.8 * ofGetHeight()), ofPoint(0.48 * ofGetWidth(), 0.2 * ofGetHeight()));
         nanoPanel.setColors(frontColor, backColor, selectedColor);
 
         effectPanel.setup(ofPoint(0.7 * ofGetWidth(), 0.5 * ofGetHeight()), ofPoint(0.3* ofGetWidth(), 0.3 * ofGetHeight()));
         effectPanel.setColors(frontColor, backColor, selectedColor);
+
 
 }
 
@@ -101,11 +118,12 @@ void GuiApp::draw(){
     effectPanel.display();
 
     for (int i = 0; i < effects.size(); i++) {
-        effects[i].drawDisplay(coolvetica);
-        if (effects[i].isActive()) {
-            effectPanel.display(effects[i].effectCanvas);
+        effects[i]->drawDisplay(coolvetica);
+        if (effects[i]->isActive()) {
+             effectPanel.display(effects[i]->effectCanvas);
         }
     }
+
 
     // Layers Area
 
@@ -113,13 +131,10 @@ void GuiApp::draw(){
 
     for (int i = 0; i < effects.size(); i++) {
 
-        if (effects[i].assigned == 1) layerA.displayCanvas(effects[i].effectCanvas);
-        else if (effects[i].assigned == 2) layerB.displayCanvas(effects[i].effectCanvas);
+        if (effects[i]->assigned == 1) layerA.displayCanvas(effects[i]->effectCanvas);
+        else if (effects[i]->assigned == 2) layerB.displayCanvas(effects[i]->effectCanvas);
 
     }
-    //void audioReceived(float* input, int bufferSize, int nChannels);
-
-
 
     layerA.display();
     layerB.display();
@@ -127,6 +142,8 @@ void GuiApp::draw(){
     mainPanel.display();
 
     nanoPanel.display();
+
+    modulFrameRate.display();
 
     // Main Controls
     ofSetColor(125);
@@ -159,11 +176,11 @@ void GuiApp::keyPressed(int key)
 {
     if (key == OF_KEY_UP) {
 
-        if (offSet >= -numEffects * effects[0].size.y + ofGetHeight()) {
+        if (offSet >= -numEffects * effects[0]->size.y + ofGetHeight()) {
             offSet -= 10;
             for (int i = 0; i < effects.size(); i++) {
 
-                effects[i].setOffset(offSet);
+                effects[i]->setOffset(offSet);
 
             }
         }
@@ -176,7 +193,7 @@ void GuiApp::keyPressed(int key)
 
             for (int i = 0; i < effects.size(); i++) {
 
-                effects[i].setOffset(offSet);
+                effects[i]->setOffset(offSet);
 
             }
 
@@ -201,31 +218,31 @@ void GuiApp::mousePressed(int x, int y, int button) {
 
     for (int i = 0; i < effects.size(); i++) {
 
-        if (x >= effects[i].position.x && x<=effects[i].position.x + effects[i].size.x &&
-                y >= effects[i].position.y + effects[i].getOffset() &&
-                y<= effects[i].position.y + effects[i].getOffset() + effects[i].size.y) {
+        if (x >= effects[i]->position.x && x<=effects[i]->position.x + effects[i]->size.x &&
+                y >= effects[i]->position.y + effects[i]->getOffset() &&
+                y<= effects[i]->position.y + effects[i]->getOffset() + effects[i]->size.y) {
 
-            effects[i].select();
+            effects[i]->select();
 
             if (layerA.isSelected()) {
 
                 for (int j = 0; j < effects.size(); j++) {
 
-                    if (j!=i && effects[j].isAssigned() == 1) effects[j].assign(0);
+                    if (j!=i && effects[j]->assigned == 1) effects[j]->assign(0);
                 }
-                effects[i].assign(1);
+                effects[i]->assign(1);
             }
 
             if (layerB.isSelected()) {
                 for (int j = 0; j < effects.size(); j++) {
 
-                    if (j!=i && effects[j].isAssigned() == 2) effects[j].assign(0);
+                    if (j!=i && effects[j]->assigned == 2) effects[j]->assign(0);
                 }
-                effects[i].assign(2);
+                effects[i]->assign(2);
             }
         }
 
-        else effects[i].unselect();
+        else effects[i]->unselect();
 
     }
 

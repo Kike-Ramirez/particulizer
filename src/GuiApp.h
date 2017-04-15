@@ -12,6 +12,11 @@
 #include "pushbutton.h"
 #include "mainpanel.h"
 #include "nanopanel.h"
+#include "modulframerate.h"
+#include "./Seqs/lighthair.h"
+#include "./Seqs/circle_dancing.h"
+#include "./Seqs/moire.h"
+#include "./Seqs/flocking.h"
 
 
 
@@ -42,7 +47,8 @@ public:
     NanoPanel nanoPanel;
     EffectPanel effectPanel;
     AudioInput audioInput;
-    vector<Effect_Template> effects;
+    ModulFrameRate modulFrameRate;
+    vector<std::unique_ptr<Effect_Template>> effects;
     float offSetDelta, offSet;
     int numEffects;
     ofTrueTypeFont  coolvetica;

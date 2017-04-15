@@ -34,7 +34,7 @@ void MainPanel::setup(ofPoint position_, ofPoint size_) {
 
     alphaMain.setup(ofPoint(position.x + 0.275 * size.x, position.y + 0.025 * size.y), ofPoint(0.2 * size.x, 0.95 * size.y), 0 );
 
-    mainSlider.setup(ofPoint(0, 0.4 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.1 * ofGetHeight()), 3);
+    mainSlider.setup(ofPoint(0.01 * ofGetWidth(), 0.4 * ofGetHeight()), ofPoint(0.23 * ofGetWidth(), 0.1 * ofGetHeight()), 3);
 
     frontColor = ofColor(155);
     selectedColor = ofColor(255);

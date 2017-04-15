@@ -35,8 +35,6 @@ void ofApp::draw(){
     ofSetColor(255);
     effectCanvas.draw(0,0);
 
-    ofBackground(0);
-    //gui->outputCanvas.draw(0,0, ofGetWidth(), ofGetHeight());
 
 }
 
