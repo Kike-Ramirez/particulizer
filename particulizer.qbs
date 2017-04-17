@@ -12,6 +12,8 @@ Project{
         name: { return FileInfo.baseName(path) }
 
         files: [
+            "src/Resources/segment.cpp",
+            "src/Resources/segment.h",
             "src/Seqs/circle_dancing.cpp",
             "src/Seqs/circle_dancing.h",
             "src/Seqs/flocking.cpp",

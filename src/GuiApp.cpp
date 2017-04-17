@@ -118,9 +118,10 @@ void GuiApp::draw(){
     effectPanel.display();
 
     for (int i = 0; i < effects.size(); i++) {
+        effects[i]->update(nanoPanel,audioInput);
         effects[i]->drawDisplay(coolvetica);
         if (effects[i]->isActive()) {
-             effectPanel.display(effects[i]->effectCanvas);
+            effectPanel.display(effects[i]->effectCanvas);
         }
     }
 

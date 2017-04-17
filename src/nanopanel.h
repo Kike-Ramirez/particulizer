@@ -15,6 +15,7 @@ public:
     ofColor frontColor;
     ofColor backColor;
     ofColor selectedColor;
+    vector<Button> buttons;
 
     NanoPanel();
 
@@ -30,7 +31,6 @@ private:
     int firstDeck;
     int lastDeck;
 
-    vector<Button> buttons;
 
     void loadButtons();
 
