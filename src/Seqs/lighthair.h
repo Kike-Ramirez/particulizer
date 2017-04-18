@@ -13,6 +13,7 @@ public:
     ofCamera camera;
     vector<Segment> segments;
 
+    void postSetup();
     void update(NanoPanel &nanoPanel, AudioInput &audioInput);
     void drawOutput();
 

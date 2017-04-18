@@ -11,6 +11,11 @@ void Circle_Dancing::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
 }
 
+void Circle_Dancing::postSetup() {
+
+
+}
+
 void Circle_Dancing::drawOutput() {
 
     float posX = 100.0 * sin( ofGetElapsedTimeMillis() * 0.01 );

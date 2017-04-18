@@ -5,6 +5,11 @@ Flocking::Flocking()
 
 }
 
+void Flocking::postSetup() {
+
+
+}
+
 void Flocking::update(NanoPanel &nanoPanel, AudioInput &AudioInput) {
 
 

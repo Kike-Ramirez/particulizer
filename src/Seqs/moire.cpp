@@ -5,6 +5,11 @@ Moire::Moire()
 
 }
 
+void Moire::postSetup() {
+
+
+}
+
 void Moire::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
 

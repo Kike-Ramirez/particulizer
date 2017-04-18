@@ -11,6 +11,7 @@ class Effect_Template {
 
     // methods, equivalent to specific functions of your class objects
     void setup(ofPoint _position, ofPoint _size, string name_);	// setup method, use this to setup your object's initial state
+    virtual void postSetup() = 0;
     virtual void update(NanoPanel &nanoPanel, AudioInput &audioInput) = 0;                      // update method, used to refresh your objects properties
     virtual void drawOutput() = 0;                  // draw method, this where you'll do the object's drawing
     void drawDisplay(const ofTrueTypeFont & coolvetica_);                 // draw method, this where you'll do the object's drawing
@@ -34,8 +35,11 @@ class Effect_Template {
     // Variables for live output
     ofMesh points;
     float noiseTime;
-    float zoom;
+    float cameraRadio;
+    float cameraHeight;
     float longMesh;
+    ofVec3f cameraPosition;
+    ofVec3f cameraTarget;
 
     // Canvas
     ofFbo effectCanvas;                 // Canvas to render the effect

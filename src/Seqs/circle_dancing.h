@@ -9,6 +9,7 @@ class Circle_Dancing: public Effect_Template
 public:
     Circle_Dancing();
 
+    void postSetup();
     void update(NanoPanel &nanoPanel, AudioInput &audioInput);
     void drawOutput();
 

@@ -34,6 +34,16 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
 
     }
 
+    // Variables for live output
+
+    noiseTime = 0;
+    cameraRadio = 10;
+    cameraHeight = 10;
+    longMesh = 0;
+    cameraPosition = ofVec3f(0,0,0);
+    cameraTarget = ofVec3f(0,0,0);
+
+    postSetup();
 }
 
 void Effect_Template::setOffset(int _offSet){
@@ -85,7 +95,7 @@ void Effect_Template::drawDisplay(const ofTrueTypeFont & coolvetica_) {
     ofDrawRectangle(0, 0, size.x, size. y);
     ofSetColor(frontColor);
     ofNoFill();
-    ofRect(0, 0, size.x, size.y);
+    ofDrawRectangle(0, 0, size.x, size.y);
 
 
     if (selected) {
