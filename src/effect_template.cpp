@@ -37,6 +37,7 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
     // Variables for live output
 
     noiseTime = 0;
+    particleTime = 0;
     cameraRadio = 10;
     cameraHeight = 10;
     longMesh = 0;

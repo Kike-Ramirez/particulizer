@@ -33,7 +33,7 @@ void Segment::display() {
     vector = endPoint - initPoint;
 
     ofVec3f endPoint2;
-    endPoint2 = initPoint + index * vector;
+    endPoint2 = initPoint + vector * index;
 
     ofDrawLine(initPoint, endPoint2);
     ofSetColor(255);

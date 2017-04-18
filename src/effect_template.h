@@ -35,6 +35,7 @@ class Effect_Template {
     // Variables for live output
     ofMesh points;
     float noiseTime;
+    float particleTime;
     float cameraRadio;
     float cameraHeight;
     float longMesh;

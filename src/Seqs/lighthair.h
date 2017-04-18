@@ -12,6 +12,7 @@ public:
     LightHair();
     ofCamera camera;
     vector<Segment> segments;
+    vector<ofImage> images;
 
     void postSetup();
     void update(NanoPanel &nanoPanel, AudioInput &audioInput);
