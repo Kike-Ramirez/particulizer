@@ -97,6 +97,12 @@ void GuiApp::update(){
     mainPanel.update(nano);
     nanoPanel.update(nano);
 
+    for (int i = 0; i < effects.size(); i++) {
+
+        effects[i]->update(nanoPanel,audioInput);
+
+    }
+
     layerA.setAlpha(mainPanel.mainSlider.getVal());
     layerA.update(nano);
 
@@ -118,7 +124,6 @@ void GuiApp::draw(){
     effectPanel.display();
 
     for (int i = 0; i < effects.size(); i++) {
-        effects[i]->update(nanoPanel,audioInput);
         effects[i]->drawDisplay(coolvetica);
         if (effects[i]->isActive()) {
             effectPanel.display(effects[i]->effectCanvas);

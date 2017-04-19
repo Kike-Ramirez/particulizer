@@ -36,13 +36,22 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
 
     // Variables for live output
 
-    noiseTime = 0;
-    particleTime = 0;
-    cameraRadio = 10;
-    cameraHeight = 10;
-    longMesh = 0;
+
     cameraPosition = ofVec3f(0,0,0);
     cameraTarget = ofVec3f(0,0,0);
+
+    timeCamera = 0;
+    timeParticles = 0;
+
+    for (int i = 0; i < 4; i++) {
+
+        rotarys.push_back(0);
+        sliders.push_back(0);
+        upButtons.push_back(0);
+        midButtons.push_back(0);
+        lowButtons.push_back(0);
+
+    }
 
     postSetup();
 }

@@ -60,28 +60,42 @@ void LightHair::postSetup() {
 
 void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
-    noiseTime += 0.001 * nanoPanel.buttons[0].getVal();
-    particleTime += 0.01 * nanoPanel.buttons[5].getVal();
-    cameraRadio = 10.0 + 1000.0 * (0.2 + 0.8 * ofNoise(10 * noiseTime + 1.0)) * nanoPanel.buttons[1].getVal();
-    cameraHeight = -10.0 - 2000.0 * (0.2 + 0.8 * ofNoise(20 * noiseTime + 2.0)) * nanoPanel.buttons[6].getVal();
+    if (isActive()) {
+        for (int i = 0; i < 4; i++) {
 
-    float cx = cameraRadio * cos(noiseTime * 360 / 2 / PI);
-    float cz = cameraRadio * sin(noiseTime * 360 / 2 / PI);
+            rotarys[i] = nanoPanel.buttons[i*5].getVal();
+            sliders[i] = nanoPanel.buttons[i * 5 + 1].getVal();
+            upButtons[i] = nanoPanel.buttons[i * 5 + 2].getVal();
+            midButtons[i] = nanoPanel.buttons[i * 5 + 3].getVal();
+            lowButtons[i] = nanoPanel.buttons[i * 5 + 4].getVal();
+
+        }
+    }
+
+    timeCamera += 0.001 * rotarys[0];
+
+    if (audioInput.beats[1] == 1) timeCamera -= 0.1;
+
+    timeParticles += 0.01 * sliders[0] - 0.01 * audioInput.beats[2];
+
+    float cameraRadio = 10.0 + 1000.0 * (0.2 + 0.8 * ofNoise(10 * timeCamera + 1.0)) * rotarys[1];
+    float cameraHeight = -10.0 - 2000.0 * (0.2 + 0.8 * ofNoise(20 * timeCamera + 2.0)) * sliders[1];
+
+    float cx = cameraRadio * cos(timeCamera * 360 / 2 / PI);
+    float cz = cameraRadio * sin(timeCamera * 360 / 2 / PI);
     float cy = cameraHeight;
 
     camera.setPosition(cx, cy, cz);
 
-    cout << camera.getPosition() << " " << cameraRadio<<  endl;
-
-    float cx2 = cameraRadio * cos(noiseTime * 360 / 2 / PI + 180.0);
-    float cz2 = cameraRadio * sin(noiseTime * 360 / 2 / PI + 180.0);
+    float cx2 = cameraRadio * cos(timeCamera * 360 / 2 / PI + 180.0);
+    float cz2 = cameraRadio * sin(timeCamera * 360 / 2 / PI + 180.0);
     float cy2 = 0;
 
     camera.lookAt(ofVec3f(cx2, cy2, cz2));
 
     for (float i = 0; i < segments.size(); i++) {
 
-        float value = ofNoise( particleTime  + i * 1.2 + 3.333);
+        float value = ofNoise( timeParticles  + i * 1.2 + 3.333);
         float scale = 50;
 
         ofVec3f initPoint;
@@ -89,9 +103,9 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
         ofVec3f endPoint;
 
-        endPoint.set(scale * (1 - 2 * ofNoise(particleTime + i * 1.3 + 10.0)),
-                     - scale * (0.75 + 0.25 * ofNoise(particleTime + i * 1.4 + 2.3)),
-                     scale * (1 - 2 * ofNoise(particleTime + i * 1.5 + 15.0)));
+        endPoint.set(scale * (1 - 2 * ofNoise(timeParticles + i * 1.3 + 10.0)),
+                     - scale * (0.75 + 0.25 * ofNoise(timeParticles + i * 1.4 + 2.3)),
+                     scale * (1 - 2 * ofNoise(timeParticles + i * 1.5 + 15.0)));
 
         endPoint = endPoint + initPoint;
 
@@ -121,7 +135,6 @@ void LightHair::drawOutput() {
     }
 
     camera.end();
-    ofDrawBitmapString( ofGetFrameRate(), 50, 50 );
     effectCanvas.end();
 
     smallCanvas.begin();
