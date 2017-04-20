@@ -9,6 +9,7 @@ Status: v0.1
 Features:
 - Real time video.
 - GPU oriented.
+- Mesh Warping implemented.
 - Live use oriented.
 - Easy interface.
 - To be controlled using a KORG Nanokontrol (http://www.korg.com/es/products/computergear/nanokontrol2/)
@@ -24,10 +25,8 @@ Features:
 * https://github.com/danomatika/ofxMidi
 * https://github.com/roymacdonald/ofxGLWarper
 * https://github.com/kylemcdonald/ofxFft
-* https://github.com/Kike-Ramirez/ofxKorgNanoKontrol
 
 ## Core:
 * ofxGUI
-* ofxOSC
 * ofxXmlSettings
 * ofxOpenCv
