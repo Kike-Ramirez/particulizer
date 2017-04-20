@@ -34,11 +34,10 @@ class Effect_Template {
 
     // Variables for live output
     ofMesh points;
-    vector<float> rotarys;
-    vector<float> sliders;
-    vector<float> upButtons;
-    vector<float> midButtons;
-    vector<float> lowButtons;
+    vector<float> timePanel;
+    vector<float> cameraPanel;
+    vector<float> particlePanel;
+    vector<float> shaderPanel;
     float timeCamera;
     float timeParticles;
     ofVec3f cameraPosition;

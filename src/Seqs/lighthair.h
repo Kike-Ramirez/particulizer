@@ -4,13 +4,14 @@
 #include "ofMain.h"
 #include "effect_template.h"
 #include "Resources/segment.h"
+#include "Resources/travelling.h"
 
 class LightHair: public Effect_Template
 {
 public:
 
     LightHair();
-    ofCamera camera;
+    Travelling camera;
     vector<Segment> segments;
     vector<ofImage> images;
 

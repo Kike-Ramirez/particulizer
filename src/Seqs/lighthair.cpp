@@ -61,37 +61,22 @@ void LightHair::postSetup() {
 void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
     if (isActive()) {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
 
-            rotarys[i] = nanoPanel.buttons[i*5].getVal();
-            sliders[i] = nanoPanel.buttons[i * 5 + 1].getVal();
-            upButtons[i] = nanoPanel.buttons[i * 5 + 2].getVal();
-            midButtons[i] = nanoPanel.buttons[i * 5 + 3].getVal();
-            lowButtons[i] = nanoPanel.buttons[i * 5 + 4].getVal();
+            timePanel[i] = nanoPanel.buttons[i].getVal();
+            cameraPanel[i] = nanoPanel.buttons[i+5].getVal();
+            particlePanel[i] = nanoPanel.buttons[i+10].getVal();
+            shaderPanel[i] = nanoPanel.buttons[i+15].getVal();
 
         }
     }
 
-    timeCamera += 0.001 * rotarys[0];
 
     if (audioInput.beats[1] == 1) timeCamera -= 0.1;
 
-    timeParticles += 0.01 * sliders[0] - 0.01 * audioInput.beats[2];
+    timeParticles += 0.01 * timePanel[1]; // - 0.01 * audioInput.beats[2];
 
-    float cameraRadio = 10.0 + 1000.0 * (0.2 + 0.8 * ofNoise(10 * timeCamera + 1.0)) * rotarys[1];
-    float cameraHeight = -10.0 - 2000.0 * (0.2 + 0.8 * ofNoise(20 * timeCamera + 2.0)) * sliders[1];
 
-    float cx = cameraRadio * cos(timeCamera * 360 / 2 / PI);
-    float cz = cameraRadio * sin(timeCamera * 360 / 2 / PI);
-    float cy = cameraHeight;
-
-    camera.setPosition(cx, cy, cz);
-
-    float cx2 = cameraRadio * cos(timeCamera * 360 / 2 / PI + 180.0);
-    float cz2 = cameraRadio * sin(timeCamera * 360 / 2 / PI + 180.0);
-    float cy2 = 0;
-
-    camera.lookAt(ofVec3f(cx2, cy2, cz2));
 
     for (float i = 0; i < segments.size(); i++) {
 

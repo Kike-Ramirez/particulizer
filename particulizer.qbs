@@ -14,6 +14,8 @@ Project{
         files: [
             "src/Resources/segment.cpp",
             "src/Resources/segment.h",
+            "src/Resources/travelling.cpp",
+            "src/Resources/travelling.h",
             "src/Seqs/circle_dancing.cpp",
             "src/Seqs/circle_dancing.h",
             "src/Seqs/flocking.cpp",

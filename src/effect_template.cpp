@@ -43,13 +43,12 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
     timeCamera = 0;
     timeParticles = 0;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
 
-        rotarys.push_back(0);
-        sliders.push_back(0);
-        upButtons.push_back(0);
-        midButtons.push_back(0);
-        lowButtons.push_back(0);
+        timePanel.push_back(0);
+        cameraPanel.push_back(0);
+        particlePanel.push_back(0);
+        shaderPanel.push_back(0);
 
     }
 
