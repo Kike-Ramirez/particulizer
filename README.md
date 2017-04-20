@@ -1,12 +1,12 @@
 # particulizer
-Software for real-time graphics developed in openFrameworks v0.9.8 under Ubuntu.
+Software for **live real-time graphics generation**, developed in openFrameworks v0.9.8 under Ubuntu.
 
-Status: v0.1
+**Status: v0.1**
 
 ![alt text](https://github.com/Kike-Ramirez/particulizer/blob/master/bin/data/images/particulizerScreenshot.png "particulizer v0.1 Screenshot")
 
 
-Features:
+**Features:**
 - Real time video.
 - GPU oriented.
 - Mesh Warping implemented.
