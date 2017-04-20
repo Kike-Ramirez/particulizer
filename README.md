@@ -3,7 +3,6 @@ Software for real-time graphics developed in openFrameworks v0.9.8 under Ubuntu.
 
 Status: v0.1
 
-Inline-style: 
 ![alt text](https://github.com/Kike-Ramirez/particulizer/blob/master/bin/data/images/particulizerScreenshot.png "particulizer v0.1 Screenshot")
 
 
