@@ -46,9 +46,17 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
     for (int i = 0; i < 5; i++) {
 
         timePanel.push_back(0);
+        timePanelLocal.push_back(0);
+        timePanelAnt.push_back(0);
         cameraPanel.push_back(0);
+        cameraPanelLocal.push_back(0);
+        cameraPanelAnt.push_back(0);
         particlePanel.push_back(0);
+        particlePanelLocal.push_back(0);
+        particlePanelAnt.push_back(0);
         shaderPanel.push_back(0);
+        shaderPanelLocal.push_back(0);
+        shaderPanelAnt.push_back(0);
 
     }
 
@@ -124,7 +132,7 @@ void Effect_Template::drawDisplay(const ofTrueTypeFont & coolvetica_) {
     ofNoFill();
     ofDrawRectangle(0.05 * size.x, 0.15 * size.y, smallCanvas.getWidth(), smallCanvas.getHeight());
 
-    ofSetColor(selectedColor);
+    ofSetColor(255);
     coolvetica_.drawString(name, 0.08 * size.x + smallCanvas.getWidth(), 0.15 * size.y + 11);
 
     ofPopMatrix();
@@ -140,4 +148,10 @@ void Effect_Template::setColors(ofColor frontColor_, ofColor backColor_, ofColor
     backColor = backColor_;
     selectedColor = selectedColor_;
 
+}
+
+
+void Effect_Template::setName(string name_)
+{
+    name = name_;
 }

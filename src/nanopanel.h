@@ -4,6 +4,7 @@
 #include "ofMain.h"
 #include "nanokontrol2.h"
 #include "button.h"
+#include "pushbutton.h"
 
 
 class NanoPanel
@@ -16,6 +17,7 @@ public:
     ofColor backColor;
     ofColor selectedColor;
     vector<Button> buttons;
+    vector<PushButton> midButtons;
 
     NanoPanel();
 

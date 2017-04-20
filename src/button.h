@@ -12,6 +12,7 @@ public:
     int type;
     float val;
     ofColor backColor, frontColor, selectedColor;
+    string texto;
 
     Button();
 

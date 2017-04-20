@@ -11,12 +11,15 @@ public:
 
     ofVec3f position;
     ofVec3f size;
-    int modeTravelling;
-    int modeTargeting;
+    int modeTravelling, maxModeTravelling;
+    int modeTargeting, maxModeTargeting;
+    float offsetTime;
+
     void setupTravelling(ofVec3f position_, ofVec3f size_);
     void setModeTravelling(int mode_);
     void setModeTargeting(int mode_);
-    void updateTravelling(int ellapsedTime_, vector<float> &cameraPanel_);
+    void updateTravelling(float ellapsedTime_, vector<float> &cameraPanel_);
+    void moveTravelling(int delta_);
 
 };
 

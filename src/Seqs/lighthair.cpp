@@ -25,7 +25,7 @@ void LightHair::postSetup() {
 
         for (int j = -limitV; j < limitV; j += step) {
 
-            ofVec3f initPoint = ofVec3f(i + ofRandom(-rndLimit, rndLimit), 0, j + ofRandom(-rndLimit, rndLimit) );
+            ofVec3f initPoint = ofVec3f(i + ofRandom(-rndLimit, rndLimit), 0, j + ofRandom(-rndLimit, rndLimit));
 
             ofColor col = images[0].getColor(initPoint.x + limitH, initPoint.z + limitV);
             float scale = 50;
@@ -54,33 +54,99 @@ void LightHair::postSetup() {
         }
     }
 
+    camera.setupTravelling(ofVec3f(0, 0, 0), ofVec3f(1.0 * limitH, 2.0 * limitH, 1.0 * limitV ));
     camera.setupPerspective();
+
 
 }
 
 void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
+    // Update values from NanoKontrol if the effect is active
+
     if (isActive()) {
         for (int i = 0; i < 5; i++) {
 
-            timePanel[i] = nanoPanel.buttons[i].getVal();
-            cameraPanel[i] = nanoPanel.buttons[i+5].getVal();
-            particlePanel[i] = nanoPanel.buttons[i+10].getVal();
-            shaderPanel[i] = nanoPanel.buttons[i+15].getVal();
+            if (i < 2) {
+                timePanel[i] = nanoPanel.buttons[i].getVal();
+                cameraPanel[i] = nanoPanel.buttons[i+4].getVal();
+                particlePanel[i] = nanoPanel.buttons[i+8].getVal();
+                shaderPanel[i] = nanoPanel.buttons[i+12].getVal();
+            }
 
+            else if ( i == 3)
+            {
+                timePanel[i] = nanoPanel.midButtons[0].getVal();
+                cameraPanel[i] = nanoPanel.midButtons[1].getVal();
+                particlePanel[i] = nanoPanel.midButtons[2].getVal();
+                shaderPanel[i] = nanoPanel.midButtons[3].getVal();
+
+            }
+
+            else {
+
+                timePanelLocal[i] = nanoPanel.buttons[i].getVal();
+                if (timePanelAnt[i] == 0 && timePanelLocal[i] == 1) {
+                    timePanel[i] = 1;
+                    timePanelAnt[i] = timePanelLocal[i];
+                }
+
+                else {
+                    timePanel[i] = 0;
+                    timePanelAnt[i] = timePanelLocal[i];
+                }
+
+
+                cameraPanelLocal[i] = nanoPanel.buttons[i + 4].getVal();
+                if (cameraPanelAnt[i] == 0 && cameraPanelLocal[i] == 1) {
+                    cameraPanel[i] = 1;
+                    cameraPanelAnt[i] = cameraPanelLocal[i];
+                }
+
+                else {
+                    cameraPanel[i] = 0;
+                    cameraPanelAnt[i] = cameraPanelLocal[i];
+                }
+
+                particlePanelLocal[i] = nanoPanel.buttons[i + 8].getVal();
+                if (particlePanelAnt[i] == 0 && particlePanelLocal[i] == 1) {
+                    particlePanel[i] = 1;
+                    particlePanelAnt[i] = particlePanelLocal[i];
+                }
+
+                else {
+                    particlePanel[i] = 0;
+                    particlePanelAnt[i] = particlePanelLocal[i];
+                }
+
+                shaderPanelLocal[i] = nanoPanel.buttons[i + 12].getVal();
+                if (shaderPanelAnt[i] == 0 && shaderPanelLocal[i] == 1) {
+                    shaderPanel[i] = 1;
+                    shaderPanelAnt[i] = shaderPanelLocal[i];
+                }
+
+                else {
+                    shaderPanel[i] = 0;
+                    shaderPanelAnt[i] = shaderPanelLocal[i];
+                }
+
+            }
         }
     }
 
 
-    if (audioInput.beats[1] == 1) timeCamera -= 0.1;
+    // Modify time parameters according to audio levels
+    // if (audioInput.beats[1] == 1) timeCamera -= 0.1;
 
+    // Modify time parameters according to NanoKontrol values
+    timeCamera += 0.002 * timePanel[0];
     timeParticles += 0.01 * timePanel[1]; // - 0.01 * audioInput.beats[2];
 
 
-
+    // Update particles
     for (float i = 0; i < segments.size(); i++) {
 
-        float value = ofNoise( timeParticles  + i * 1.2 + 3.333);
+        float value = pow(ofNoise( timeParticles  + i * 1.2 + 3.333), 2);
         float scale = 50;
 
         ofVec3f initPoint;
@@ -89,7 +155,7 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
         ofVec3f endPoint;
 
         endPoint.set(scale * (1 - 2 * ofNoise(timeParticles + i * 1.3 + 10.0)),
-                     - scale * (0.75 + 0.25 * ofNoise(timeParticles + i * 1.4 + 2.3)),
+                     - scale * (0.01 + 0.99 * ofNoise(timeParticles + i * 1.4 + 2.3)),
                      scale * (1 - 2 * ofNoise(timeParticles + i * 1.5 + 15.0)));
 
         endPoint = endPoint + initPoint;
@@ -99,14 +165,33 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
     }
 
+    // Update camera movements
+    camera.updateTravelling(timeCamera, cameraPanel);
+
+    string modeTrav;
+
+    if (camera.modeTravelling  == 0) modeTrav = "FIXED";
+    else if (camera.modeTravelling  == 1) modeTrav = "CIRCULAR";
+    else if (camera.modeTravelling  == 2) modeTrav = "SPHERICAL";
+    else if (camera.modeTravelling  == 3) modeTrav = "PERLIN 3D";
+
+
+    string modeTarg;
+
+    if (camera.modeTargeting  == 0) modeTarg = "FIXED";
+    else if (camera.modeTargeting  == 1) modeTarg = "CIRCULAR";
+    else if (camera.modeTargeting  == 2) modeTarg = "SPHERICAL";
+    else if (camera.modeTargeting  == 3) modeTarg = "PERLIN 3D";
+
+    string modeRandom;
+    if (cameraPanel[3] == 1) modeRandom = "RANDOM";
+    else modeRandom = "FIXED";
+
+    this->setName("Radio Mode: " + modeRandom + "\nTravel Mode: " + modeTrav + "\nTarget Mode: " + modeTarg);
+
 }
 
 void LightHair::drawOutput() {
-
-    float rotatePos = sin( ofGetElapsedTimeMillis() * 0.001 );
-
-
-//    camera.lookAt(ofVec3f(0,0,0));
 
     effectCanvas.begin();
 

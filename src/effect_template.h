@@ -17,6 +17,7 @@ class Effect_Template {
     void drawDisplay(const ofTrueTypeFont & coolvetica_);                 // draw method, this where you'll do the object's drawing
     void setOffset(int _offSet);        // set new Offset for display
     float getOffset();                  // Get Offset for display
+    void setName(string name_);
     void select();                      // Select display
     void unselect();                    // Unselect display
     bool isActive();                    // Return whether the effect is selected or not
@@ -34,10 +35,10 @@ class Effect_Template {
 
     // Variables for live output
     ofMesh points;
-    vector<float> timePanel;
-    vector<float> cameraPanel;
-    vector<float> particlePanel;
-    vector<float> shaderPanel;
+    vector<float> timePanel, timePanelLocal, timePanelAnt;
+    vector<float> cameraPanel, cameraPanelLocal, cameraPanelAnt;
+    vector<float> particlePanel, particlePanelLocal, particlePanelAnt;
+    vector<float> shaderPanel, shaderPanelLocal, shaderPanelAnt;
     float timeCamera;
     float timeParticles;
     ofVec3f cameraPosition;

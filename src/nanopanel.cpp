@@ -33,22 +33,28 @@ void NanoPanel::loadButtons() {
         float posYDeck = position.y; // + 0.05 * size.y;
 
         Button button;
+        PushButton pushButton;
 
         float radioRotary = 0.3 * deckWidth;
 
         button.setup(ofPoint(posXDeck + 0.65 * deckWidth, posYDeck + 0.2 * deckHeight), ofPoint(radioRotary, radioRotary), 1);
+        button.setColors(frontColor, backColor, selectedColor);
         buttons.push_back(button);
 
         button.setup(ofPoint(posXDeck + 0.5 * deckWidth, posYDeck + 0.4 * deckHeight), ofPoint(0.3 * deckWidth, deckHeight * 0.6), 0);
+        button.setColors(frontColor, backColor, selectedColor);
         buttons.push_back(button);
 
         button.setup(ofPoint(posXDeck + 0.15 * deckWidth, posYDeck + 0.4 * deckHeight), ofPoint(0.15 * deckWidth, deckHeight * 0.15), 2);
+        button.setColors(frontColor, backColor, selectedColor);
         buttons.push_back(button);
 
-        button.setup(ofPoint(posXDeck + 0.15 * deckWidth, posYDeck + 0.6 * deckHeight), ofPoint(0.15 * deckWidth, deckHeight * 0.15), 2);
-        buttons.push_back(button);
+        pushButton.setup(ofPoint(posXDeck + 0.15 * deckWidth, posYDeck + 0.6 * deckHeight), ofPoint(0.15 * deckWidth, deckHeight * 0.15), 1);
+        pushButton.setColors(frontColor, backColor, selectedColor);
+        midButtons.push_back(pushButton);
 
         button.setup(ofPoint(posXDeck + 0.15 * deckWidth, posYDeck + 0.8 * deckHeight), ofPoint(0.15 * deckWidth, deckHeight * 0.15), 2);
+        button.setColors(frontColor, backColor, selectedColor);
         buttons.push_back(button);
 
     }
@@ -69,13 +75,16 @@ void NanoPanel::update(NanoKontrol2 &nano) {
 
     for (int i = firstDeck; i <= lastDeck; i++) {
 
-        buttons[(i - firstDeck) * 5].update(nano.getRotary(i));
-        buttons[(i - firstDeck) * 5 + 1].update(nano.getSlider(i));
-        buttons[(i - firstDeck) * 5 + 2].update(nano.getUpperBtn(i));
-        buttons[(i - firstDeck) * 5 + 3].update(nano.getMidBtn(i));
-        buttons[(i - firstDeck) * 5 + 4].update(nano.getLowerBtn(i));
-
+        buttons[(i - firstDeck) * 4].update(nano.getRotary(i));
+        buttons[(i - firstDeck) * 4 + 1].update(nano.getSlider(i));
+        buttons[(i - firstDeck) * 4 + 2].update(nano.getUpperBtn(i));
+        buttons[(i - firstDeck) * 4 + 3].update(nano.getLowerBtn(i));
+        midButtons[(i - firstDeck)].update(nano.getMidBtn(i));
+        cout << midButtons[(i - firstDeck)].getVal() << " ";
     }
+
+    cout << endl;
+
 
 }
 
@@ -84,6 +93,12 @@ void NanoPanel::display() {
     for (int i = 0; i < buttons.size(); i++) {
 
         buttons[i].display();
+
+    }
+
+    for (int i = 0; i < midButtons.size(); i++) {
+
+        midButtons[i].display();
 
     }
 

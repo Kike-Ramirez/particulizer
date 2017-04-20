@@ -14,6 +14,8 @@ Project{
         files: [
             "src/Resources/segment.cpp",
             "src/Resources/segment.h",
+            "src/Resources/shadermanager.cpp",
+            "src/Resources/shadermanager.h",
             "src/Resources/travelling.cpp",
             "src/Resources/travelling.h",
             "src/Seqs/circle_dancing.cpp",
