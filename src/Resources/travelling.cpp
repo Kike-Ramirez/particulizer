@@ -40,6 +40,7 @@ void Travelling::updateTravelling(float elapsedTime_, vector<float> &cameraPanel
 
     if (cameraPanel_[4] == 1.0)
     {
+        cout << "Dentro" << endl;
         modeTargeting++;
         if (modeTargeting >= maxModeTargeting) modeTargeting = 0;
 
@@ -141,9 +142,6 @@ void Travelling::updateTravelling(float elapsedTime_, vector<float> &cameraPanel
             lookAt(ofVec3f(cx, cy, cz));
 
         }
-
-    cout << this->getPosition() << " " << this->getLookAtDir() << " " << modeTargeting << " " << modeTravelling << endl;
-
 
 }
 

@@ -80,10 +80,8 @@ void NanoPanel::update(NanoKontrol2 &nano) {
         buttons[(i - firstDeck) * 4 + 2].update(nano.getUpperBtn(i));
         buttons[(i - firstDeck) * 4 + 3].update(nano.getLowerBtn(i));
         midButtons[(i - firstDeck)].update(nano.getMidBtn(i));
-        cout << midButtons[(i - firstDeck)].getVal() << " ";
     }
 
-    cout << endl;
 
 
 }

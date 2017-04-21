@@ -9,7 +9,7 @@ int main( ){
 
 
     settings.width = 1280;
-    settings.height = 720;
+    settings.height = 1024;
 	settings.setPosition(ofVec2f(300,0));
 	settings.resizable = true;
     settings.monitor = 0;
@@ -21,7 +21,7 @@ int main( ){
 	settings.setPosition(ofVec2f(0,0));
     settings.resizable = true;
     settings.monitor = 1;
-
+    settings.shareContextWith = mainWindow;
     settings.decorated = true;
 	shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
 

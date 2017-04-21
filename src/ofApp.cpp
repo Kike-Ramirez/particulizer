@@ -3,12 +3,12 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+
 	ofBackground(255);
 	ofSetCircleResolution(200);
     screenWidth = ofGetWidth();
     screenHeight = ofGetHeight();
 
-    effectCanvas.allocate(screenWidth, screenHeight);
 
 }
 
@@ -26,14 +26,9 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 
-    effectCanvas.begin();
-    ofBackground(0);
-    gui->output.canvas.draw(0,0, effectCanvas.getWidth(), effectCanvas.getHeight());
-    effectCanvas.end();
-
     ofBackground(0);
     ofSetColor(255);
-    effectCanvas.draw(0,0);
+    this->gui->output.canvas.getTexture().draw(0,0);
 
 
 }
@@ -85,8 +80,6 @@ void ofApp::mouseExited(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-
-    effectCanvas.allocate(w, h);
 
 }
 

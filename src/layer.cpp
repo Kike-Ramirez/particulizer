@@ -17,7 +17,7 @@ void Layer::setup(ofPoint position_, ofPoint size_) {
     backColor = ofColor(0);
     selectedColor = ofColor(255);
 
-    canvas.allocate(1024, 768);
+    canvas.allocate(1280, 1024);
 
     canvas.begin();
     ofBackground(0);
@@ -113,15 +113,17 @@ void Layer::display() {
     ofTranslate(position.x, position.y);
 
     ofSetColor(255);
-    canvas.draw(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.9 * size.x * 9 / 16.0);
+    float dist = (0.9 * size.x - 0.6 * size.y * 5.0 / 4.0) * 0.5;
+
+    canvas.draw(0.05 * size.x + dist, 0.05 * size.y, 0.6 * size.y * 5.0 / 4.0, 0.6 * size.y);
 
     ofSetColor(frontColor);
     ofNoFill();
-    ofDrawRectangle(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.9 * size.x * 9 / 16.0);
+    ofDrawRectangle(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.6 * size.y);
 
     ofSetColor(selectedColor, alpha * 255);
     ofSetLineWidth(4);
-    ofDrawRectangle(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.9 * size.x * 9 / 16.0);
+    ofDrawRectangle(0.05 * size.x, 0.05 * size.y, 0.9 * size.x, 0.6 * size.y);
     ofSetLineWidth(1);
 
     //ofSetColor(greyLevel - 30);

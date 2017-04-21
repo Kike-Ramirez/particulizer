@@ -16,12 +16,14 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
     offSet = 0;
 
     // Canvas
-    effectCanvas.allocate(1024, 768);                 // Canvas to render the effect
-    smallCanvas.allocate(0.7 * size.y * 16.0 / 9.0, 0.7 * size.y); // Small canvas for Effect Layer Preview
+    effectCanvas.allocate(1280, 1024);                 // Canvas to render the effect
+    smallCanvas.allocate(0.7 * size.y * 5.0 / 4.0, 0.7 * size.y); // Small canvas for Effect Layer Preview
+
+
+    // Customization
     frontColor = ofColor(155);
     backColor = ofColor(0);
     selectedColor = ofColor(255);
-    drawOutput();
 
     float speed = 0;
 
@@ -61,6 +63,10 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
     }
 
     postSetup();
+
+    // Draw Output
+    drawOutput();
+
 }
 
 void Effect_Template::setOffset(int _offSet){
@@ -137,7 +143,9 @@ void Effect_Template::drawDisplay(const ofTrueTypeFont & coolvetica_) {
 
     ofPopMatrix();
 
-    if (selected || isAssigned()) drawOutput();
+    if (selected || isAssigned()) {
+        this->drawOutput();
+    }
 
 }
 

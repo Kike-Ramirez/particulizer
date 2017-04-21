@@ -12,6 +12,9 @@ public:
 
     LightHair();
     Travelling camera;
+    ofxPostGlitch glitch;
+    ofFbo testCanvas;
+
     vector<Segment> segments;
     vector<ofImage> images;
 

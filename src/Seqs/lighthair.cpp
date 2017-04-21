@@ -13,6 +13,9 @@ void LightHair::postSetup() {
     images.clear();
     images.push_back(image);
 
+    testCanvas.allocate(effectCanvas.getWidth(), effectCanvas.getHeight());
+
+    glitch.setup(&testCanvas);
 
     points.clear();
 
@@ -57,6 +60,7 @@ void LightHair::postSetup() {
     camera.setupTravelling(ofVec3f(0, 0, 0), ofVec3f(1.0 * limitH, 2.0 * limitH, 1.0 * limitV ));
     camera.setupPerspective();
 
+    glitch.setFx(OFXPOSTGLITCH_CONVERGENCE, true);
 
 }
 
@@ -132,6 +136,7 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
             }
         }
+
     }
 
 
@@ -168,6 +173,11 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
     // Update camera movements
     camera.updateTravelling(timeCamera, cameraPanel);
 
+    // Update Effects&Shaders modes
+
+
+
+    // Set texts
     string modeTrav;
 
     if (camera.modeTravelling  == 0) modeTrav = "FIXED";
@@ -187,11 +197,12 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
     if (cameraPanel[3] == 1) modeRandom = "RANDOM";
     else modeRandom = "FIXED";
 
-    this->setName("Radio Mode: " + modeRandom + "\nTravel Mode: " + modeTrav + "\nTarget Mode: " + modeTarg);
+    this->setName("Radio Mode: " + modeRandom + "\nTravel Mode: " + modeTrav + "\nTarget Mode: " + modeTarg + "\nShader: " + "GLOW");
 
 }
 
 void LightHair::drawOutput() {
+
 
     effectCanvas.begin();
 
@@ -206,6 +217,8 @@ void LightHair::drawOutput() {
 
     camera.end();
     effectCanvas.end();
+
+    // glitch.generateFx();
 
     smallCanvas.begin();
     ofBackground(0);
