@@ -5,6 +5,7 @@
 #include "nanopanel.h"
 #include "audioinput.h"
 #include "ofxPostGlitch.h"
+#include "constants.h"
 
 class Effect_Template {
 

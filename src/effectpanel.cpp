@@ -36,10 +36,10 @@ void EffectPanel::display(const ofFbo &canvas_) {
 
     ofSetColor(0);
 
-    float distX = (0.9 * size.x - 0.9 * size.y * 5.0 / 4.0) * 0.5;
+    float distX = (0.9 * size.x - 0.9 * size.y * Constants::ASPECT_RATIO) * 0.5;
     ofDrawRectangle(0, 0, 0.9 * size.x, 0.9 * size.y);
     ofSetColor(255);
-    canvas_.draw(distX, 0, 0.9 * size.y * 5.0 / 4.0,  0.9 * size.y);
+    canvas_.draw(distX, 0, 0.9 * size.y * Constants::ASPECT_RATIO,  0.9 * size.y);
     ofSetColor(frontColor);
     ofDrawRectangle(0, 0, 0.9 * size.x, 0.9 * size.y);
     ofPopMatrix();

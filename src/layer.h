@@ -5,6 +5,7 @@
 #include "button.h"
 #include "pushbutton.h"
 #include "nanokontrol2.h"
+#include "constants.h"
 
 class Layer
 {

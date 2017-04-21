@@ -3,6 +3,7 @@
 
 #include "ofMain.h"
 #include "mainpanel.h"
+#include "constants.h"
 
 class Output
 {

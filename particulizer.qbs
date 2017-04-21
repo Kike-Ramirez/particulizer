@@ -12,6 +12,7 @@ Project{
         name: { return FileInfo.baseName(path) }
 
         files: [
+            "src/constants.h",
             'src/GuiApp.cpp',
             'src/GuiApp.h',
             'src/Resources/segment.cpp',

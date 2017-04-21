@@ -2,14 +2,15 @@
 #include "ofApp.h"
 #include "GuiApp.h"
 #include "ofAppGLFWWindow.h"
+#include "constants.h"
 
 //========================================================================
 int main( ){
 	ofGLFWWindowSettings settings;
 
 
-    settings.width = 1280;
-    settings.height = 1024;
+    settings.width = Constants::OUTPUT_WIDTH;
+    settings.height = Constants::OUTPUT_HEIGHT;
 	settings.setPosition(ofVec2f(300,0));
 	settings.resizable = true;
     settings.monitor = 0;

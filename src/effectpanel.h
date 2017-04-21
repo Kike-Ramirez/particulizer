@@ -2,6 +2,7 @@
 #define EFFECTPANEL_H
 
 #include "ofMain.h"
+#include "constants.h"
 
 
 class EffectPanel

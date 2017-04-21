@@ -16,8 +16,8 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
     offSet = 0;
 
     // Canvas
-    effectCanvas.allocate(1280, 1024);                 // Canvas to render the effect
-    smallCanvas.allocate(0.7 * size.y * 5.0 / 4.0, 0.7 * size.y); // Small canvas for Effect Layer Preview
+    effectCanvas.allocate(Constants::OUTPUT_WIDTH, Constants::OUTPUT_HEIGHT);                 // Canvas to render the effect
+    smallCanvas.allocate(0.7 * size.y * Constants::ASPECT_RATIO, 0.7 * size.y); // Small canvas for Effect Layer Preview
 
 
     // Customization

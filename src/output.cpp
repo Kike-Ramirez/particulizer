@@ -11,7 +11,7 @@ void Output::setup(ofPoint position_, ofPoint size_) {
     position = ofPoint(position_.x, position_.y);
     size = ofPoint(size_.x, size_.y);
 
-    canvas.allocate(1280, 1024);
+    canvas.allocate(Constants::OUTPUT_WIDTH, Constants::OUTPUT_HEIGHT);
 
     blackout = false;
 
@@ -61,8 +61,8 @@ void Output::display() {
         ofPushMatrix();
         ofTranslate(position);
         ofSetColor(255);
-        float dist = (0.9 * size.x - 0.9 * size.y * 5.0 / 4.0 ) * 0.5;
-        canvas.draw(0.05 * size.x + dist, 0.05 * size.y, size.y * 0.9 * 5.0 / 4.0, size.y * 0.9);
+        float dist = (0.9 * size.x - 0.9 * size.y * Constants::ASPECT_RATIO ) * 0.5;
+        canvas.draw(0.05 * size.x + dist, 0.05 * size.y, size.y * 0.9 * Constants::ASPECT_RATIO, size.y * 0.9);
         ofSetColor(frontColor);
         ofNoFill();
         ofDrawRectangle(0.05 * size.x, 0.05 * size.y, size.x * 0.9, size.y * 0.9);
