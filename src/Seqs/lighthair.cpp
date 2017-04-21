@@ -13,10 +13,6 @@ void LightHair::postSetup() {
     images.clear();
     images.push_back(image);
 
-    testCanvas.allocate(effectCanvas.getWidth(), effectCanvas.getHeight());
-
-    glitch.setup(&testCanvas);
-
     points.clear();
 
     float limitH = images[0].getWidth() * 0.95 / 2.0;
@@ -60,8 +56,6 @@ void LightHair::postSetup() {
     camera.setupTravelling(ofVec3f(0, 0, 0), ofVec3f(1.0 * limitH, 2.0 * limitH, 1.0 * limitV ));
     camera.setupPerspective();
 
-    glitch.setFx(OFXPOSTGLITCH_CONVERGENCE, true);
-
 }
 
 void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
@@ -89,7 +83,9 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
             else {
 
-                timePanelLocal[i] = nanoPanel.buttons[i].getVal();
+                int j = i;
+                if (i == 4) j = i - 1;
+                timePanelLocal[i] = nanoPanel.buttons[j].getVal();
                 if (timePanelAnt[i] == 0 && timePanelLocal[i] == 1) {
                     timePanel[i] = 1;
                     timePanelAnt[i] = timePanelLocal[i];
@@ -101,7 +97,7 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
                 }
 
 
-                cameraPanelLocal[i] = nanoPanel.buttons[i + 4].getVal();
+                cameraPanelLocal[i] = nanoPanel.buttons[j + 4].getVal();
                 if (cameraPanelAnt[i] == 0 && cameraPanelLocal[i] == 1) {
                     cameraPanel[i] = 1;
                     cameraPanelAnt[i] = cameraPanelLocal[i];
@@ -112,7 +108,7 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
                     cameraPanelAnt[i] = cameraPanelLocal[i];
                 }
 
-                particlePanelLocal[i] = nanoPanel.buttons[i + 8].getVal();
+                particlePanelLocal[i] = nanoPanel.buttons[j + 8].getVal();
                 if (particlePanelAnt[i] == 0 && particlePanelLocal[i] == 1) {
                     particlePanel[i] = 1;
                     particlePanelAnt[i] = particlePanelLocal[i];
@@ -123,7 +119,7 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
                     particlePanelAnt[i] = particlePanelLocal[i];
                 }
 
-                shaderPanelLocal[i] = nanoPanel.buttons[i + 12].getVal();
+                shaderPanelLocal[i] = nanoPanel.buttons[j + 12].getVal();
                 if (shaderPanelAnt[i] == 0 && shaderPanelLocal[i] == 1) {
                     shaderPanel[i] = 1;
                     shaderPanelAnt[i] = shaderPanelLocal[i];
@@ -218,12 +214,5 @@ void LightHair::drawOutput() {
     camera.end();
     effectCanvas.end();
 
-    // glitch.generateFx();
-
-    smallCanvas.begin();
-    ofBackground(0);
-    ofSetColor(255);
-    effectCanvas.draw(0,0,smallCanvas.getWidth(), smallCanvas.getHeight());
-    smallCanvas.end();
 
 }

@@ -44,6 +44,7 @@ void Output::update(ofFbo &layerA, ofFbo &layerB, MainPanel &mainPanel) {
         layerB.draw(0,0, canvas.getWidth(), canvas.getHeight());
         ofDisableBlendMode();
         canvas.end();
+
     }
 
     else {
@@ -58,6 +59,7 @@ void Output::display() {
 
 
     if (! blackout) {
+
         ofPushMatrix();
         ofTranslate(position);
         ofSetColor(255);

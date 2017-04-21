@@ -50,6 +50,7 @@ void NanoPanel::loadButtons() {
         buttons.push_back(button);
 
         pushButton.setup(ofPoint(posXDeck + 0.15 * deckWidth, posYDeck + 0.6 * deckHeight), ofPoint(0.15 * deckWidth, deckHeight * 0.15), 1);
+        pushButton.setLabel("");
         pushButton.setColors(frontColor, backColor, selectedColor);
         midButtons.push_back(pushButton);
 
@@ -112,6 +113,12 @@ void NanoPanel::setColors(ofColor frontColor_, ofColor backColor_, ofColor selec
     for (int i = 0; i < buttons.size(); i++) {
 
         buttons[i].setColors(frontColor, backColor, selectedColor);
+    }
+
+    for (int i = 0; i < midButtons.size(); i++) {
+
+        midButtons[i].setColors(frontColor, backColor, selectedColor);
+
     }
 
 }

@@ -4,7 +4,6 @@
 #include "ofMain.h"
 #include "nanopanel.h"
 #include "audioinput.h"
-#include "ofxPostGlitch.h"
 #include "constants.h"
 
 class Effect_Template {
@@ -49,8 +48,6 @@ class Effect_Template {
     // Canvas
     ofFbo effectCanvas;                 // Canvas to render the effect
     ofFbo smallCanvas;                  // Small canvas to be displayed on Effect Layer Preview
-
-    // Effects & Shaders
 
     // Parameters for live output
     ofColor frontColor;                 // Front Color

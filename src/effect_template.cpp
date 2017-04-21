@@ -67,6 +67,13 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
     // Draw Output
     drawOutput();
 
+    // Draw Small Output
+    smallCanvas.begin();
+    ofBackground(0);
+    ofSetColor(255);
+    effectCanvas.draw(0,0,smallCanvas.getWidth(), smallCanvas.getHeight());
+    smallCanvas.end();
+
 }
 
 void Effect_Template::setOffset(int _offSet){
@@ -144,7 +151,16 @@ void Effect_Template::drawDisplay(const ofTrueTypeFont & coolvetica_) {
     ofPopMatrix();
 
     if (selected || isAssigned()) {
-        this->drawOutput();
+
+        drawOutput();
+
+        // Draw Small Output
+        smallCanvas.begin();
+        ofBackground(0);
+        ofSetColor(255);
+        effectCanvas.draw(0,0,smallCanvas.getWidth(), smallCanvas.getHeight());
+        smallCanvas.end();
+
     }
 
 }
