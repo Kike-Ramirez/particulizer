@@ -49,6 +49,9 @@ class Effect_Template {
     ofFbo effectCanvas;                 // Canvas to render the effect
     ofFbo smallCanvas;                  // Small canvas to be displayed on Effect Layer Preview
 
+    // Shaders
+    vector<ofShader> shaders;
+
     // Parameters for live output
     ofColor frontColor;                 // Front Color
     ofColor backColor;                  // Backtround Color

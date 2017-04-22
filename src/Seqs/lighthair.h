@@ -5,6 +5,7 @@
 #include "effect_template.h"
 #include "Resources/segment.h"
 #include "Resources/travelling.h"
+#include "constants.h"
 
 class LightHair: public Effect_Template
 {
@@ -12,6 +13,7 @@ public:
 
     LightHair();
     Travelling camera;
+    ofFbo shadingBuffer;
 
     vector<Segment> segments;
     vector<ofImage> images;

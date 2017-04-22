@@ -4,7 +4,6 @@
 #include "ofMain.h"
 #include "mainpanel.h"
 #include "constants.h"
-#include "ofxPostGlitch.h"
 
 class Output
 {
@@ -15,7 +14,6 @@ public:
     ofPoint position;
     ofPoint size;
     ofFbo canvas;
-    ofxPostGlitch glitch;
 
     void setup(ofPoint position_, ofPoint size_);
     void update(ofFbo & layerA, ofFbo & layerB, MainPanel & mainPanel);

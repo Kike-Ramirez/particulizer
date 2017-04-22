@@ -13,6 +13,12 @@ void LightHair::postSetup() {
     images.clear();
     images.push_back(image);
 
+    ofShader shader;
+    shader.load("Shaders/convergence");
+    shaders.push_back(shader);
+
+    shadingBuffer.allocate(Constants::OUTPUT_WIDTH, Constants::OUTPUT_HEIGHT);
+
     points.clear();
 
     float limitH = images[0].getWidth() * 0.95 / 2.0;
@@ -55,6 +61,8 @@ void LightHair::postSetup() {
 
     camera.setupTravelling(ofVec3f(0, 0, 0), ofVec3f(1.0 * limitH, 2.0 * limitH, 1.0 * limitV ));
     camera.setupPerspective();
+
+    ofDisableArbTex();
 
 }
 
@@ -212,6 +220,22 @@ void LightHair::drawOutput() {
     }
 
     camera.end();
+    effectCanvas.end();
+
+    shaders[0].begin();
+    shaders[0].setUniformTexture	("image"		, effectCanvas.getTexture(),  0);
+    shaders[0].setUniform1f		("rand"			,ofRandom(1));
+    shaders[0].setUniform1i		("range"		,1);
+
+    shadingBuffer.begin();
+    ofSetColor(255);
+    ofDrawRectangle(0, 0, shadingBuffer.getWidth(), shadingBuffer.getHeight());
+    shadingBuffer.end();
+    shaders[0].end();
+
+    effectCanvas.begin();
+    ofSetColor(255);
+    shadingBuffer.draw(0, 0, shadingBuffer.getWidth(), shadingBuffer.getHeight());
     effectCanvas.end();
 
 
