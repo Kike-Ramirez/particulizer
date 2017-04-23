@@ -222,20 +222,21 @@ void LightHair::drawOutput() {
     camera.end();
     effectCanvas.end();
 
+    ofSetColor(255);
+
     shaders[0].begin();
-    shaders[0].setUniformTexture	("image"		, effectCanvas.getTexture(),  0);
+    //shaders[0].setUniformTexture	("image"		, effectCanvas.getTextureReference(),  1);
     shaders[0].setUniform1f		("rand"			,ofRandom(1));
-    shaders[0].setUniform1i		("range"		,1);
+    // shaders[0].setUniform1i		("range"		,1);
 
     shadingBuffer.begin();
-    ofSetColor(255);
-    ofDrawRectangle(0, 0, shadingBuffer.getWidth(), shadingBuffer.getHeight());
+    effectCanvas.draw(0, 0, shadingBuffer.getWidth(), shadingBuffer.getHeight());
+    // ofRect(0, 0, shadingBuffer.getWidth(), shadingBuffer.getHeight());
     shadingBuffer.end();
     shaders[0].end();
 
     effectCanvas.begin();
-    ofSetColor(255);
-    shadingBuffer.draw(0, 0, shadingBuffer.getWidth(), shadingBuffer.getHeight());
+    shadingBuffer.draw(0, 0, effectCanvas.getWidth(), effectCanvas.getHeight());
     effectCanvas.end();
 
 
