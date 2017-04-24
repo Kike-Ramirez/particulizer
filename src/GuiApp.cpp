@@ -87,6 +87,8 @@ void GuiApp::setup(){
         effectPanel.setup(ofPoint(0.7 * ofGetWidth(), 0.5 * ofGetHeight()), ofPoint(0.3* ofGetWidth(), 0.3 * ofGetHeight()));
         effectPanel.setColors(frontColor, backColor, selectedColor);
 
+        ofEnableSmoothing();
+
 
 }
 

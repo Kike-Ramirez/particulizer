@@ -19,6 +19,43 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
     effectCanvas.allocate(Constants::OUTPUT_WIDTH, Constants::OUTPUT_HEIGHT);                 // Canvas to render the effect
     smallCanvas.allocate(0.7 * size.y * Constants::ASPECT_RATIO, 0.7 * size.y); // Small canvas for Effect Layer Preview
 
+    // Shader load
+
+    shaderIndex = 0;
+
+    ofShader shader;
+    shader.load("Shaders/convergence");
+    shaders.push_back(shader);
+
+    shader.load("Shaders/glow");
+    shaders.push_back(shader);
+
+    shader.load("Shaders/shaker");
+    shaders.push_back(shader);
+
+    shader.load("Shaders/cut_slider");
+    shaders.push_back(shader);
+
+    shader.load("Shaders/twist");
+    shaders.push_back(shader);
+
+    shader.load("Shaders/outline");
+    shaders.push_back(shader);
+
+    shader.load("Shaders/noise");
+    shaders.push_back(shader);
+
+    shader.load("Shaders/slitscan");
+    shaders.push_back(shader);
+
+    shader.load("Shaders/swell");
+    shaders.push_back(shader);
+
+    shader.load("Shaders/invert");
+    shaders.push_back(shader);
+
+
+    shadingBuffer.allocate(Constants::OUTPUT_WIDTH, Constants::OUTPUT_HEIGHT);
 
     // Customization
     frontColor = ofColor(155);
@@ -68,11 +105,7 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
     drawOutput();
 
     // Draw Small Output
-    smallCanvas.begin();
-    ofBackground(0);
-    ofSetColor(255);
-    effectCanvas.draw(0,0,smallCanvas.getWidth(), smallCanvas.getHeight());
-    smallCanvas.end();
+
 
 }
 
@@ -153,13 +186,6 @@ void Effect_Template::drawDisplay(const ofTrueTypeFont & coolvetica_) {
     if (selected || isAssigned()) {
 
         drawOutput();
-
-        // Draw Small Output
-        smallCanvas.begin();
-        ofBackground(0);
-        ofSetColor(255);
-        effectCanvas.draw(0,0,smallCanvas.getWidth(), smallCanvas.getHeight());
-        smallCanvas.end();
 
     }
 

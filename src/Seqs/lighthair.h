@@ -13,7 +13,6 @@ public:
 
     LightHair();
     Travelling camera;
-    ofFbo shadingBuffer;
 
     vector<Segment> segments;
     vector<ofImage> images;

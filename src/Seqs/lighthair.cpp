@@ -13,18 +13,12 @@ void LightHair::postSetup() {
     images.clear();
     images.push_back(image);
 
-    ofShader shader;
-    shader.load("Shaders/convergence");
-    shaders.push_back(shader);
-
-    shadingBuffer.allocate(Constants::OUTPUT_WIDTH, Constants::OUTPUT_HEIGHT);
-
     points.clear();
 
     float limitH = images[0].getWidth() * 0.95 / 2.0;
     float limitV = images[0].getHeight() * 0.95 / 2.0;
     float rndLimit = 5;
-    float step = 5;
+    float step = 10;
 
     for (int i = -limitH; i < limitH; i += step) {
 
@@ -201,7 +195,21 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
     if (cameraPanel[3] == 1) modeRandom = "RANDOM";
     else modeRandom = "FIXED";
 
-    this->setName("Radio Mode: " + modeRandom + "\nTravel Mode: " + modeTrav + "\nTarget Mode: " + modeTarg + "\nShader: " + "GLOW");
+    string modeShader;
+
+    if (shaderPanel[3] == 0) modeShader = "OFF";
+    else if (shaderIndex  == 0) modeShader = "CONVERGENCE";
+    else if (shaderIndex  == 1) modeShader = "GLOW";
+    else if (shaderIndex  == 2) modeShader = "SHAKER";
+    else if (shaderIndex  == 3) modeShader = "CUTSLIDER";
+    else if (shaderIndex  == 4) modeShader = "TWIST";
+    else if (shaderIndex  == 5) modeShader = "OUTLINE";
+    else if (shaderIndex  == 6) modeShader = "NOISE";
+    else if (shaderIndex  == 7) modeShader = "SLITSCAN";
+    else if (shaderIndex  == 8) modeShader = "SWELL";
+    else if (shaderIndex  == 9) modeShader = "INVERT";
+
+    this->setName("Name: LIGHTHAIR\nRadio Mode: " + modeRandom + "\nTravel Mode: " + modeTrav + "\nTarget Mode: " + modeTarg + "\nShader: " + modeShader);
 
 }
 
@@ -224,20 +232,38 @@ void LightHair::drawOutput() {
 
     ofSetColor(255);
 
-    shaders[0].begin();
-    //shaders[0].setUniformTexture	("image"		, effectCanvas.getTextureReference(),  1);
-    shaders[0].setUniform1f		("rand"			,ofRandom(1));
-    // shaders[0].setUniform1i		("range"		,1);
+    if (shaderPanel[2] == 1) {
 
-    shadingBuffer.begin();
-    effectCanvas.draw(0, 0, shadingBuffer.getWidth(), shadingBuffer.getHeight());
-    // ofRect(0, 0, shadingBuffer.getWidth(), shadingBuffer.getHeight());
-    shadingBuffer.end();
-    shaders[0].end();
+        shaderIndex++;
+        if (shaderIndex == 10) shaderIndex = 0;
 
-    effectCanvas.begin();
-    shadingBuffer.draw(0, 0, effectCanvas.getWidth(), effectCanvas.getHeight());
-    effectCanvas.end();
+    }
 
+    if (shaderPanel[3] == 1) {
+
+        shaders[shaderIndex].begin();
+
+        if (ofRandom(1) < 0.1) shaders[shaderIndex].setUniform1f		("rand"			,ofRandom(1));
+        else shaders[shaderIndex].setUniform1f		("rand"			,ofRandom(0));
+        shaders[shaderIndex].setUniform1f("speed", shaderPanel[0]);
+        shaders[shaderIndex].setUniform1f("intensity", shaderPanel[1]);
+
+        shadingBuffer.begin();
+        effectCanvas.draw(0, 0, shadingBuffer.getWidth(), shadingBuffer.getHeight());
+        // ofRect(0, 0, shadingBuffer.getWidth(), shadingBuffer.getHeight());
+        shadingBuffer.end();
+        shaders[shaderIndex].end();
+
+        effectCanvas.begin();
+        shadingBuffer.draw(0, 0, effectCanvas.getWidth(), effectCanvas.getHeight());
+        effectCanvas.end();
+
+    }
+
+    smallCanvas.begin();
+    ofBackground(0);
+    ofSetColor(255);
+    effectCanvas.draw(0,0,smallCanvas.getWidth(), smallCanvas.getHeight());
+    smallCanvas.end();
 
 }
