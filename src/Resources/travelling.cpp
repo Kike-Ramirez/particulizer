@@ -22,8 +22,8 @@ void Travelling::updateTravelling(float elapsedTime_, vector<float> &cameraPanel
 
     float elapsedTime = (offsetTime + elapsedTime_);
 
-    float cameraRadio = size.x * 1.5 * cameraPanel_[0] * (1.0 - 1.0 * cameraPanel_[3] * ofNoise(elapsedTime));
-    float cameraHeight = 1.0 + size.y * cameraPanel_[1] * (1.0 - 1.0 * cameraPanel_[3] * ofNoise(elapsedTime + 5.0));
+    float cameraRadio = size.x * 1.5 * cameraPanel_[0] * (1.0 - 1.0 * cameraPanel_[3] * ofNoise(elapsedTime * 10));
+    float cameraHeight = 1.0 + size.y * cameraPanel_[1] * (1.0 - 1.0 * cameraPanel_[3] * ofNoise(elapsedTime * 10 + 5.0));
 
     float cameraSideX = size.x * cameraPanel_[0] * (1.0 - 1.0 * cameraPanel_[3] * ofNoise(elapsedTime + 10.0));
     float cameraSideY = size.y * cameraPanel_[0] * (1.0 - 1.0 * cameraPanel_[3] * ofNoise(elapsedTime + 15.0));

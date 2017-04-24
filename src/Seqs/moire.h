@@ -9,7 +9,12 @@ class Moire: public Effect_Template
 public:
     Moire();
 
+    vector<ofVec3f> particles;
+    int numParticles;
+    vector<float> audioBeats;
+
     void postSetup();
+    void loadParticles();
     void update(NanoPanel &nanoPanel, AudioInput &audioInput);
     void drawOutput();
 

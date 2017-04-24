@@ -13,50 +13,30 @@ void LightHair::postSetup() {
     images.clear();
     images.push_back(image);
 
-    points.clear();
+    image.load("./images/caballo-perfil-bn.jpg");
+    images.push_back(image);
 
-    float limitH = images[0].getWidth() * 0.95 / 2.0;
-    float limitV = images[0].getHeight() * 0.95 / 2.0;
-    float rndLimit = 5;
-    float step = 10;
+    image.load("./images/siluetas-bn.jpg");
+    images.push_back(image);
 
-    for (int i = -limitH; i < limitH; i += step) {
+    image.load("./images/siluetapadrehijo-bn.jpg");
+    images.push_back(image);
 
-        for (int j = -limitV; j < limitV; j += step) {
+    image.load("./images/guevara.jpg");
+    images.push_back(image);
 
-            ofVec3f initPoint = ofVec3f(i + ofRandom(-rndLimit, rndLimit), 0, j + ofRandom(-rndLimit, rndLimit));
-
-            ofColor col = images[0].getColor(initPoint.x + limitH, initPoint.z + limitV);
-            float scale = 50;
-
-
-                points.addVertex(initPoint);
-
-                if (col.getSaturation() < 100 && col.getBrightness() > 5) {
-
-                for (int k = 0; k < ofRandom(3); k++) {
-
-                    ofVec3f endPoint = ofVec3f(initPoint.x + ofRandom(-scale, scale),
-                                               initPoint.y + ofRandom(-scale),
-                                               initPoint.z + ofRandom(-scale, scale));
-
-                    Segment segment;
-                    segment.setup(initPoint, endPoint);
-                    segment.setColor(col);
-                    segments.push_back(segment);
-
-                }
-
-                }
+    indexImages = 0;
+    numImages= 5;
 
 
-        }
-    }
-
-    camera.setupTravelling(ofVec3f(0, 0, 0), ofVec3f(1.0 * limitH, 2.0 * limitH, 1.0 * limitV ));
+    camera.setupTravelling(ofVec3f(0, 0, 0), ofVec3f(1.0 * images[indexImages].getWidth(), 2.0 * images[indexImages].getWidth(), 1.0 * images[indexImages].getHeight()));
     camera.setupPerspective();
 
     ofDisableArbTex();
+
+    numParticles = 3000;
+
+    loadParticles(indexImages);
 
 }
 
@@ -138,12 +118,32 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
     }
 
 
+    if (shaderPanel[2] == 1) {
+
+        shaderIndex++;
+        if (shaderIndex == shaderNum) shaderIndex = 0;
+
+    }
+
+    if (particlePanel[2] == 1) {
+        indexImages++;
+        if (indexImages == numImages) indexImages = 0;
+
+        loadParticles(indexImages);
+
+    }
+
+    audioBeats.clear();
+    audioBeats.push_back(audioInput.beats[0]);
+    audioBeats.push_back(audioInput.beats[1]);
+    audioBeats.push_back(audioInput.beats[2]);
+
     // Modify time parameters according to audio levels
     // if (audioInput.beats[1] == 1) timeCamera -= 0.1;
 
     // Modify time parameters according to NanoKontrol values
     timeCamera += 0.002 * timePanel[0];
-    timeParticles += 0.01 * timePanel[1]; // - 0.01 * audioInput.beats[2];
+    timeParticles += 0.01 * timePanel[1] - 0.01 * audioInput.beats[2];
 
 
     // Update particles
@@ -208,6 +208,7 @@ void LightHair::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
     else if (shaderIndex  == 7) modeShader = "SLITSCAN";
     else if (shaderIndex  == 8) modeShader = "SWELL";
     else if (shaderIndex  == 9) modeShader = "INVERT";
+    else if (shaderIndex  == 10) modeShader = "MOIRE";
 
     this->setName("Name: LIGHTHAIR\nRadio Mode: " + modeRandom + "\nTravel Mode: " + modeTrav + "\nTarget Mode: " + modeTarg + "\nShader: " + modeShader);
 
@@ -232,19 +233,11 @@ void LightHair::drawOutput() {
 
     ofSetColor(255);
 
-    if (shaderPanel[2] == 1) {
-
-        shaderIndex++;
-        if (shaderIndex == 10) shaderIndex = 0;
-
-    }
-
     if (shaderPanel[3] == 1) {
 
         shaders[shaderIndex].begin();
 
-        if (ofRandom(1) < 0.1) shaders[shaderIndex].setUniform1f		("rand"			,ofRandom(1));
-        else shaders[shaderIndex].setUniform1f		("rand"			,ofRandom(0));
+        shaders[shaderIndex].setUniform1f		("rand"			, audioBeats[1]);
         shaders[shaderIndex].setUniform1f("speed", shaderPanel[0]);
         shaders[shaderIndex].setUniform1f("intensity", shaderPanel[1]);
 
@@ -265,5 +258,46 @@ void LightHair::drawOutput() {
     ofSetColor(255);
     effectCanvas.draw(0,0,smallCanvas.getWidth(), smallCanvas.getHeight());
     smallCanvas.end();
+
+}
+
+
+void LightHair::loadParticles(int index_) {
+
+    segments.clear();
+
+    int scale = 50;
+
+    for (int i = 0; i < numParticles; i++) {
+
+        ofVec3f initPoint = ofVec3f(ofRandom(0, images[index_].getWidth()),
+                                    0,
+                                    ofRandom(0, images[index_].getHeight()));
+
+        ofColor col = images[index_].getColor(initPoint.x, initPoint.z);
+
+        while (col.getSaturation() > 100.0) {
+
+            initPoint = ofVec3f(ofRandom(0, images[index_].getWidth()), 0, ofRandom(0, images[index_].getHeight()));
+            col = images[index_].getColor(initPoint.x, initPoint.z);
+
+        }
+
+        initPoint += ofVec3f(-images[index_].getWidth() * 0.5, 0, -images[index_].getHeight() * 0.5);
+
+        for (int k = 0; k < ofRandom(3); k++) {
+
+            ofVec3f endPoint = ofVec3f(initPoint.x + ofRandom(-scale, scale),
+                                       initPoint.y + ofRandom(-scale),
+                                       initPoint.z + ofRandom(-scale, scale));
+
+            Segment segment;
+            segment.setup(initPoint, endPoint);
+            segment.setColor(col);
+            segments.push_back(segment);
+
+        }
+
+    }
 
 }

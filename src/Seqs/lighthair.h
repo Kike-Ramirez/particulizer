@@ -16,8 +16,13 @@ public:
 
     vector<Segment> segments;
     vector<ofImage> images;
+    int indexImages;
+    int numImages;
+    int numParticles;
+    vector<float> audioBeats;
 
     void postSetup();
+    void loadParticles(int index_);
     void update(NanoPanel &nanoPanel, AudioInput &audioInput);
     void drawOutput();
 

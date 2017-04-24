@@ -53,6 +53,7 @@ class Effect_Template {
     // Shaders
     vector<ofShader> shaders;
     int shaderIndex;
+    int shaderNum;
 
     // Parameters for live output
     ofColor frontColor;                 // Front Color

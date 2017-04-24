@@ -22,6 +22,7 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
     // Shader load
 
     shaderIndex = 0;
+    shaderNum = 11;
 
     ofShader shader;
     shader.load("Shaders/convergence");
@@ -54,6 +55,8 @@ void Effect_Template::setup(ofPoint _position, ofPoint _size, string name_){
     shader.load("Shaders/invert");
     shaders.push_back(shader);
 
+    shader.load("Shaders/moire");
+    shaders.push_back(shader);
 
     shadingBuffer.allocate(Constants::OUTPUT_WIDTH, Constants::OUTPUT_HEIGHT);
 
