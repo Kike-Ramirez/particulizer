@@ -7,13 +7,21 @@ Moire::Moire()
 
 void Moire::postSetup() {
 
-    ofDisableArbTex();
+    //ofEnableArbTex();
 
     numParticles = 2000;
 
     loadParticles();
 
     shaderIndex = 10;
+    subSequenceIndex = 0;
+    subSequenceNum = 5;
+
+    ofShader shader;
+    shader.load("Shaders/Moire/moiredeeppatterns");
+    shadersSequence.push_back(shader);
+
+
 
 }
 
@@ -125,8 +133,8 @@ void Moire::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
     // if (audioInput.beats[1] == 1) timeCamera -= 0.1;
 
     // Modify time parameters according to NanoKontrol values
-    timeCamera += 0.002 * timePanel[0];
-    timeParticles += 0.01 * timePanel[1] - 0.01 * audioInput.beats[2];
+    // timeCamera += 0.002 * timePanel[0];
+    timeParticles += 0.1 * timePanel[1];
 
 
     // Update particles
@@ -162,22 +170,22 @@ void Moire::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
 void Moire::drawOutput() {
 
+    shadersSequence[subSequenceIndex].begin();
+    shadersSequence[subSequenceIndex].setUniform1f("time", timeParticles);
+    float xx = ofNoise(timeParticles);
+    float yy = ofNoise(timeParticles + 10);
+    shadersSequence[subSequenceIndex].setUniform2f("mouse", ofVec2f(xx, yy));
+    shadersSequence[subSequenceIndex].setUniform2f("resolution", ofVec2f(effectCanvas.getWidth(), effectCanvas.getHeight()));
+
     effectCanvas.begin();
-
-    ofBackground(0);
     ofSetColor(255);
-    ofNoFill();
-
-    float x = 100 * sin(ofGetElapsedTimef() * 0.1);
-
-    for (int i = 0; i < 500; i++) {
-
-        ofDrawCircle(effectCanvas.getWidth() * 0.5 - x/2, effectCanvas.getHeight() * 0.5, 0, i * 5);
-        ofDrawCircle(effectCanvas.getWidth() * 0.5 + x/2, effectCanvas.getHeight() * 0.5, 0, i * 5);
-
-    }
-
+    ofFill();
+    ofDrawRectangle(0, 0, effectCanvas.getWidth(), effectCanvas.getHeight());
     effectCanvas.end();
+
+    shadersSequence[subSequenceIndex].end();
+
+
 
     ofSetColor(255);
 
@@ -204,7 +212,6 @@ void Moire::drawOutput() {
     }
 
     smallCanvas.begin();
-    ofBackground(0);
     ofSetColor(255);
     effectCanvas.draw(0,0,smallCanvas.getWidth(), smallCanvas.getHeight());
     smallCanvas.end();

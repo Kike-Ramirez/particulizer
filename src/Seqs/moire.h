@@ -12,6 +12,9 @@ public:
     vector<ofVec3f> particles;
     int numParticles;
     vector<float> audioBeats;
+    vector<ofShader> shadersSequence;
+    int subSequenceIndex;
+    int subSequenceNum;
 
     void postSetup();
     void loadParticles();
