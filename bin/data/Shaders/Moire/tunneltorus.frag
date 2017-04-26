@@ -26,5 +26,5 @@ void main(void){
 	vec2 uv=(gl_FragCoord.xy-0.5*resolution.xy)/resolution.y;
 	float si=sin(time*.3),co=cos(time*.3);uv*=mat2(co,-si,si,co);
 	float v=1.-trace(vec3(cos(time),sin(time*.7)*.5,sin(time)),vec3(uv,-.5))/FAR;
-	gl_FragColor=vec4(mix(vec3(1.5,1.3,1.1),vec3(1.1,1.5,1.3),sin(time*.2)*.5+.5)*v,1);
+	gl_FragColor=vec4(mix(vec3(1.,1.,1.),vec3(1.0,1.0,1.0),sin(time*.2)*.5+.5)*v,1);
 }

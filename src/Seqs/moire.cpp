@@ -15,13 +15,34 @@ void Moire::postSetup() {
 
     shaderIndex = 10;
     subSequenceIndex = 0;
-    subSequenceNum = 5;
+    subSequenceNum = 6;
 
     ofShader shader;
+    shader.load("Shaders/Moire/boxcaleidoscope");
+    shadersSequence.push_back(shader);
+
+    shader.load("Shaders/Moire/moireboxpatterns");
+    shadersSequence.push_back(shader);
+
+    shader.load("Shaders/Moire/moirecirclepatterns");
+    shadersSequence.push_back(shader);
+
     shader.load("Shaders/Moire/moiredeeppatterns");
     shadersSequence.push_back(shader);
 
+    shader.load("Shaders/Moire/brokentv");
+    shadersSequence.push_back(shader);
 
+    shader.load("Shaders/Moire/tunneltorus");
+    shadersSequence.push_back(shader);
+
+    shader.load("Shaders/Moire/boxsmoving");
+    shadersSequence.push_back(shader);
+
+    shader.load("Shaders/Moire/donuts");
+    shadersSequence.push_back(shader);
+
+    moireFront.setup(effectCanvas);
 
 }
 
@@ -119,8 +140,17 @@ void Moire::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
     }
 
+    if (particlePanel[4] == 1) {
+
+        moireFront.update();
+
+    }
+
     if (particlePanel[2] == 1) {
 
+        subSequenceIndex++;
+        if (subSequenceIndex == shadersSequence.size()) subSequenceIndex = 0;
+        cout << "subSequenceIndex: " << subSequenceNum << endl;
 
     }
 
@@ -131,10 +161,17 @@ void Moire::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
     // Modify time parameters according to audio levels
     // if (audioInput.beats[1] == 1) timeCamera -= 0.1;
+    drawSamples.clear();
+
+    for (int i = 0; i < audioInput.bufferSize/2  ; i++) {
+
+        drawSamples.push_back(audioInput.drawBins[i]);
+
+    }
 
     // Modify time parameters according to NanoKontrol values
-    // timeCamera += 0.002 * timePanel[0];
-    timeParticles += 0.1 * timePanel[1];
+    timeCamera += 0.1 * (timePanel[0] + audioBeats[2]);
+    timeParticles += 0.1 * (timePanel[1] + audioBeats[1]);
 
 
     // Update particles
@@ -143,6 +180,7 @@ void Moire::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
 
     // Update Effects&Shaders modes
 
+    moireFront.shoot(audioBeats[1]);
 
 
     // Set texts
@@ -172,8 +210,8 @@ void Moire::drawOutput() {
 
     shadersSequence[subSequenceIndex].begin();
     shadersSequence[subSequenceIndex].setUniform1f("time", timeParticles);
-    float xx = ofNoise(timeParticles);
-    float yy = ofNoise(timeParticles + 10);
+    float xx = ofNoise(timeCamera);
+    float yy = ofNoise(timeCamera + 50);
     shadersSequence[subSequenceIndex].setUniform2f("mouse", ofVec2f(xx, yy));
     shadersSequence[subSequenceIndex].setUniform2f("resolution", ofVec2f(effectCanvas.getWidth(), effectCanvas.getHeight()));
 
@@ -181,13 +219,23 @@ void Moire::drawOutput() {
     ofSetColor(255);
     ofFill();
     ofDrawRectangle(0, 0, effectCanvas.getWidth(), effectCanvas.getHeight());
+    ofNoFill();
     effectCanvas.end();
 
     shadersSequence[subSequenceIndex].end();
 
-
-
     ofSetColor(255);
+
+    if (particlePanel[3] == 1) {
+
+        float alpha = particlePanel[1];
+        ofColor colorMoire = ofColor( alpha * 255, 0, 0, alpha * 255);
+
+        moireFront.draw(effectCanvas, drawSamples, colorMoire);
+
+
+    }
+
 
     if (shaderPanel[3] == 1) {
 
@@ -215,6 +263,5 @@ void Moire::drawOutput() {
     ofSetColor(255);
     effectCanvas.draw(0,0,smallCanvas.getWidth(), smallCanvas.getHeight());
     smallCanvas.end();
-
 
 }

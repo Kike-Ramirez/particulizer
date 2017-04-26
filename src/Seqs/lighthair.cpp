@@ -13,20 +13,17 @@ void LightHair::postSetup() {
     images.clear();
     images.push_back(image);
 
-    image.load("./images/caballo-perfil-bn.jpg");
+    image.load("./images/biznaga-bn.jpg");
     images.push_back(image);
 
-    image.load("./images/siluetas-bn.jpg");
+    image.load("./images/espeto-bn.jpg");
     images.push_back(image);
 
-    image.load("./images/siluetapadrehijo-bn.jpg");
-    images.push_back(image);
-
-    image.load("./images/guevara.jpg");
+    image.load("./images/picasso-bn.jpg");
     images.push_back(image);
 
     indexImages = 0;
-    numImages= 5;
+    numImages= 4;
 
 
     camera.setupTravelling(ofVec3f(0, 0, 0), ofVec3f(1.0 * images[indexImages].getWidth(), 2.0 * images[indexImages].getWidth(), 1.0 * images[indexImages].getHeight()));

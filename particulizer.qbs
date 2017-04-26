@@ -12,6 +12,8 @@ Project{
         name: { return FileInfo.baseName(path) }
 
         files: [
+            "src/Resources/moirefront.cpp",
+            "src/Resources/moirefront.h",
             "src/constants.h",
             "src/GuiApp.cpp",
             "src/GuiApp.h",

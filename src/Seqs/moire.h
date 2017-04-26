@@ -3,6 +3,8 @@
 
 #include "ofMain.h"
 #include "effect_template.h"
+#include "audioinput.h"
+#include "moirefront.h"
 
 class Moire: public Effect_Template
 {
@@ -15,6 +17,8 @@ public:
     vector<ofShader> shadersSequence;
     int subSequenceIndex;
     int subSequenceNum;
+    vector<float> drawSamples;
+    MoireFront moireFront;
 
     void postSetup();
     void loadParticles();

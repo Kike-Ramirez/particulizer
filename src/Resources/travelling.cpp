@@ -40,7 +40,6 @@ void Travelling::updateTravelling(float elapsedTime_, vector<float> &cameraPanel
 
     if (cameraPanel_[4] == 1.0)
     {
-        cout << "Dentro" << endl;
         modeTargeting++;
         if (modeTargeting >= maxModeTargeting) modeTargeting = 0;
 

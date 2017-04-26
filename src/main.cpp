@@ -40,7 +40,7 @@ int main( ){
     shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
 
     setSecondWindowDimensions(settings);
-    settings.resizable = false;
+    settings.resizable = true;
     settings.decorated = false;
     settings.shareContextWith = guiWindow;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
