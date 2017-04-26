@@ -7,8 +7,7 @@ void ofApp::setup(){
 	ofBackground(255);
 	ofSetCircleResolution(200);
     screenWidth = ofGetWidth();
-    screenHeight = ofGetHeight();
-
+    screenHeight = ofGetHeight();    
 
 }
 
@@ -18,8 +17,7 @@ void ofApp::update(){
     screenWidth = ofGetWidth();
     screenHeight = ofGetHeight();
 
-//    ofSetFullscreen(gui->fullScreen);
-
+//
 
 }
 
@@ -38,7 +36,7 @@ void ofApp::keyPressed(int key){
 
     if ((key == 'F') || (key == 'f')) {
 
-        // gui->fullScreen = !gui->fullScreen;
+        ofToggleFullscreen();
 
     }
 }
