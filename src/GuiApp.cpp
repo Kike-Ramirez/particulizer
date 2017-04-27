@@ -64,6 +64,20 @@ void GuiApp::setup(){
         sequence3.setColors(frontColor, backColor, selectedColor);
         effects.push_back(std::make_unique<Flocking>(sequence3));
 
+        pos = 4;
+        DataBombing sequence4;
+        name = "Data Bombing\nAprox. Dur: 300''\nKike Ramirez - 2017";
+        sequence4.setup(ofPoint(0.25 * ofGetWidth(), pos * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), name );
+        sequence4.setColors(frontColor, backColor, selectedColor);
+        effects.push_back(std::make_unique<DataBombing>(sequence4));
+
+        pos = 5;
+        SMS sequence5;
+        name = "SMS\nAprox. Dur: 300''\nKike Ramirez - 2017";
+        sequence5.setup(ofPoint(0.25 * ofGetWidth(), pos * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), name );
+        sequence5.setColors(frontColor, backColor, selectedColor);
+        effects.push_back(std::make_unique<SMS>(sequence5));
+
         offSetDelta = 0;
         offSet = 0;
 

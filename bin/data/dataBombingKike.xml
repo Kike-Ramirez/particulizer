@@ -1,0 +1,92 @@
+<databombing>
+    <sequence>
+        <title>Firearm-related death rate per 100,000 population per year</title>
+        <loc>
+            <name>Mexico</name>
+            <initNumber>0</initNumber>
+            <endNumber>7.640000000</endNumber>
+        </loc>
+        <loc>
+            <name>United States</name>
+            <initNumber>0</initNumber>
+            <endNumber>10.740000000</endNumber>
+        </loc>
+        <loc>
+            <name>Salvador</name>
+            <initNumber>0</initNumber>
+            <endNumber>67.180000000</endNumber>
+        </loc>
+    </sequence>
+    <sequence>
+        <title>Military expenditure per capita ($)</title>
+        <loc>
+            <name>Afghanistan</name>
+            <initNumber>0</initNumber>
+            <endNumber>5.200000000</endNumber>
+        </loc>
+        <loc>
+            <name>Israel</name>
+            <initNumber>0</initNumber>
+            <endNumber>1882.400000000</endNumber>
+        </loc>
+        <loc>
+            <name>Salvador</name>
+            <initNumber>0</initNumber>
+            <endNumber>6909.320000000</endNumber>
+        </loc>
+    </sequence>
+        <sequence>
+        <title>Number of refugees leaving home</title>
+        <loc>
+            <name>Somalia</name>
+            <initNumber>0</initNumber>
+            <endNumber>1100000</endNumber>
+        </loc>
+        <loc>
+            <name>Afghanistan</name>
+            <initNumber>0</initNumber>
+            <endNumber>2700000</endNumber>
+        </loc>
+        <loc>
+            <name>Syria</name>
+            <initNumber>0</initNumber>
+            <endNumber>4900000</endNumber>
+        </loc>
+    </sequence>
+    <sequence>
+        <title>Number of refugees hosted in foreign countries</title>
+        <loc>
+            <name>Lebanon</name>
+            <initNumber>0</initNumber>
+            <endNumber>1100000</endNumber>
+        </loc>
+        <loc>
+            <name>Pakistan</name>
+            <initNumber>0</initNumber>
+            <endNumber>1600000</endNumber>
+        </loc>
+        <loc>
+            <name>Turkey</name>
+            <initNumber>0</initNumber>
+            <endNumber>2500000</endNumber>
+        </loc>
+    </sequence>
+    <sequence>
+        <title>Number of deaths due to...</title>
+        <loc>
+            <name>Car accidents (Spain)</name>
+            <initNumber>0</initNumber>
+            <endNumber>1689</endNumber>
+        </loc>
+        <loc>
+            <name>Suicide (Spain)</name>
+            <initNumber>0</initNumber>
+            <endNumber>3910</endNumber>
+        </loc>
+        <loc>
+            <name>Refugees drowned (Mediterranean)</name>
+            <initNumber>0</initNumber>
+            <endNumber>5123</endNumber>
+        </loc>
+    </sequence>
+</databombing>

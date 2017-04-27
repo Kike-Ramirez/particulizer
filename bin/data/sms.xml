@@ -1,0 +1,28 @@
+<sms>
+    <sequence>
+        <notif>1 new SMS received...</notif>
+        <opening>Opening...</opening>
+        <message>Luis, se fuerte...</message>
+    </sequence>
+    <sequence>
+        <notif>1 new SMS received...</notif>
+        <opening>Opening...</opening>
+        <message>No me consta...</message>
+    </sequence>
+    <sequence>
+        <notif>1 new SMS received...</notif>
+        <opening>Opening...</opening>
+        <message>Finiquito en diferido...</message>
+    </sequence>
+    <sequence>
+        <notif>1 new SMS received...</notif>
+        <opening>Opening...</opening>
+        <message>Que se solucionen esos líos...</message>
+    </sequence>
+    <sequence>
+        <notif>1 new SMS received...</notif>
+        <opening>Opening...</opening>
+        <message>Yo destapé la trama...</message>
+    </sequence>
+
+</sms>

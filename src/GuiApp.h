@@ -17,6 +17,8 @@
 #include "./Seqs/circle_dancing.h"
 #include "./Seqs/moire.h"
 #include "./Seqs/flocking.h"
+#include "./Seqs/databombing.h"
+#include "./Seqs/sms.h"
 
 
 

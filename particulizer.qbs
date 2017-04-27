@@ -14,6 +14,10 @@ Project{
         files: [
             "src/Resources/moirefront.cpp",
             "src/Resources/moirefront.h",
+            "src/Seqs/databombing.cpp",
+            "src/Seqs/databombing.h",
+            "src/Seqs/sms.cpp",
+            "src/Seqs/sms.h",
             "src/constants.h",
             "src/GuiApp.cpp",
             "src/GuiApp.h",
