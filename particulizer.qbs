@@ -12,6 +12,8 @@ Project{
         name: { return FileInfo.baseName(path) }
 
         files: [
+            "src/Resources/circledancers.cpp",
+            "src/Resources/circledancers.h",
             "src/Resources/moirefront.cpp",
             "src/Resources/moirefront.h",
             "src/Seqs/databombing.cpp",
