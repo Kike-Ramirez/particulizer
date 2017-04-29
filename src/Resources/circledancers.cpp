@@ -8,7 +8,7 @@ CircleDancers::CircleDancers()
 void CircleDancers::setup()
 {
 
-    modeSelected = 2;
+    modeSelected = 0;
     position = ofVec2f(0.5 * Constants::OUTPUT_WIDTH, 0.5 * Constants::OUTPUT_HEIGHT);
     target = ofVec2f(0.5 * Constants::OUTPUT_WIDTH, 0.5 * Constants::OUTPUT_HEIGHT);
 
@@ -20,6 +20,9 @@ void CircleDancers::setup()
 
     radio = 100;
     radioTarget = 100;
+
+    timeA = ofGetElapsedTimef();
+    timerA = 0.5;
 
 }
 
@@ -84,10 +87,19 @@ void CircleDancers::update(vector<float> audioBeats_)
 
 }
 
-void CircleDancers::setMode(int mode_)
+void CircleDancers::nextMode()
 {
 
-    modeSelected = mode_;
+    modeSelected++;
+
+    if (modeSelected == 3) modeSelected = 0;
+
+}
+
+void CircleDancers::activateFlash()
+{
+
+    timeA = ofGetElapsedTimef();
 
 }
 
@@ -156,6 +168,28 @@ void CircleDancers::display()
         ofPopMatrix();
 
         ofPopMatrix();
+
+    }
+
+    if (ofGetElapsedTimef() - timeA <= timerA) {
+
+        float alpha = ofMap(ofGetElapsedTimef() - timeA, 0, timerA, 255, 0);
+        float radio = ofMap(ofGetElapsedTimef() - timeA, 0, timerA, 120, 640);
+
+        ofSetColor(255, 0, 0, alpha);
+
+        for (int i = 0; i < 10; i++ ) {
+
+            ofPushMatrix();
+            ofTranslate(0.5 * Constants::OUTPUT_WIDTH, 0.5 * Constants::OUTPUT_HEIGHT);
+            ofRotate(i * 360 / 10);
+            ofTranslate(0, radio);
+//            float x = Constants::OUTPUT_WIDTH * (ofNoise(0.6 * ofGetElapsedTimef() + i * 21 + 0.3));
+//            float y = Constants::OUTPUT_HEIGHT * (ofNoise(0.6 * ofGetElapsedTimef() + i * 53) + 0.12);
+            ofDrawEllipse(0, 0, 100, 100);
+            ofPopMatrix();
+
+        }
 
     }
 }

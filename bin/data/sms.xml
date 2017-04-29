@@ -1,28 +1,56 @@
 <sms>
     <sequence>
-        <notif>1 new SMS received...</notif>
-        <opening>Opening...</opening>
-        <message>Luis, se fuerte...</message>
+        <notif>1 nuevo SMS recibido</notif>
+        <from>De: Presidencia Atletico de Madrid</from>
+        <opening>Abriendo SMS...</opening>
+        <message>Hable el otro dia con Rafa,&#10;que lo estaban mirando, Nacho.</message>
     </sequence>
     <sequence>
-        <notif>1 new SMS received...</notif>
-        <opening>Opening...</opening>
-        <message>No me consta...</message>
+        <notif>1 nuevo SMS recibido</notif>
+        <from>De: Jefatura de Gobierno</from>
+        <opening>Abriendo SMS...</opening>
+        <message>Luis, nada es facil, pero&#10;hacemos lo que podemos.&#10;Animo.</message>
     </sequence>
     <sequence>
-        <notif>1 new SMS received...</notif>
-        <opening>Opening...</opening>
-        <message>Finiquito en diferido...</message>
+        <notif>1 nuevo SMS recibido</notif>
+        <from>De: Ministerio de Justicia</from>
+        <opening>Abriendo SMS...</opening>
+        <message>Gracias Nacho. Un fuerte&#10;abrazo. Ojala se cierren&#10;pronto los lios.</message>
     </sequence>
     <sequence>
-        <notif>1 new SMS received...</notif>
-        <opening>Opening...</opening>
-        <message>Que se solucionen esos líos...</message>
+        <notif>1 nuevo SMS recibido</notif>
+        <from>De: Jefatura de Gobierno</from>
+        <opening>Abriendo SMS...</opening>
+        <message>Rosa, gracias, eres un&#10;encanto. Yo estare ahi siempre,&#10;al final la vida es resistir&#10;y que alguien te ayude.</message>
     </sequence>
     <sequence>
-        <notif>1 new SMS received...</notif>
-        <opening>Opening...</opening>
-        <message>Yo destapé la trama...</message>
+        <notif>1 nuevo SMS recibido</notif>
+        <from>De: Tesoreria Partido Popular</from>
+        <opening>Abriendo SMS...</opening>
+        <message>Verifiquen el contenido de&#10;las cajas que habia en el&#10;despacho que tu me autorizaste.&#10;Tu sabras a que estais jugando,&#10;pero yo quedo liberado de todo&#10;compromiso contigo y con&#10;el partido.</message>
     </sequence>
-
+    <sequence>
+        <notif>1 nuevo SMS recibido</notif>
+        <from>De: Jefatura de Estado</from>
+        <opening>Abriendo SMS...</opening>
+        <message>Te escribí cuando salió el artículo&#10;de lo de las tarjetas en la&#10;mierda de LOC y ya sabes lo que&#10;pienso Javier. Sabemos quien eres,&#10;sabes quienes somos. Nos conocemos,&#10;nos queremos, nos respetamos.&#10;Lo demas, merde.&#10;Un beso compi yogui (miss you!!!)</message>
+    </sequence>
+    <sequence>
+        <notif>1 nuevo SMS recibido</notif>
+        <from>De: Presidencia Gobierno</from>
+        <opening>Abriendo SMS...</opening>
+        <message>Luis. Lo entiendo.&#10;&#10;Se fuerte.</message>
+    </sequence>
+    <sequence>
+        <notif>1 nuevo SMS recibido</notif>
+        <from>De: Alcaldia de Valencia</from>
+        <opening>Abriendo SMS...</opening>
+        <message>Cuidado con lo que dices,&#10;te has pasado mucho y eso se paga.</message>
+    </sequence>
+    <sequence>
+        <notif>1 nuevo SMS recibido</notif>
+        <from>De: Jefatura de Estado</from>
+        <opening>Abriendo SMS...</opening>
+        <message>Lo siento mucho.&#10;Me he equivocado&#10;y no volvera a ocurrir.</message>
+    </sequence>
 </sms>

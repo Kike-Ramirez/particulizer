@@ -19,6 +19,7 @@ public:
     int sequenceNumber;
     string title;
     string notif;
+    string from;
     string opening;
     string message;
 
@@ -28,6 +29,7 @@ public:
     int indexSequence;
     int indexLoc;
     vector<float> dataNumbers;
+    ofVideoPlayer video;
 
     // Para saber qué linea estamos escribiendo...
     int maxString;

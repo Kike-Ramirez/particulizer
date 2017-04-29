@@ -30,5 +30,5 @@ void main (void)
 	/*最大・最小の差を計算して出力する*/
 	float dst = abs(mx-mn);
 	gl_FragColor.a = 1.0;
-    gl_FragColor.rgb = vec3(dst,dst,dst);
+    gl_FragColor.rgb = vec3(0.0, 0.4 * (1.0 - dst), 0.0);
 }

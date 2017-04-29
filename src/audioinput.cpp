@@ -235,7 +235,7 @@ void AudioInput::plot(vector<float>& buffer, ofPoint position_, ofPoint size_) {
 
 void AudioInput::update(NanoKontrol2 &nano) {
 
-    if (selected) {
+    if (true) {
 
         // Actualizamos valores del controlador MIDI
         for (int i = 0; i < 3; i++) {

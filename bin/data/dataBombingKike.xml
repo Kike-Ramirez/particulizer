@@ -1,6 +1,6 @@
 <databombing>
     <sequence>
-        <title>Firearm-related death rate per 100,000 population per year</title>
+        <title>Firearm-related death rate per 100,000&#10;population per year</title>
         <loc>
             <name>Mexico</name>
             <initNumber>0</initNumber>
@@ -12,31 +12,13 @@
             <endNumber>10.740000000</endNumber>
         </loc>
         <loc>
-            <name>Salvador</name>
+            <name>El Salvador</name>
             <initNumber>0</initNumber>
             <endNumber>67.180000000</endNumber>
         </loc>
     </sequence>
     <sequence>
-        <title>Military expenditure per capita ($)</title>
-        <loc>
-            <name>Afghanistan</name>
-            <initNumber>0</initNumber>
-            <endNumber>5.200000000</endNumber>
-        </loc>
-        <loc>
-            <name>Israel</name>
-            <initNumber>0</initNumber>
-            <endNumber>1882.400000000</endNumber>
-        </loc>
-        <loc>
-            <name>Salvador</name>
-            <initNumber>0</initNumber>
-            <endNumber>6909.320000000</endNumber>
-        </loc>
-    </sequence>
-        <sequence>
-        <title>Number of refugees leaving home</title>
+        <title>Number of refugees leaving the country</title>
         <loc>
             <name>Somalia</name>
             <initNumber>0</initNumber>
@@ -53,8 +35,63 @@
             <endNumber>4900000</endNumber>
         </loc>
     </sequence>
+
     <sequence>
-        <title>Number of refugees hosted in foreign countries</title>
+        <title>Number of Physicians per 1000 population</title>
+        <loc>
+            <name>Syria</name>
+            <initNumber>1000</initNumber>
+            <endNumber>1.4</endNumber>
+        </loc>
+        <loc>
+            <name>United States</name>
+            <initNumber>100</initNumber>
+            <endNumber>2.3</endNumber>
+        </loc>
+        <loc>
+            <name>Cuba</name>
+            <initNumber>100</initNumber>
+            <endNumber>5.91</endNumber>
+        </loc>
+    </sequence>
+    <sequence>
+    <title>Average Water Use Per Person&#10;Per Day (litres)</title>
+        <loc>
+            <name>Mozambique</name>
+            <initNumber>0</initNumber>
+            <endNumber>4</endNumber>
+        </loc>
+        <loc>
+            <name>Brazil</name>
+            <initNumber>0</initNumber>
+            <endNumber>2.3</endNumber>
+        </loc>
+        <loc>
+            <name>United States</name>
+            <initNumber>0</initNumber>
+            <endNumber>575</endNumber>
+        </loc>
+    </sequence>
+    <sequence>
+        <title>Per capita/year Carbon&#10;Emissions (tonnes)</title>
+        <loc>
+            <name>Ecuador</name>
+            <initNumber>0</initNumber>
+            <endNumber>1.7</endNumber>
+        </loc>
+        <loc>
+            <name>China</name>
+            <initNumber>0</initNumber>
+            <endNumber>6.3</endNumber>
+        </loc>
+        <loc>
+            <name>Australia</name>
+            <initNumber>0</initNumber>
+            <endNumber>18.8</endNumber>
+        </loc>
+    </sequence>
+    <sequence>
+        <title>Number of refugees hosted</title>
         <loc>
             <name>Lebanon</name>
             <initNumber>0</initNumber>
@@ -72,9 +109,117 @@
         </loc>
     </sequence>
     <sequence>
+        <title>Oil Consumption&#10;(bbl/day per 1000 people)</title>
+        <loc>
+            <name>Iraq</name>
+            <initNumber>0</initNumber>
+            <endNumber>22.29</endNumber>
+        </loc>
+        <loc>
+            <name>Iceland</name>
+            <initNumber>0</initNumber>
+            <endNumber>55.65</endNumber>
+        </loc>
+        <loc>
+            <name>Gibraltar</name>
+            <initNumber>0</initNumber>
+            <endNumber>861.06</endNumber>
+        </loc>
+    </sequence>
+    <sequence>
+        <title>Mobile Phone Penetration Rate&#10;(number of lines per 100 people)</title>
+        <loc>
+            <name>North Korea</name>
+            <initNumber>0</initNumber>
+            <endNumber>6.91</endNumber>
+        </loc>
+        <loc>
+            <name>France</name>
+            <initNumber>0</initNumber>
+            <endNumber>94.89</endNumber>
+        </loc>
+        <loc>
+            <name>United Arab Emirates</name>
+            <initNumber>0</initNumber>
+            <endNumber>259.21</endNumber>
+        </loc>
+    </sequence>
+    <sequence>
+        <title>Military expenditure per capita ($)</title>
+        <loc>
+            <name>Afghanistan</name>
+            <initNumber>0</initNumber>
+            <endNumber>5.200000000</endNumber>
+        </loc>
+        <loc>
+            <name>Israel</name>
+            <initNumber>0</initNumber>
+            <endNumber>1882.400000000</endNumber>
+        </loc>
+        <loc>
+            <name>El Salvador</name>
+            <initNumber>0</initNumber>
+            <endNumber>6909.320000000</endNumber>
+        </loc>
+    </sequence>
+        <sequence>
+        <title>Unemployment (%)&#10;youth ages (18-24)</title>
+        <loc>
+            <name>Japan</name>
+            <initNumber>0</initNumber>
+            <endNumber>7.9</endNumber>
+        </loc>
+        <loc>
+            <name>Iran</name>
+            <initNumber>0</initNumber>
+            <endNumber>23</endNumber>
+        </loc>
+        <loc>
+            <name>Spain</name>
+            <initNumber>0</initNumber>
+            <endNumber>53.2</endNumber>
+        </loc>
+    </sequence>     
+    <sequence>
+        <title>Population density&#10;(Number of people per square kilometer)</title>
+        <loc>
+            <name>Egypt</name>
+            <initNumber>0</initNumber>
+            <endNumber>86.77</endNumber>
+        </loc>
+        <loc>
+            <name>Israel</name>
+            <initNumber>0</initNumber>
+            <endNumber>376.59</endNumber>
+        </loc>
+        <loc>
+            <name>Gaza Strip</name>
+            <initNumber>0</initNumber>
+            <endNumber>5045.5</endNumber>
+        </loc>
+    </sequence>
+    <sequence>
+        <title>Obesity - adult&#10;prevalence rate (%)</title>
+        <loc>
+            <name>Vietnam</name>
+            <initNumber>0</initNumber>
+            <endNumber>1.7</endNumber>
+        </loc>
+        <loc>
+            <name>United Kingdom</name>
+            <initNumber>0</initNumber>
+            <endNumber>26.9</endNumber>
+        </loc>
+        <loc>
+            <name>Saudi Arabia</name>
+            <initNumber>0</initNumber>
+            <endNumber>33</endNumber>
+        </loc>
+    </sequence>
+        <sequence>
         <title>Number of deaths due to...</title>
         <loc>
-            <name>Car accidents (Spain)</name>
+            <name>Car accidents&#10;(Spain)</name>
             <initNumber>0</initNumber>
             <endNumber>1689</endNumber>
         </loc>
@@ -84,9 +229,27 @@
             <endNumber>3910</endNumber>
         </loc>
         <loc>
-            <name>Refugees drowned (Mediterranean)</name>
+            <name>Refugees drowned&#10;(Mediterranean Sea)</name>
             <initNumber>0</initNumber>
             <endNumber>5123</endNumber>
+        </loc>
+    </sequence>
+    <sequence>
+        <title>Population below&#10;poverty line (%)</title>
+        <loc>
+            <name>Lithuania</name>
+            <initNumber>0</initNumber>
+            <endNumber>4</endNumber>
+        </loc>
+        <loc>
+            <name>Italy</name>
+            <initNumber>0</initNumber>
+            <endNumber>29.9</endNumber>
+        </loc>
+        <loc>
+            <name>Haiti</name>
+            <initNumber>0</initNumber>
+            <endNumber>80</endNumber>
         </loc>
     </sequence>
 </databombing>

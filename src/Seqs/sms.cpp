@@ -9,11 +9,12 @@ void SMS::postSetup()
 {
 
     fontSmall.loadFont("PxPlus_AmstradPC1512.ttf", 24);
-    fontMedium.loadFont("PxPlus_AmstradPC1512.ttf", 30);
+    fontMedium.loadFont("PxPlus_AmstradPC1512.ttf", 26);
+    fontMedium.setLineHeight(60);
     fontBig.loadFont("PxPlus_AmstradPC1512.ttf", 96);
 
     timeItem = ofGetElapsedTimef();
-    timerItem = 1;
+    timerItem = 2;
 
     timeDigit = ofGetElapsedTimef();
     timerDigit = 0.1;
@@ -21,6 +22,8 @@ void SMS::postSetup()
     indexDigit = 0;
     indexSequence = 0;
     indexLoc = -2;
+
+    shaderIndex = 5;
 
     loadData(0);
     timeItem = ofGetElapsedTimef();
@@ -30,6 +33,11 @@ void SMS::postSetup()
         dataNumbers.push_back(ofRandom(0, 1));
 
     }
+
+    video.loadMovie("movies/mariano.mov");
+    video.setLoopState(OF_LOOP_NORMAL);
+    video.play();
+
 
 
 }
@@ -42,7 +50,8 @@ void SMS::loadData(int i)
         file.pushTag("sequence", i);
         notif = file.getValue("notif", "");
         opening = file.getValue("opening", "");
-        message = file.getValue("message", "");
+        from = file.getValue("from", "");
+        message = ofToString(file.getValue("message", ""));
         file.popTag();
         file.popTag(); //pop position
     }
@@ -57,6 +66,8 @@ void SMS::loadData(int i)
 void SMS::update(NanoPanel &nanoPanel, AudioInput &audioInput)
 {
     if (isActive()) {
+
+        video.update();
 
         for (int i = 0; i < 5; i++) {
 
@@ -142,7 +153,7 @@ void SMS::update(NanoPanel &nanoPanel, AudioInput &audioInput)
 
         indexLoc++;
 
-        if (indexLoc == 2) {
+        if (indexLoc == 3) {
 
             indexLoc = -2;
             indexSequence++;
@@ -215,67 +226,10 @@ void SMS::update(NanoPanel &nanoPanel, AudioInput &audioInput)
 void SMS::drawOutput()
 {
 
-
-
-    if (particlePanel[3] == 1) {
-
-        float timeLoc = ofGetElapsedTimef() - timeItem;
-
-        float valueLoc = ofMap(timeLoc, 0, timerItem, 0, 1);
-        if (valueLoc >= 1) valueLoc = 1;
-
-        effectCanvas.begin();
-        ofBackground(0);
-        ofFill();
-        ofSetColor(0, particlePanel[1] * 255, 0);
-
-        if (indexLoc == -1) {
-
-            float size = notif.size();
-
-            int endString = int(valueLoc * size);
-
-            if (ofGetFrameNum() % 30 > 15 ) fontSmall.drawString(notif.substr(0, endString) + "_", 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
-
-            else fontSmall.drawString(notif.substr(0, endString), 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
-
-
-
-        }
-
-        else if (indexLoc == 0) {
-
-            float size = opening.size();
-
-            int endString = int(valueLoc * size);
-
-            if (ofGetFrameNum() % 30 > 15 ) fontSmall.drawString(opening.substr(0, endString) + "_", 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
-
-            else fontSmall.drawString(opening.substr(0, endString), 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
-
-        }
-
-        else if (indexLoc == 1) {
-
-            float size = message.size();
-
-            int endString = int(valueLoc * size);
-
-            if (ofGetFrameNum() % 30 > 15 ) fontMedium.drawString(message.substr(0, endString) + "_", 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
-
-            else fontMedium.drawString(message.substr(0, endString), 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
-
-        }
-
-
-        effectCanvas.end();
-    }
-
-    else {
-        effectCanvas.begin();
-        ofBackground(0);
-        effectCanvas.end();
-    }
+    effectCanvas.begin();
+    ofSetColor(255);
+    video.draw(-0.1 * effectCanvas.getWidth(), -0.1 * effectCanvas.getHeight(), 1.2 * effectCanvas.getWidth(), 1.2 * effectCanvas.getHeight());
+    effectCanvas.end();
 
     ofSetColor(255);
 
@@ -298,6 +252,73 @@ void SMS::drawOutput()
         effectCanvas.end();
 
     }
+
+    if (particlePanel[3] == 1) {
+
+        float timeLoc = ofGetElapsedTimef() - timeItem;
+
+        float valueLoc = ofMap(timeLoc, 0, timerItem, 0, 1);
+        if (valueLoc >= 1) valueLoc = 1;
+
+        effectCanvas.begin();
+        ofFill();
+        ofSetColor(255, particlePanel[1] * 255);
+
+        if (indexLoc == -1) {
+
+            float size = notif.size();
+
+            int endString = int(valueLoc * size);
+
+            if (ofGetFrameNum() % 30 > 15 ) fontSmall.drawString(notif.substr(0, endString) + "_", 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
+
+            else fontSmall.drawString(notif.substr(0, endString), 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
+
+
+
+        }
+
+        else if (indexLoc == 0) {
+
+            float size = from.size();
+
+            int endString = int(valueLoc * size);
+
+            if (ofGetFrameNum() % 30 > 15 ) fontSmall.drawString(from.substr(0, endString) + "_", 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
+
+            else fontSmall.drawString(from.substr(0, endString), 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
+
+        }
+
+        else if (indexLoc == 1) {
+
+            float size = opening.size();
+
+            int endString = int(valueLoc * size);
+
+            if (ofGetFrameNum() % 30 > 15 ) fontSmall.drawString(opening.substr(0, endString) + "_", 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
+
+            else fontSmall.drawString(opening.substr(0, endString), 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
+
+        }
+
+        else if (indexLoc == 2) {
+
+            float size = message.size();
+
+            int endString = int(valueLoc * size);
+
+            if (ofGetFrameNum() % 30 > 15 ) fontMedium.drawString(message.substr(0, endString) + "_", 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
+
+            else fontMedium.drawString(message.substr(0, endString), 0.05 * effectCanvas.getWidth(), 0.5 * effectCanvas.getHeight());
+
+
+        }
+
+        effectCanvas.end();
+
+    }
+
 
     smallCanvas.begin();
     ofBackground(0);

@@ -8,8 +8,8 @@ DataBombing::DataBombing()
 void DataBombing::postSetup()
 {
 
-    fontSmall.loadFont("ScreenMatrix.ttf", 24);
-    fontMedium.loadFont("ScreenMatrix.ttf", 48);
+    fontSmall.loadFont("ScreenMatrix.ttf", 36);
+    fontMedium.loadFont("ScreenMatrix.ttf", 80);
     fontBig.loadFont("ScreenMatrix.ttf", 160);
 
     timeItem = ofGetElapsedTimef();
@@ -30,6 +30,10 @@ void DataBombing::postSetup()
         dataNumbers.push_back(ofRandom(0, 1));
 
     }
+
+    video.loadMovie("movies/earth.mov");
+    video.setLoopState(OF_LOOP_NORMAL);
+    video.play();
 
 
 }
@@ -72,6 +76,8 @@ void DataBombing::loadData(int i)
 
 void DataBombing::update(NanoPanel &nanoPanel, AudioInput &audioInput)
 {
+    video.update();
+
     if (isActive()) {
 
         for (int i = 0; i < 5; i++) {
@@ -222,16 +228,17 @@ void DataBombing::update(NanoPanel &nanoPanel, AudioInput &audioInput)
 
     this->setName("Name: DATABOMBING\nStatus: " + ONOFF + "\nIndex: " + ofToString(indexSequence) + "\nIndexLoc: " + ofToString(indexLoc) + "\nShader: " + modeShader);
 
-
-
-
-
 }
 
 void DataBombing::drawOutput()
 {
 
 
+    effectCanvas.begin();
+    ofSetColor(155);
+    video.draw(0, 0, effectCanvas.getWidth(), effectCanvas.getHeight());
+    ofSetColor(255);
+    effectCanvas.end();
 
     if (particlePanel[3] == 1) {
 
@@ -241,9 +248,8 @@ void DataBombing::drawOutput()
         if (valueLoc >= 1) valueLoc = 1;
 
         effectCanvas.begin();
-        ofBackground(0);
         ofFill();
-        ofSetColor(0, particlePanel[1] * 255, 0);
+        ofSetColor(particlePanel[1] * 255, 0, 0, particlePanel[1] * 255);
 
         if (indexLoc == -1) {
 
@@ -272,30 +278,25 @@ void DataBombing::drawOutput()
 
         if (indexLoc >= 0) {
 
-            if (ofGetFrameNum() % 30 > 15 ) fontMedium.drawString(name[indexLoc] + "_", 0.05 * effectCanvas.getWidth(), 0.4 * effectCanvas.getHeight());
+            if (ofGetFrameNum() % 30 > 15 ) fontMedium.drawString(name[indexLoc] + "_", 0.05 * effectCanvas.getWidth(), 0.42 * effectCanvas.getHeight());
 
-            else fontMedium.drawString(name[indexLoc], 0.05 * effectCanvas.getWidth(), 0.4 * effectCanvas.getHeight());
+            else fontMedium.drawString(name[indexLoc], 0.05 * effectCanvas.getWidth(), 0.42 * effectCanvas.getHeight());
 
             if ((timeLoc < timerItem) || (timeLoc > timerItem && timeLoc <= timerItem * 1.5 && ofGetFrameNum() % 30 > 15)) {
 
-                fontBig.drawString(digitToShow, 0.05 * effectCanvas.getWidth(), 0.7 * effectCanvas.getHeight());
+                fontBig.drawString(digitToShow, 0.05 * effectCanvas.getWidth(), 0.75 * effectCanvas.getHeight());
 
             }
 
             else if (timeLoc > timerItem * 1.5) {
 
-                fontBig.drawString(digitToShow, 0.05 * effectCanvas.getWidth(), 0.7 * effectCanvas.getHeight());
+                fontBig.drawString(digitToShow, 0.05 * effectCanvas.getWidth(), 0.75 * effectCanvas.getHeight());
 
             }
         }
 
         effectCanvas.end();
-    }
 
-    else {
-        effectCanvas.begin();
-        ofBackground(0);
-        effectCanvas.end();
     }
 
     ofSetColor(255);

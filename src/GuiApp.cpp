@@ -35,13 +35,15 @@ void GuiApp::setup(){
         nano.setup();
 
         numEffects = 12;
+        string name;
 
         int pos = 0;
-        LightHair sequence0;
-        string name = "Light - Hair Sequence\nAprox. Dur: 250''\nKike Ramirez - 2017";
-        sequence0.setup(ofPoint(0.25 * ofGetWidth(), pos * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), name );
-        sequence0.setColors(frontColor, backColor, selectedColor);
-        effects.push_back(std::make_unique<LightHair>(sequence0));
+
+        SMS sequence5;
+        name = "SMS\nAprox. Dur: 300''\nKike Ramirez - 2017";
+        sequence5.setup(ofPoint(0.25 * ofGetWidth(), pos * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), name );
+        sequence5.setColors(frontColor, backColor, selectedColor);
+        effects.push_back(std::make_unique<SMS>(sequence5));
 
         pos = 1;
         Circle_Dancing sequence1;
@@ -72,11 +74,11 @@ void GuiApp::setup(){
         effects.push_back(std::make_unique<DataBombing>(sequence4));
 
         pos = 5;
-        SMS sequence5;
-        name = "SMS\nAprox. Dur: 300''\nKike Ramirez - 2017";
-        sequence5.setup(ofPoint(0.25 * ofGetWidth(), pos * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), name );
-        sequence5.setColors(frontColor, backColor, selectedColor);
-        effects.push_back(std::make_unique<SMS>(sequence5));
+        LightHair sequence0;
+        name = "Light - Hair Sequence\nAprox. Dur: 250''\nKike Ramirez - 2017";
+        sequence0.setup(ofPoint(0.25 * ofGetWidth(), pos * 0.15 * ofGetHeight()), ofPoint(0.25 * ofGetWidth(), 0.15 * ofGetHeight()), name );
+        sequence0.setColors(frontColor, backColor, selectedColor);
+        effects.push_back(std::make_unique<LightHair>(sequence0));
 
         offSetDelta = 0;
         offSet = 0;

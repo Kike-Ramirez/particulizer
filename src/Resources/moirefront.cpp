@@ -98,8 +98,8 @@ void MoireFront::draw1(ofFbo &canvas, vector<float> drawSamples, ofColor colorMo
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(255);
     canvasMoire.draw(0,0);
+    ofEnableBlendMode(OF_BLENDMODE_DISABLED);
     canvas.end();
-    ofDisableBlendMode();
 
 
 }
@@ -171,8 +171,8 @@ void MoireFront::draw2(ofFbo &canvas, vector<float> drawSamples, ofColor colorMo
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(255);
     canvasMoire.draw(0,0);
-    canvas.end();
     ofDisableBlendMode();
+    canvas.end();
 
 }
 
@@ -275,8 +275,8 @@ void MoireFront::draw3(ofFbo &canvas, vector<float> drawSamples, ofColor colorMo
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(255);
     canvasMoire.draw(0,0);
-    canvas.end();
     ofDisableBlendMode();
+    canvas.end();
 
 }
 

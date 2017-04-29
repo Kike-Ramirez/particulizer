@@ -91,11 +91,13 @@ void Circle_Dancing::update(NanoPanel &nanoPanel, AudioInput &audioInput) {
     if (particlePanel[4] == 1) {
 
         //moireFront.update();
+        circles.activateFlash();
 
     }
 
     if (particlePanel[2] == 1) {
 
+        circles.nextMode();
 //        subSequenceIndex++;
 //        if (subSequenceIndex == shadersSequence.size()) subSequenceIndex = 0;
 //        cout << "subSequenceIndex: " << subSequenceNum << endl;

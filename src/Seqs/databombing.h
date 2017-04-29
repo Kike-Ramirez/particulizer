@@ -26,6 +26,7 @@ public:
     int indexSequence;
     int indexLoc;
     vector<float> dataNumbers;
+    ofVideoPlayer video;
 
     // Para saber qué linea estamos escribiendo...
     int maxString;
