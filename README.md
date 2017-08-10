@@ -30,3 +30,6 @@ Software for **live real-time graphics generation**, developed in openFrameworks
 * ofxGUI
 * ofxXmlSettings
 * ofxOpenCv
+
+## v0.2:
+* still to define
